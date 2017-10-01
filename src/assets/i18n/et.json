@@ -1,0 +1,16 @@
+{
+  "header": {
+    "returnTitle": "TOODETE TAGASTAMINE"
+  },
+  "user": {
+    "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "recipient": "SAADETISE KÄTTESAAJA",
+    "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
+    "name": "SINU NIMI",
+    "mobile": "SINU MOBIILINUMBER",
+    "email": "SINU E-MAIL",
+    "button": {
+      "submitReturn": "TAGASTA TOODE"
+    }
+  }
+}
