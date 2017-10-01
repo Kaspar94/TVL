@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {HttpClient, HttpHandler, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome'
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    AngularFontAwesomeModule,
     FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

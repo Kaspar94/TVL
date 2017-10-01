@@ -19,3 +19,26 @@ export class Country {
     this.shortName = shortName;
   }
 }
+
+export class BusinessClient {
+  id: number;
+  axapta: any;
+  street: string;
+  name: string;
+  city: string;
+  postIndex: number;
+  country: string;
+  deliveryCountry: string;
+  serviceNumber: any;
+  constructor(id, axapta, street, name, city, postIndex, country, deliveryCountry, serviceNumber) {
+    this.id = id;
+    this.axapta = axapta;
+    this.street = street;
+    this.name = name;
+    this.city = city;
+    this.postIndex = postIndex;
+    this.country = country;
+    this.deliveryCountry = deliveryCountry;
+    this.serviceNumber = serviceNumber;
+  }
+}
