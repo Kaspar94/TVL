@@ -24,5 +24,8 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": { "rewriteTsconfig": false },
+  "types": [
+    "bootstrap"
+  ]
 }

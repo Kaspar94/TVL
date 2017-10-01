@@ -1,0 +1,21 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.no-border {
+  border-color: transparent;
+}
+
+.padding-from-header {
+   padding-top: 65px;
+}
+
+.no-padding-left {
+  padding-left: 0px;
+}
+
+.selection-button {
+  background-color: #F04E23;
+  border-color: transparent;
+}

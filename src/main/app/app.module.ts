@@ -14,6 +14,8 @@ import { RepoListComponent } from './github/repo-list/repo-list.component';
 import { RepoDetailComponent } from './github/repo-detail/repo-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
+import {CustomerSideHeaderComponent} from "./shared/header/header.component";
+import {UserFormComponent} from "./user-form/user-form.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ContactComponent } from './contact/contact.component';
     RepoListComponent,
     RepoDetailComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    CustomerSideHeaderComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
