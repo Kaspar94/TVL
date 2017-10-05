@@ -35,6 +35,7 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
   validateLogin() {
     if (this.username === 'admin' && this.password === 'admin' && !this.sharedService.loggedIn) {
         this.sharedService.loggedIn = !this.sharedService.loggedIn;
+        this.sharedService.title = 'header.adminTitle';
         $('#loginModal').modal('hide');
   }
   }

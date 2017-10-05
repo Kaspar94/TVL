@@ -10,6 +10,7 @@ import {HttpClient, HttpHandler, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome'
 import {SharedService} from "./shared/shared.service";
+import {ClientViewComponent} from "./client/view/client-view.component";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -20,7 +21,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     CustomerSideHeaderComponent,
-    UserFormComponent
+    UserFormComponent,
+    ClientViewComponent
   ],
   imports: [
     BrowserModule,

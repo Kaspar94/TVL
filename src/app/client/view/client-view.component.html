@@ -1,0 +1,56 @@
+
+<div class="col-12 view-header-attr">
+  <form name="filterForm" id="filterForm" class="row">
+    <div class="col-12 form-group">FILTREERI</div>
+    <div class="col-2 form-group">
+      <input type="text" class="form-control view-input-attr" name="customCode" id="customCode" placeholder="AXAPTA" [(ngModel)]="customCode"/>
+    </div>
+    <div class="col-2 form-group">
+      <input type="text" class="form-control view-input-attr" name="clientName" id="clientName" placeholder="KLIENDI NIMI" [(ngModel)]="clientName"/>
+    </div>
+    <div class="col-1 form-group">
+      <input type="text" class="form-control view-input-attr" name="country" id="country" placeholder="RIIK" [(ngModel)]="country"/>
+    </div>
+    <div class="col-3 form-group">
+      <input type="text" class="form-control view-input-attr" name="city" id="city" placeholder="ASULA" [(ngModel)]="city"/>
+    </div>
+    <div class="col-3 form-group">
+      <input type="text" class="form-control view-input-attr" name="street" id="street" placeholder="TÄNAV" [(ngModel)]="street"/>
+    </div>
+    <div class="col-1 form-group">
+      <button type="submit" class="btn omniva-red-background no-border white"><i class="fa fa-search"></i></button>
+    </div>
+  </form>
+</div>
+<div class="col-12">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>{{ 'admin.table.id' | translate }}</th>
+      <th>{{ 'admin.table.axapta' | translate }}</th>
+      <th>{{ 'admin.table.name' | translate }}</th>
+      <th>{{ 'admin.table.street' | translate }}</th>
+      <th>{{ 'admin.table.city' | translate }}</th>
+      <th>{{ 'admin.table.postIndex' | translate }}</th>
+      <th>{{ 'admin.table.country' | translate }}</th>
+      <th>{{ 'admin.table.deliveryCountry' | translate }}</th>
+      <th>{{ 'admin.table.serviceCode' | translate }}</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{client.id}}</td>
+      <td>{{client.axapta}}</td>
+      <td>{{client.street}}</td>
+      <td>{{client.name}}</td>
+      <td>{{client.city}}</td>
+      <td>{{client.postIndex}}</td>
+      <td>{{client.country}}</td>
+      <td>{{client.deliveryCountry}}</td>
+      <td>{{client.serviceNumber}}</td>
+      <td><button class="btn omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

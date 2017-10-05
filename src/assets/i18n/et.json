@@ -22,6 +22,19 @@
   },
   "admin": {
     "title": "Äriklientide haldus",
-    "languageChoice": "Keeltevalik"
+    "languageChoice": "Keeltevalik",
+    "table": {
+        "id": "ID",
+        "axapta": "AXAPTA",
+        "name": "NIMI",
+        "street": "TÄNAV",
+        "city": "ASULA",
+        "postIndex": "POSTIINDEKS",
+        "country": "RIIK",
+        "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
+        "serviceCode": "TEENUSE KOOD",
+        "edit": "MUUDA"
+
+    }
   }
 }

@@ -22,15 +22,15 @@ export class Country {
 
 export class BusinessClient {
   id: number;
-  axapta: any;
+  axapta: string;
   street: string;
   name: string;
   city: string;
-  postIndex: number;
+  postIndex: string;
   country: string;
   deliveryCountry: string;
-  serviceNumber: any;
-  constructor(id, axapta, street, name, city, postIndex, country, deliveryCountry, serviceNumber) {
+  serviceNumber: string;
+  constructor(id, axapta, name, street, city, postIndex, country, deliveryCountry, serviceNumber) {
     this.id = id;
     this.axapta = axapta;
     this.street = street;

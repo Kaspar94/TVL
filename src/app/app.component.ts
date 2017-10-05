@@ -19,7 +19,7 @@ export class AppComponent {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('et');
     this.sharedService.loggedIn = false;
-    this.title = 'header.returnTitle';
+    this.sharedService.title = 'header.returnTitle';
   }
 
 }
