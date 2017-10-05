@@ -5,6 +5,34 @@
 
 .text-attr {
   padding-top: 40px;
-  padding-left: 20px;
+  padding-right: 20px;
   color: white;
+  display:flex;
+  float: right;
+}
+
+.hamburger-padding-between-title {
+  padding-left:15px;
+  cursor:pointer;
+}
+
+.white {
+  color: white;
+}
+
+
+.canvas-attr {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+}
+
+.align-right-custom {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
 }

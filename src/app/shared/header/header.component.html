@@ -1,12 +1,54 @@
 <div class="row header-height">
-  <div class="col-8 omniva-red-background">
-    <h3 class="text-attr">{{ 'header.returnTitle' | translate }}</h3>
+  <div class="col-2">
+    <img class="align-right-custom" src="../../../assets/images/logo_omniva_large.png" alt="https://www.omniva.ee/public/banners/pood/logo_717x696.png" height="100px">
   </div>
-  <div class="col-2 no-padding">
-    <canvas id="myCanvas" width="175" height="100">
+  <div class="col-2 no-padding" style="margin-right: -1px">
+    <canvas class="canvas-attr" id="myCanvas" width="175" height="100">
     </canvas>
   </div>
-  <div class="col-2">
-    <img src="../../../assets/images/logo_omniva_large.png" alt="https://www.omniva.ee/public/banners/pood/logo_717x696.png" height="100px">
+  <div class="col-8 omniva-red-background">
+    <div class="text-attr">
+      <h3 class="">{{ title | translate }}</h3>
+      <i class="fa fa-bars fa-2x hamburger-padding-between-title "  data-toggle="dropdown" ></i>
+      <div class="dropdown-menu dropdown-menu-right">
+        <h6 class="dropdown-item"><b>{{ 'admin.languageChoice' | translate }}</b></h6>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item">EST</a>
+        <a class="dropdown-item">ENG</a>
+        <a class="dropdown-item">RUS</a>
+        <a class="dropdown-item">LIT</a>
+        <a class="dropdown-item">LAT</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" data-toggle="modal" data-target="#loginModal"><b>{{ 'admin.title' | translate }}</b></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" #loginModal id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eloginModalTitle">{{ 'login.logIn' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form name="loginForm" id="loginForm" (submit)="validateLogin()">
+        <div class="modal-body">
+          <label for="username" class="col-12">{{ 'login.username' | translate }}
+          <input type="text" [(ngModel)]="username" class="form-control" id="username" name="username" required></label>
+          <label for="password" class="col-12">{{ 'login.password' | translate }}
+            <input type="password" [(ngModel)]="password" class="form-control" id="password" name="password" required></label>
+        </div>
+        <div class="modal-footer">
+          <div class="col-4"></div>
+          <div class="col-4 center">
+            <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'login.button' | translate }}</button>
+          </div>
+          <div class="col-4"></div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

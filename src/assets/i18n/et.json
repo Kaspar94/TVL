@@ -1,6 +1,7 @@
 {
   "header": {
-    "returnTitle": "TOODETE TAGASTAMINE"
+    "returnTitle": "TOODETE TAGASTAMINE",
+    "adminTitle": "ÄRIKLIENTIDE HALDUS"
   },
   "user": {
     "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
@@ -12,5 +13,15 @@
     "button": {
       "submitReturn": "TAGASTA TOODE"
     }
+  },
+  "login": {
+    "username": "Kasutajanimi",
+    "password": "Parool",
+    "button": "Logi sisse",
+    "logIn": "Sisselogimine"
+  },
+  "admin": {
+    "title": "Äriklientide haldus",
+    "languageChoice": "Keeltevalik"
   }
 }

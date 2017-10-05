@@ -4,7 +4,7 @@ import {Company, Country} from "../shared/shared.model";
 @Component({
   selector: 'user-form',
   templateUrl: 'user-form.component.html',
-  styleUrls: ['./user-form.css', '../shared/shared.css']
+  styleUrls: ['./user-form.css', '../app.component.css']
 })
 export class UserFormComponent implements OnInit{
   companies: any;
