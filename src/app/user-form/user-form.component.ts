@@ -1,5 +1,5 @@
 import {Component, AfterViewInit, OnInit} from '@angular/core';
-import {Country, BusinessClient} from "../shared/shared.model";
+import {BusinessClient} from "../shared/shared.model";
 import {SharedService} from "../shared/shared.service";
 
 @Component({
