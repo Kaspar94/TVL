@@ -5,6 +5,7 @@ export class SharedService {
   username: any;
   password: any;
   title: any;
+  lang: any;
 
   constructor() {
   }
