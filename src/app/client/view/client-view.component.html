@@ -3,19 +3,19 @@
   <form name="filterForm" id="filterForm" class="row">
     <div class="col-12 form-group">FILTREERI</div>
     <div class="col-2 form-group">
-      <input type="text" class="form-control view-input-attr" name="customCode" id="customCode" placeholder="AXAPTA" [(ngModel)]="customCode"/>
+      <input type="text" class="form-control view-input-attr" name="customCode" id="filterAxapta" placeholder="AXAPTA" [(ngModel)]="filterAxapta"/>
     </div>
     <div class="col-2 form-group">
-      <input type="text" class="form-control view-input-attr" name="clientName" id="clientName" placeholder="KLIENDI NIMI" [(ngModel)]="clientName"/>
+      <input type="text" class="form-control view-input-attr" name="clientName" id="filterName" placeholder="KLIENDI NIMI" [(ngModel)]="filterName"/>
     </div>
     <div class="col-1 form-group">
-      <input type="text" class="form-control view-input-attr" name="country" id="country" placeholder="RIIK" [(ngModel)]="country"/>
+      <input type="text" class="form-control view-input-attr" name="country" id="filterCountry" placeholder="RIIK" [(ngModel)]="filterCountry"/>
     </div>
     <div class="col-3 form-group">
-      <input type="text" class="form-control view-input-attr" name="city" id="city" placeholder="ASULA" [(ngModel)]="city"/>
+      <input type="text" class="form-control view-input-attr" name="city" id="filterCity" placeholder="ASULA" [(ngModel)]="filterCity"/>
     </div>
     <div class="col-3 form-group">
-      <input type="text" class="form-control view-input-attr" name="street" id="street" placeholder="TÄNAV" [(ngModel)]="street"/>
+      <input type="text" class="form-control view-input-attr" name="street" id="filterStreet" placeholder="TÄNAV" [(ngModel)]="filterStreet"/>
     </div>
     <div class="col-1 form-group">
       <button type="submit" class="btn omniva-red-background no-border white"><i class="fa fa-search"></i></button>
@@ -49,8 +49,33 @@
       <td>{{client.country}}</td>
       <td>{{client.deliveryCountry}}</td>
       <td>{{client.serviceNumber}}</td>
-      <td><button class="btn omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button></td>
+      <td><button (click) = "edit(editModal,client)" class="btn omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button></td>
     </tr>
     </tbody>
   </table>
 </div>
+
+<!-- EditModal -->
+<ng-template #editModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h5 class="modal-title" id="editModalTitle">{{ 'admin.edit' | translate }}</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<form name="editForm" id="editForm" (submit)="confirmEdit(); c('Close click')">
+    <div class="modal-body">
+      <label for="axapta" class="col-12">{{ 'admin.table.axapta' | translate }}
+      <input type="text" [(ngModel)]="axapta" class="form-control" id="axapta" name="axapta" required></label>
+      <label for="street" class="col-12">{{ 'admin.table.street' | translate }}
+      <input type="text" [(ngModel)]="street" class="form-control" id="street" name="street" required></label>
+    </div>
+    <div class="modal-footer">
+      <div class="col-4"></div>
+      <div class="col-4 center">
+        <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button>
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </form>
+</ng-template>

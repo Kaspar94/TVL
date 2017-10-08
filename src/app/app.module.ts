@@ -11,6 +11,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awesome'
 import {SharedService} from "./shared/shared.service";
 import {ClientViewComponent} from "./client/view/client-view.component";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,7 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     CustomerSideHeaderComponent,
     UserFormComponent,
-    ClientViewComponent
+    ClientViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgbModule.forRoot()
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

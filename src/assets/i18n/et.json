@@ -22,6 +22,9 @@
   },
   "admin": {
     "title": "Äriklientide haldus",
+    "edit": "Äriklientide muutmine",
+    "addButton": "LISA",
+    "add": "Äriklientide lisamine",
     "languageChoice": "Keeltevalik",
     "table": {
         "id": "ID",
