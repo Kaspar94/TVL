@@ -12,6 +12,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 import {SharedService} from "./shared/shared.service";
 import {ClientViewComponent} from "./client/view/client-view.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {Http, ConnectionBackend, HttpModule} from "@angular/http";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,6 +27,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ClientViewComponent,
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     AngularFontAwesomeModule,
     FormsModule,

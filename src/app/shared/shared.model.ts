@@ -1,27 +1,4 @@
-export class Company {
-  id: number;
-  name: string;
-  origin: string;
-  constructor(id,name,origin){
-    this.id = id;
-    this.name = name;
-    this.origin = origin;
-  }
-}
-
-export class Country {
-  id: number;
-  fullName: string;
-  shortName: string;
-  constructor(id, fullName, shortName){
-    this.id = id;
-    this.fullName = fullName;
-    this.shortName = shortName;
-  }
-}
-
 export class BusinessClient {
-  id: number;
   axapta: string;
   street: string;
   name: string;
@@ -30,8 +7,7 @@ export class BusinessClient {
   country: string;
   deliveryCountry: string;
   serviceNumber: string;
-  constructor(id, axapta, name, street, city, postIndex, country, deliveryCountry, serviceNumber) {
-    this.id = id;
+  constructor(axapta, name, street, city, postIndex, country, deliveryCountry, serviceNumber) {
     this.axapta = axapta;
     this.street = street;
     this.name = name;

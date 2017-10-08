@@ -39,8 +39,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let client of clients">
-      <td>{{client.id}}</td>
+    <tr *ngFor="let client of clients; let i = index">
+      <td>{{i}}</td>
       <td>{{client.axapta}}</td>
       <td>{{client.street}}</td>
       <td>{{client.name}}</td>
