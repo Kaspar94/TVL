@@ -20,6 +20,7 @@ export class AppComponent {
     translate.use('et');
     this.sharedService.loggedIn = false;
     this.sharedService.title = 'header.returnTitle';
+    this.sharedService.lang = 'EST';
   }
 
 }

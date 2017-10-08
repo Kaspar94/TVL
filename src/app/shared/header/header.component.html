@@ -9,15 +9,18 @@
   <div class="col-8 omniva-red-background">
     <div class="text-attr">
       <h3 class="">{{ title | translate }}</h3>
-      <i class="fa fa-bars fa-2x hamburger-padding-between-title "  data-toggle="dropdown" ></i>
+      <div class="padding-between-title row" data-toggle="dropdown">
+        <h5>{{sharedService.lang}}</h5>
+        <i class="fa fa-chevron-down chevron-margin"></i>
+      </div>
       <div class="dropdown-menu dropdown-menu-right">
         <h6 class="dropdown-item"><b>{{ 'admin.languageChoice' | translate }}</b></h6>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item">EST</a>
-        <a class="dropdown-item">ENG</a>
-        <a class="dropdown-item">RUS</a>
-        <a class="dropdown-item">LIT</a>
-        <a class="dropdown-item">LAT</a>
+        <a class="dropdown-item" (click)="changeLang('EST')">EST</a>
+        <a class="dropdown-item" (click)="changeLang('ENG')">ENG</a>
+        <a class="dropdown-item" (click)="changeLang('RUS')">RUS</a>
+        <a class="dropdown-item" (click)="changeLang('LIT')">LIT</a>
+        <a class="dropdown-item" (click)="changeLang('LAT')">LAT</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" data-toggle="modal" data-target="#loginModal"><b>{{ 'admin.title' | translate }}</b></a>
       </div>

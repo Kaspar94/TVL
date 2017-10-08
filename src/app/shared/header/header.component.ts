@@ -39,4 +39,8 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
         $('#loginModal').modal('hide');
   }
   }
+
+  changeLang(lang: any) {
+    this.sharedService.lang = lang;
+  }
 }

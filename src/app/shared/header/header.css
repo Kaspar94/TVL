@@ -11,9 +11,10 @@
   float: right;
 }
 
-.hamburger-padding-between-title {
-  padding-left:15px;
+.padding-between-title {
+  padding-left:23px;
   cursor:pointer;
+  margin: auto;
 }
 
 .white {
@@ -35,4 +36,8 @@
   bottom: 0;
   margin: auto;
   right: 0;
+}
+
+.chevron-margin {
+  margin-top: 2px;
 }
