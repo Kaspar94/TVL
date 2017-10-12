@@ -11,8 +11,8 @@ import {BusinessClient} from "../../shared/shared.model";
 })
 export class ClientViewComponent {
   clients: BusinessClient[];
-  client: BusinessClient;
-  id: number;
+  editClient: BusinessClient;
+  newClient: BusinessClient;
   axapta: string;
   street: string;
   name: string;
@@ -26,19 +26,64 @@ export class ClientViewComponent {
               public sharedService: SharedService,
               private modalService: NgbModal) {
     this.clients = [];
-    this.sharedService.getJSON().subscribe((res) => { this.clients = res;});
+    this.sharedService.getClients().subscribe((res) => { this.clients = res;});
   }
 
-  edit(modal, client: BusinessClient) {
-    this.client = client;
-    this.axapta = client.axapta;
-    this.street = client.street;
-    this.modalService.open(modal);
+//EDITING CLIENT
+  edit(modal, id) {
+    this.sharedService.getClient(id).subscribe((res) => { this.editClient = res;});
+    this.axapta = this.editClient.axapta;
+    this.street = this.editClient.street;
+    this.name = this.editClient.name;
+    this.city = this.editClient.city;
+    this.postIndex = this.editClient.postIndex;
+    this.country = this.editClient.country;
+    this.deliveryCountry = this.editClient.deliveryCountry;
+    this.serviceNumber = this.editClient.serviceNumber;
+    this.modalService.open(modal).result.then((result) => {
+    }, (reason) => {
+      this.clear();
+    });
   }
 
   confirmEdit() {
-    this.client.axapta = this.axapta;
-    this.client.street = this.street;
+    //TODO
+    this.clear();
+  }
+
+//ADDING CLIENT
+  new(modal) {
+    this.modalService.open(modal).result.then((result) => {
+    }, (reason) => {
+      this.clear();
+    });
+  }
+
+  confirmNew() {
+    this.newClient = {"id":0,"axapta":"","street":"","name":"","city":"","postIndex":"","country":"","deliveryCountry":"","serviceNumber":""};
+    this.newClient.axapta = this.axapta;
+    this.newClient.street = this.street;
+    this.newClient.name = this.name;
+    this.newClient.city = this.city;
+    this.newClient.postIndex = this.postIndex;
+    this.newClient.country = this.country;
+    this.newClient.deliveryCountry = this.deliveryCountry;
+    this.newClient.serviceNumber = this.serviceNumber;
+    //TODO 
+    this.clear();
+  }
+
+//FOR CLEARING 
+
+  clear() {
+    this.axapta = "";
+    this.street = "";
+    this.name = "";
+    this.city = "";
+    this.postIndex = "";
+    this.country = "";
+    this.deliveryCountry = "";
+    this.serviceNumber = "";
   }
 
 }

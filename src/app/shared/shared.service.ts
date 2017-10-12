@@ -16,9 +16,17 @@ export class SharedService {
   constructor(private http: Http) {
   }
 
-  public getJSON() {
-    return this.http.get("assets/clients/clients.json")
+  public getClients() {
+    return this.http.get("/businessClient")
       .map(response => {
+        console.log(response.json());
+        return response.json();
+      });
+  }
+  public getClient(id:number) {
+    return this.http.get("/businessClient/"+id)
+      .map(response => {
+        console.log(response.json());
         return response.json();
       });
   }

@@ -35,7 +35,7 @@
         "postIndex": "POSTIINDEKS",
         "country": "RIIK",
         "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
-        "serviceCode": "TEENUSE KOOD",
+        "serviceNumber": "TEENUSE KOOD",
         "edit": "MUUDA"
 
     }
