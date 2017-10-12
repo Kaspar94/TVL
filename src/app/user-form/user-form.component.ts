@@ -19,7 +19,7 @@ export class UserFormComponent implements OnInit{
   constructor(public sharedService: SharedService) {
     this.companies = [];
     this.countries = [];
-    this.sharedService.getJSON().subscribe((res) => {
+    this.sharedService.getClients().subscribe((res) => {
       this.companies = res;
       this.companies.forEach((company) => {
         if (this.countries.findIndex((x) => x === company.country) === -1) {

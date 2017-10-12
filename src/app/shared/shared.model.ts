@@ -1,4 +1,5 @@
 export class BusinessClient {
+  id: number;
   axapta: string;
   street: string;
   name: string;
@@ -7,7 +8,8 @@ export class BusinessClient {
   country: string;
   deliveryCountry: string;
   serviceNumber: string;
-  constructor(axapta, name, street, city, postIndex, country, deliveryCountry, serviceNumber) {
+  constructor(id, axapta, name, street, city, postIndex, country, deliveryCountry, serviceNumber) {
+    this.id = id;
     this.axapta = axapta;
     this.street = street;
     this.name = name;

@@ -1,10 +1,18 @@
 var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  path = require('path');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+
+app.use(express.static(path.join(__dirname, '../dist')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 var routes = require('./api/routes/businessClientRoutes');
 routes(app);
