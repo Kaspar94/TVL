@@ -33,10 +33,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-app.get('/github-webhook', (req, res) => {
-  res.end();
-});
-
 var routes = require('./api/routes/businessClientRoutes');
 routes(app);
 

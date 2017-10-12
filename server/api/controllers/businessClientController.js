@@ -7,11 +7,34 @@ var clientsFilePath = './api/data/clients.json';
 
 exports.list_all_clients = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
+		console.log(req.query);
 		res.writeHead(200, {'Content-Type': 'application/json'});
 		res.write(JSON.stringify(JSON.parse(data).data));
 		res.end();
 	});
 };
+
+exports.filter_clients = function(req, res) {
+	fs.readFile(clientsFilePath, encoding, function(err, data) {
+		var clientCollection = JSON.parse(data);
+		var clients = clientCollection.data;
+		var result = [];
+		for (var i in req.query) {
+			if (clientCollection.fields.indexOf(i) > -1) {
+				for (var client in clients) {
+					if (clients[client][i] == req.query[i]) {
+						result.push(clients[client]);
+					}
+				}
+				clients = result;
+				result = [];
+			}
+		}
+		res.writeHead(200, {'Content-Type': 'application/json'});
+		res.write(JSON.stringify(clients));
+		res.end();
+	});
+}
 
 exports.create_a_client = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
