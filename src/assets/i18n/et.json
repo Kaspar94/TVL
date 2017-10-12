@@ -38,6 +38,7 @@
         "serviceNumber": "TEENUSE KOOD",
         "edit": "MUUDA"
 
-    }
+    },
+    "logout": "Logi välja"
   }
 }

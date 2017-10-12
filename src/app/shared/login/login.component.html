@@ -1,0 +1,21 @@
+<form name="loginForm" id="loginForm" (submit)="validateLogin()">
+    <div class="modal-header">
+      <h5 class="modal-title" id="loginModalTitle">{{ 'login.logIn' | translate }}</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+      <div class="modal-body">
+        <label for="username" class="col-12">{{ 'login.username' | translate }}
+          <input type="text" [(ngModel)]="username" class="form-control" id="username" name="username" required></label>
+        <label for="password" class="col-12">{{ 'login.password' | translate }}
+          <input type="password" [(ngModel)]="password" class="form-control" id="password" name="password" required></label>
+      </div>
+      <div class="modal-footer">
+        <div class="col-4"></div>
+        <div class="col-4 center">
+          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'login.button' | translate }}</button>
+        </div>
+        <div class="col-4"></div>
+      </div>
+</form>

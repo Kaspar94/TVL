@@ -22,36 +22,9 @@
         <a class="dropdown-item" (click)="changeLang('LIT')">LIT</a>
         <a class="dropdown-item" (click)="changeLang('LAT')">LAT</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" data-toggle="modal" data-target="#loginModal"><b>{{ 'admin.title' | translate }}</b></a>
+        <a class="dropdown-item" [hidden]="sharedService.loggedIn" (click)="openLogin()"><b>{{ 'admin.title' | translate }}</b></a>
+        <a class="dropdown-item" [hidden]="!sharedService.loggedIn" (click)="logout()"><b>{{ 'admin.logout' | translate }}</b></a>
       </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" #loginModal id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalTitle">{{ 'login.logIn' | translate }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form name="loginForm" id="loginForm" (submit)="validateLogin()">
-        <div class="modal-body">
-          <label for="username" class="col-12">{{ 'login.username' | translate }}
-          <input type="text" [(ngModel)]="username" class="form-control" id="username" name="username" required></label>
-          <label for="password" class="col-12">{{ 'login.password' | translate }}
-            <input type="password" [(ngModel)]="password" class="form-control" id="password" name="password" required></label>
-        </div>
-        <div class="modal-footer">
-          <div class="col-4"></div>
-          <div class="col-4 center">
-            <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'login.button' | translate }}</button>
-          </div>
-          <div class="col-4"></div>
-        </div>
-      </form>
     </div>
   </div>
 </div>

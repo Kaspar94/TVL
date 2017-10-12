@@ -1,5 +1,7 @@
 import {Component, AfterViewInit, Input, ViewChild, ElementRef} from '@angular/core';
 import {SharedService} from "../shared.service";
+import {LoginComponent} from "../login/login.component";
+import {NgbModal, NgbModalOptions} from "@ng-bootstrap/ng-bootstrap";
 
 declare var $;
 @Component({
@@ -10,12 +12,12 @@ declare var $;
 export class CustomerSideHeaderComponent implements AfterViewInit{
 
   @Input() title: string;
+  modalOption: NgbModalOptions = {};
 
-  username: any;
-  password: any;
-
-  constructor(private sharedService: SharedService) {
-
+  constructor(private sharedService: SharedService,
+              private modalService: NgbModal) {
+    this.modalOption.backdrop = 'static';
+    this.modalOption.keyboard = false;
   }
 
 
@@ -32,15 +34,16 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
     ctx.fill();
   }
 
-  validateLogin() {
-    if (this.username === 'admin' && this.password === 'admin' && !this.sharedService.loggedIn) {
-        this.sharedService.loggedIn = !this.sharedService.loggedIn;
-        this.sharedService.title = 'header.adminTitle';
-        $('#loginModal').modal('hide');
-  }
-  }
 
   changeLang(lang: any) {
     this.sharedService.lang = lang;
+  }
+
+  logout() {
+    this.sharedService.loggedIn = false;
+  }
+
+  openLogin() {
+    const dialog = (<LoginComponent>this.modalService.open(LoginComponent, this.modalOption).componentInstance);
   }
 }

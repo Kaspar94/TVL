@@ -9,6 +9,7 @@ import {SharedService} from "../shared/shared.service";
 })
 export class UserFormComponent implements OnInit{
   companies: BusinessClient[];
+  filteredCompanies: BusinessClient[];
   countries: any;
   recipient: any;
   deliveryCountry: any;
@@ -18,12 +19,14 @@ export class UserFormComponent implements OnInit{
 
   constructor(public sharedService: SharedService) {
     this.companies = [];
+    this.filteredCompanies = [];
     this.countries = [];
     this.sharedService.getClients().subscribe((res) => {
       this.companies = res;
+      this.filteredCompanies = res;
       this.companies.forEach((company) => {
-        if (this.countries.findIndex((x) => x === company.country) === -1) {
-            this.countries.push(company.country);
+        if (this.countries.findIndex((x) => x === company.deliveryCountry) === -1) {
+            this.countries.push(company.deliveryCountry);
         }
       })
     } );
@@ -38,7 +41,13 @@ export class UserFormComponent implements OnInit{
   }
 
   changeActiveCountry(country: any) {
+    this.filteredCompanies = [];
     this.deliveryCountry = country;
+    this.companies.forEach((company) => {
+      if (company.deliveryCountry === country) {
+        this.filteredCompanies.push(company);
+      }
+    })
   }
 
   validate() {
