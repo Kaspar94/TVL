@@ -49,3 +49,17 @@ exports.removeOne = function (array, key, value) {
     return false;
   }
 }
+
+exports.create = function (array, id, fields, values) {
+  var elem = {};
+  elem["id"] = id;
+  for (var i in fields) {
+    if (values[fields[i]]) {
+      elem[fields[i]] = values[fields[i]];
+    } else {
+      elem[fields[i]] = "";
+    }
+  }
+  array.push(elem);
+  return elem;
+}
