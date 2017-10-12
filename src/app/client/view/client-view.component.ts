@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from "@ngx-translate/core";
 import {SharedService} from "../../shared/shared.service";
 import {BusinessClient} from "../../shared/shared.model";
+import {ClientEditComponent} from "../edit/client-edit.component";
 
 @Component({
   selector: 'client-view-data',
@@ -21,30 +22,24 @@ export class ClientViewComponent {
   country: string;
   deliveryCountry: string;
   serviceNumber: string;
+  modalOption: NgbModalOptions = {};
+
 
   constructor(translate: TranslateService,
               public sharedService: SharedService,
               private modalService: NgbModal) {
     this.clients = [];
     this.sharedService.getClients().subscribe((res) => { this.clients = res;});
+    this.modalOption.backdrop = 'static';
+    this.modalOption.keyboard = false;
   }
 
 //EDITING CLIENT
-  edit(modal, id) {
-    this.sharedService.getClient(id).subscribe((res) => { this.editClient = res;});
-    this.axapta = this.editClient.axapta;
-    this.street = this.editClient.street;
-    this.name = this.editClient.name;
-    this.city = this.editClient.city;
-    this.postIndex = this.editClient.postIndex;
-    this.country = this.editClient.country;
-    this.deliveryCountry = this.editClient.deliveryCountry;
-    this.serviceNumber = this.editClient.serviceNumber;
-    this.modalService.open(modal).result.then((result) => {
-    }, (reason) => {
-      this.clear();
-    });
+  edit(client: BusinessClient) {
+    const dialog = (<ClientEditComponent>this.modalService.open(ClientEditComponent, this.modalOption).componentInstance);
+    dialog.setClient(client);
   }
+
 
   confirmEdit() {
     //TODO
@@ -52,11 +47,9 @@ export class ClientViewComponent {
   }
 
 //ADDING CLIENT
-  new(modal) {
-    this.modalService.open(modal).result.then((result) => {
-    }, (reason) => {
-      this.clear();
-    });
+  newBusinessClient() {
+    const dialog = (<ClientEditComponent>this.modalService.open(ClientEditComponent, this.modalOption).componentInstance);
+    dialog.setClient(new BusinessClient(null, null, null, null, null, null, null, null, null));
   }
 
   confirmNew() {
@@ -69,11 +62,11 @@ export class ClientViewComponent {
     this.newClient.country = this.country;
     this.newClient.deliveryCountry = this.deliveryCountry;
     this.newClient.serviceNumber = this.serviceNumber;
-    //TODO 
+    //TODO
     this.clear();
   }
 
-//FOR CLEARING 
+//FOR CLEARING
 
   clear() {
     this.axapta = "";

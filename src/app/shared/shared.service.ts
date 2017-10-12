@@ -25,12 +25,25 @@ export class SharedService {
         return response.json();
       });
   }
-  public getClient(id:number) {
-    return this.http.get("/businessClient/"+id)
+
+  public getClient(id: number) {
+    return this.http.get(this.resourceUrl + '/businessClient/' + id)
       .map(response => {
         console.log(response.json());
         return response.json();
       });
   }
 
+  createClient(client: BusinessClient) {
+    return this.http.post(this.resourceUrl + '/businessClient', client).map(response => {
+      return response.json();
+    })
+
+  }
+
+  updateClient(client: BusinessClient) {
+    return this.http.put(this.resourceUrl + '/businessClient/' + client.id, client).map(response => {
+      return response.json();
+    })
+  }
 }

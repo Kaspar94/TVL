@@ -1,4 +1,3 @@
-
 <div class="col-12 view-header-attr">
   <form name="filterForm" id="filterForm" class="row">
     <div class="col-12 form-group">FILTREERI</div>
@@ -8,14 +7,14 @@
     <div class="col-2 form-group">
       <input type="text" class="form-control view-input-attr" name="filterName" id="filterName" placeholder="KLIENDI NIMI" [(ngModel)]="filterName"/>
     </div>
+    <div class="col-3 form-group">
+      <input type="text" class="form-control view-input-attr" name="filterStreet" id="filterStreet" placeholder="TÄNAV" [(ngModel)]="filterStreet"/>
+    </div>
     <div class="col-1 form-group">
       <input type="text" class="form-control view-input-attr" name="filterCountry" id="filterCountry" placeholder="RIIK" [(ngModel)]="filterCountry"/>
     </div>
     <div class="col-3 form-group">
       <input type="text" class="form-control view-input-attr" name="filterCity" id="filterCity" placeholder="ASULA" [(ngModel)]="filterCity"/>
-    </div>
-    <div class="col-3 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterStreet" id="filterStreet" placeholder="TÄNAV" [(ngModel)]="filterStreet"/>
     </div>
     <div class="col-1 form-group">
       <button type="submit" class="btn omniva-red-background no-border white"><i class="fa fa-search"></i></button>
@@ -35,7 +34,7 @@
       <th>{{ 'admin.table.country' | translate }}</th>
       <th>{{ 'admin.table.deliveryCountry' | translate }}</th>
       <th>{{ 'admin.table.serviceNumber' | translate }}</th>
-      <th><button (click) = "new(newModal)" class="btn omniva-red-background no-border white">{{ 'admin.addButton' | translate }}</button></th>
+      <th><button (click) = "newBusinessClient()" class="btn omniva-red-background no-border white">{{ 'admin.addButton' | translate }}</button></th>
     </tr>
     </thead>
     <tbody>
@@ -49,82 +48,8 @@
       <td>{{client.country}}</td>
       <td>{{client.deliveryCountry}}</td>
       <td>{{client.serviceNumber}}</td>
-      <td><button (click) = "edit(editModal,client.id)" class="btn omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button></td>
+      <td><button (click) = "edit(client)" class="btn omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button></td>
     </tr>
     </tbody>
   </table>
 </div>
-
-<!-- EditModal -->
-<ng-template #editModal let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h5 class="modal-title" id="editModalTitle">{{ 'admin.edit' | translate }}</h5>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<form name="editForm" id="editForm" (submit)="confirmEdit(); c('Close click')">
-    <div class="modal-body">
-      <label for="axapta_e" class="col-12">{{ 'admin.table.axapta' | translate }}
-      <input type="text" [(ngModel)]="axapta" class="form-control" id="axapta_e" name="axapta" required></label>
-      <label for="street_e" class="col-12">{{ 'admin.table.street' | translate }}
-      <input type="text" [(ngModel)]="street" class="form-control" id="street_e" name="street" required></label>
-      <label for="name_e" class="col-12">{{ 'admin.table.name' | translate }}
-      <input type="text" [(ngModel)]="name" class="form-control" id="name_e" name="name" required></label>
-      <label for="city_e" class="col-12">{{ 'admin.table.city' | translate }}
-      <input type="text" [(ngModel)]="city" class="form-control" id="city_e" name="city" required></label>
-      <label for="postIndex_e" class="col-12">{{ 'admin.table.postIndex' | translate }}
-      <input type="text" [(ngModel)]="postIndex" class="form-control" id="postIndex_e" name="postIndex" required></label>
-      <label for="country_e" class="col-12">{{ 'admin.table.country' | translate }}
-      <input type="text" [(ngModel)]="country" class="form-control" id="country_e" name="country" required></label>
-      <label for="deliveryCountry_e" class="col-12">{{ 'admin.table.deliveryCountry' | translate }}
-      <input type="text" [(ngModel)]="deliveryCountry" class="form-control" id="deliveryCountry_e" name="deliveryCountry" required></label>
-      <label for="serviceNumber_e" class="col-12">{{ 'admin.table.serviceNumber' | translate }}
-      <input type="text" [(ngModel)]="serviceNumber" class="form-control" id="serviceNumber_e" name="serviceNumber" required></label>
-    </div>
-    <div class="modal-footer">
-      <div class="col-4"></div>
-      <div class="col-4 center">
-        <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button>
-      </div>
-      <div class="col-4"></div>
-    </div>
-  </form>
-</ng-template>
-
-<!-- NewModal -->
-<ng-template #newModal let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h5 class="modal-title" id="newModalTitle">{{ 'admin.add' | translate }}</h5>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-<form name="newForm" id="newForm" (submit)="confirmNew(); c('Close click')">
-    <div class="modal-body">
-      <label for="axapta_s" class="col-12">{{ 'admin.table.axapta' | translate }}
-      <input type="text" [(ngModel)]="axapta" class="form-control" id="axapta_s" name="axapta" required></label>
-      <label for="street_s" class="col-12">{{ 'admin.table.street' | translate }}
-      <input type="text" [(ngModel)]="street" class="form-control" id="street_s" name="street" required></label>
-      <label for="name_s" class="col-12">{{ 'admin.table.name' | translate }}
-      <input type="text" [(ngModel)]="name" class="form-control" id="name_s" name="name" required></label>
-      <label for="city_s" class="col-12">{{ 'admin.table.city' | translate }}
-      <input type="text" [(ngModel)]="city" class="form-control" id="city_s" name="city" required></label>
-      <label for="postIndex_s" class="col-12">{{ 'admin.table.postIndex' | translate }}
-      <input type="text" [(ngModel)]="postIndex" class="form-control" id="postIndex_s" name="postIndex" required></label>
-      <label for="country_s" class="col-12">{{ 'admin.table.country' | translate }}
-      <input type="text" [(ngModel)]="country" class="form-control" id="country_s" name="country" required></label>
-      <label for="deliveryCountry_s" class="col-12">{{ 'admin.table.deliveryCountry' | translate }}
-      <input type="text" [(ngModel)]="deliveryCountry" class="form-control" id="deliveryCountry_s" name="deliveryCountry" required></label>
-      <label for="serviceNumber_s" class="col-12">{{ 'admin.table.serviceNumber' | translate }}
-      <input type="text" [(ngModel)]="serviceNumber" class="form-control" id="serviceNumber_s" name="serviceNumber" required></label>
-    </div>
-    <div class="modal-footer">
-      <div class="col-4"></div>
-      <div class="col-4 center">
-        <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.addButton' | translate }}</button>
-      </div>
-      <div class="col-4"></div>
-    </div>
-  </form>
-</ng-template>
