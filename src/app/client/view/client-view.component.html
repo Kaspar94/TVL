@@ -1,5 +1,5 @@
 <div class="col-12 view-header-attr">
-  <form name="filterForm" id="filterForm" class="row">
+  <form name="filterForm" id="filterForm" class="row" (ngSubmit)="filter()">
     <div class="col-12 form-group">FILTREERI</div>
     <div class="col-2 form-group">
       <input type="text" class="form-control view-input-attr" name="filterAxapta" id="filterAxapta" placeholder="AXAPTA" [(ngModel)]="filterAxapta"/>
@@ -10,14 +10,15 @@
     <div class="col-3 form-group">
       <input type="text" class="form-control view-input-attr" name="filterStreet" id="filterStreet" placeholder="TÄNAV" [(ngModel)]="filterStreet"/>
     </div>
-    <div class="col-1 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterCountry" id="filterCountry" placeholder="RIIK" [(ngModel)]="filterCountry"/>
-    </div>
     <div class="col-3 form-group">
       <input type="text" class="form-control view-input-attr" name="filterCity" id="filterCity" placeholder="ASULA" [(ngModel)]="filterCity"/>
     </div>
     <div class="col-1 form-group">
+      <input type="text" class="form-control view-input-attr" name="filterCountry" id="filterCountry" placeholder="RIIK" [(ngModel)]="filterCountry"/>
+    </div>
+    <div class="col-1 form-group row">
       <button type="submit" class="btn omniva-red-background no-border white"><i class="fa fa-search"></i></button>
+      <i [hidden]="canFilter()" class="fa fa-ban empty-filters" (click)="emptyFilters()"></i>
     </div>
   </form>
 </div>
@@ -38,11 +39,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let client of clients">
+    <tr *ngFor="let client of filteredClients">
       <td>{{client.id}}</td>
       <td>{{client.axapta}}</td>
-      <td>{{client.street}}</td>
       <td>{{client.name}}</td>
+      <td>{{client.street}}</td>
       <td>{{client.city}}</td>
       <td>{{client.postIndex}}</td>
       <td>{{client.country}}</td>
