@@ -13,11 +13,13 @@ export class SharedService {
   title: any;
   lang: any;
 
+  resourceUrl = 'http://localhost';
+
   constructor(private http: Http) {
   }
 
   public getClients() {
-    return this.http.get("/businessClient")
+    return this.http.get(this.resourceUrl + '/businessClient')
       .map(response => {
         console.log(response.json());
         return response.json();
