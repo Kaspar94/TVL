@@ -7,7 +7,6 @@ var clientsFilePath = './api/data/clients.json';
 
 exports.list_all_clients = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
-		console.log(req.query);
 		res.writeHead(200, {'Content-Type': 'application/json'});
 		res.write(JSON.stringify(JSON.parse(data).data));
 		res.end();
