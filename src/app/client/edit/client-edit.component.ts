@@ -4,6 +4,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {SharedService} from "../../shared/shared.service";
 import {BusinessClient} from "../../shared/shared.model";
 import {isNull} from "util";
+import {ClientService} from "../client.service";
 
 @Component({
   selector: 'client-edit-data',
@@ -18,6 +19,7 @@ export class ClientEditComponent {
   constructor(translate: TranslateService,
               public activeModal: NgbActiveModal,
               public sharedService: SharedService,
+              public clientService: ClientService,
               private modalService: NgbModal) {
   }
 
@@ -41,11 +43,13 @@ export class ClientEditComponent {
       if (isNull(this.client.id)) {
         this.sharedService.createClient(this.client).subscribe((response) => {
           console.log(response);
+          this.clientService.loadWithFilters();
           this.close();
         })
       } else {
         this.sharedService.updateClient(this.client).subscribe((response) => {
           console.log(response);
+          this.clientService.loadWithFilters();
           this.close();
         })
       }

@@ -15,6 +15,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {Http, ConnectionBackend, HttpModule} from "@angular/http";
 import {ClientEditComponent} from "./client/edit/client-edit.component";
 import {LoginComponent} from "./shared/login/login.component";
+import {ClientService} from "./client/client.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,7 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModule.forRoot()
   ],
   entryComponents: [ClientEditComponent, LoginComponent],
-  providers: [SharedService],
+  providers: [SharedService, ClientService],
   bootstrap: [AppComponent],
   exports: [ClientEditComponent, LoginComponent]
 })
