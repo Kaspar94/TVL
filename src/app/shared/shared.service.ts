@@ -12,6 +12,7 @@ export class SharedService {
   password: any;
   title: any;
   lang: any;
+  successfullyReturned: boolean;
 
   resourceUrl = 'http://localhost';
 
@@ -21,7 +22,6 @@ export class SharedService {
   public getClients() {
     return this.http.get(this.resourceUrl + '/businessClient')
       .map(response => {
-        console.log(response.json());
         return response.json();
       });
   }
@@ -29,7 +29,6 @@ export class SharedService {
   public getClient(id: number) {
     return this.http.get(this.resourceUrl + '/businessClient/' + id)
       .map(response => {
-        console.log(response.json());
         return response.json();
       });
   }

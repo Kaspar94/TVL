@@ -16,6 +16,7 @@ import {Http, ConnectionBackend, HttpModule} from "@angular/http";
 import {ClientEditComponent} from "./client/edit/client-edit.component";
 import {LoginComponent} from "./shared/login/login.component";
 import {ClientService} from "./client/client.service";
+import { SuccessComponent } from './user-form/success/success.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +30,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UserFormComponent,
     ClientViewComponent,
     ClientEditComponent,
-    LoginComponent
+    LoginComponent,
+    SuccessComponent
   ],
   imports: [
     HttpModule,

@@ -21,6 +21,7 @@ export class AppComponent {
     this.sharedService.loggedIn = false;
     this.sharedService.title = 'header.returnTitle';
     this.sharedService.lang = 'EST';
+    this.sharedService.successfullyReturned = false;
   }
 
 }
