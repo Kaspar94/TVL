@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
-var routes = require('./api/routes/businessClientRoutes');
+var routes = require('./api/routes/routes');
 routes(app, passport);
 
 app.use(function(req, res) {

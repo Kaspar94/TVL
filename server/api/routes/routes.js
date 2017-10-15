@@ -2,6 +2,10 @@
 
 module.exports = function(app, passport) {
 	var businessClient = require('../controllers/businessClientController');
+	var auth = require('../controllers/authController');
+
+	app.route('/login')
+		.get(passport.authenticate('basic', { session: false }), auth.login);
 
 	app.route('/businessClient')
 		.get(businessClient.list_all_clients)
