@@ -1,0 +1,29 @@
+{
+  "name": "tvl-backend",
+  "version": "0.0.0",
+  "description": "Server for TVL app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no tests yet\\\" && exit 1",
+    "start": "nodemon server.js --ignore *.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CardoKambla/TVL.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CardoKambla/TVL/issues"
+  },
+  "homepage": "https://github.com/CardoKambla/TVL#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.16.2",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0"
+  }
+}

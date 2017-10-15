@@ -1,0 +1,49 @@
+{
+  "header": {
+    "returnTitle": "TOODETE TAGASTAMINE",
+    "adminTitle": "ÄRIKLIENTIDE HALDUS"
+  },
+  "user": {
+    "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "recipient": "SAADETISE KÄTTESAAJA",
+    "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
+    "name": "SINU NIMI",
+    "mobile": "SINU MOBIILINUMBER",
+    "email": "SINU E-MAIL",
+    "button": {
+      "submitReturn": "TAGASTA TOODE"
+    }
+  },
+  "success": {
+    "info": "Toote tagastamine õnnestus. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "button": "TAGASTA UUESTI",
+    "return": "TAGASI OMNIVA LEHELE"
+  },
+  "login": {
+    "username": "Kasutajanimi",
+    "password": "Parool",
+    "button": "Logi sisse",
+    "logIn": "Sisselogimine"
+  },
+  "admin": {
+    "title": "Äriklientide haldus",
+    "edit": "Äriklientide muutmine",
+    "addButton": "LISA",
+    "add": "Äriklientide lisamine",
+    "languageChoice": "Keeltevalik",
+    "table": {
+        "id": "ID",
+        "axapta": "AXAPTA",
+        "name": "NIMI",
+        "street": "TÄNAV",
+        "city": "ASULA",
+        "postIndex": "POSTIINDEKS",
+        "country": "RIIK",
+        "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
+        "serviceNumber": "TEENUSE KOOD",
+        "edit": "MUUDA"
+
+    },
+    "logout": "Logi välja"
+  }
+}

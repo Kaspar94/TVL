@@ -1,0 +1,38 @@
+.header {
+  height: 80px;
+}
+
+.language {
+  padding: 0.5em;
+}
+
+.white {
+  color: white;
+}
+
+.header h3, #dropdownLanguage {
+  margin-right: 1em;
+}
+
+.language a {
+  cursor: pointer;
+}
+
+.canvas-attr {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 0;
+}
+.empty-filters {
+  margin: auto;
+}
+
+.logo-pos {
+  padding-left: 43px;
+}
+
+.header-margin {
+  margin-right: -1px
+}

@@ -1,0 +1,11 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+.omniva-red-background {
+  background-color: #F04E23;
+}
+
+.no-padding {
+  padding: 0px;
+}

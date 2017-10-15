@@ -1,0 +1,20 @@
+.no-border {
+  border-color: transparent;
+}
+
+.padding-from-header {
+   padding-top: 40px;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+.selection-button {
+  background-color: #F04E23;
+  border-color: transparent;
+}
+
+.dropdown-attr {
+  margin-left: 0px;
+}

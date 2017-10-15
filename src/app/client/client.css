@@ -1,0 +1,13 @@
+.view-input-attr {
+  border-radius: 0;
+  padding-right: 0;
+}
+
+.view-header-attr {
+  margin-top: 40px;
+  border: solid 1px #F04E23
+}
+
+.table .btn {
+  min-width: 100%;
+}

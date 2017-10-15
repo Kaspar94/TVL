@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-4"></div>
+  <div class="col-4">
+    <form name="return-form" class="padding-from-header" (submit)="validate()">
+      <div class="col-12 center form-group">{{ 'user.info' | translate }}</div>
+      <label for="deliveryCountry" class="col-12">{{ 'user.deliveryCountry' | translate }}</label>
+      <div class="col-12 center form-group">
+        <input type="text" [(ngModel)]="deliveryCountry" class="form-control" id="deliveryCountry" name="deliveryCountry" disabled required>
+        <div class="input-group-btn dropdown-attr">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a *ngFor="let country of countries" class="dropdown-item" href="#" (click)="changeActiveCountry(country)">{{country}}</a>
+          </div>
+        </div>
+      </div>
+      <label for="recipient" class="col-12">{{ 'user.recipient' | translate }}</label>
+      <div class="col-12 center form-group">
+        <input type="text" [(ngModel)]="recipient" class="form-control" id="recipient" name="recipient" disabled required>
+        <div class="input-group-btn dropdown-attr">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" href="#" (click)="changeActiveCompany(indx)">{{company.name + ' ('+ company.country+')'}}</a>
+          </div>
+        </div>
+      </div>
+      <label for="name" class="col-12">{{ 'user.name' | translate }}</label>
+      <div class="col-12 center form-group">
+        <input type="text" [(ngModel)]="name" class="form-control col-12" id="name" name="name" required>
+      </div>
+      <label for="mobile" class="col-12">{{ 'user.mobile' | translate }}</label>
+      <div class="col-12 center form-group">
+        <input type="text" [(ngModel)]="mobile" class="form-control col-12" id="mobile" name="mobile" required>
+      </div>
+      <label for="email" class="col-12">{{ 'user.email' | translate }}</label>
+      <div class="col-12 center form-group">
+        <input type="text" [(ngModel)]="email" class="form-control col-12" id="email" name="email" required>
+      </div>
+      <div class="col-12 center form-group">
+        <button type="submit" class="btn btn-primary btn-lg col-12 omniva-red-background no-border">{{ 'user.button.submitReturn' | translate }}</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-4"></div>
+</div>
