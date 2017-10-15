@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \\\"Error: no tests yet\\\" && exit 1",
-	"start": "nodemon server.js --ignore *.json"
+    "start": "nodemon server.js --ignore *.json"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,9 @@
     "nodemon": "^1.12.1"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "bcrypt-nodejs": "0.0.3",
+    "express": "^4.16.2",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0"
   }
 }

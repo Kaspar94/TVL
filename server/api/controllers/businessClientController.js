@@ -7,9 +7,7 @@ var clientsFilePath = './api/data/clients.json';
 
 exports.list_all_clients = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
-		res.writeHead(200, {'Content-Type': 'application/json'});
-		res.write(JSON.stringify(JSON.parse(data).data));
-		res.end();
+		res.json(JSON.parse(data).data);
 	});
 };
 
@@ -29,9 +27,7 @@ exports.filter_clients = function(req, res) {
 				result = [];
 			}
 		}
-		res.writeHead(200, {'Content-Type': 'application/json'});
-		res.write(JSON.stringify(clients));
-		res.end();
+		res.json(clients);
 	});
 }
 
@@ -43,13 +39,9 @@ exports.create_a_client = function(req, res) {
 
 		fs.writeFile(clientsFilePath, JSON.stringify(clientCollection), encoding, function (err) {
 			if (err) {
-				res.writeHead(500, {'Content-Type': 'application/json'});
-				res.write(JSON.stringify({'status': 'error', 'cause': 'failed to write to file'}));
-				res.end();
+				res.status(500).json({'status': 'error', 'cause': 'failed to write to file'});
 			} else {
-				res.writeHead(200, {'Content-Type': 'application/json'});
-				res.write(JSON.stringify(newClient));
-				res.end();
+				res.json(newClient);
 			}
 		});
 	});
@@ -59,13 +51,9 @@ exports.read_a_client = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
 		var client = helper.findOneById(JSON.parse(data).data, req.params.clientId);
 		if (client) {
-			res.writeHead(200, {'Content-Type': 'application/json'});
-			res.write(JSON.stringify(client));
-			res.end();
+			res.json(client);
 		} else { // Id not found
-			res.writeHead(404, {'Content-Type': 'application/json'});
-			res.write(JSON.stringify({'status': 'error', 'cause': 'id not found'}));
-			res.end();
+			res.status(404).json({'status': 'error', 'cause': 'id not found'});
 		}
 	});
 };
@@ -78,21 +66,14 @@ exports.update_a_client = function(req, res) {
 		if (updatedClient) {
 			fs.writeFile(clientsFilePath, JSON.stringify(clientCollection), encoding, function (err) {
 				if (err) {
-					res.writeHead(500, {'Content-Type': 'application/json'});
-					res.write(JSON.stringify({'status': 'error', 'cause': 'failed to write to file'}));
-					res.end();
+					res.status(500).json({'status': 'error', 'cause': 'failed to write to file'});
 				} else {
-					res.writeHead(200, {'Content-Type': 'application/json'});
-					res.write(JSON.stringify(updatedClient));
-					res.end();
+					res.json(updatedClient);
 				}
 			});
 		} else { // Id not found
-			res.writeHead(404, {'Content-Type': 'application/json'});
-			res.write(JSON.stringify({'status': 'error', 'cause': 'id not found'}));
-			res.end();
+			res.status(404).json({'status': 'error', 'cause': 'id not found'});
 		}
-
 	});
 };
 
@@ -102,19 +83,13 @@ exports.delete_a_client = function(req, res) {
 		if (helper.removeOneById(clientCollection.data, req.params.clientId)) {
 			fs.writeFile(clientsFilePath, JSON.stringify(clientCollection), encoding, function (err) {
 				if (err) {
-					res.writeHead(500, {'Content-Type': 'application/json'});
-					res.write(JSON.stringify({'status': 'error', 'cause': 'failed to write to file'}));
-					res.end();
+					res.status(500).json({'status': 'error', 'cause': 'failed to write to file'});
 				} else {
-					res.writeHead(200, {'Content-Type': 'application/json'});
-					res.write(JSON.stringify({'status': 'success'}));
-					res.end();
+					res.json({'status': 'success'});
 				}
 			});
 		} else { // Id not found
-			res.writeHead(404, {'Content-Type': 'application/json'});
-			res.write(JSON.stringify({'status': 'error', 'cause': 'id not found'}));
-			res.end();
+			res.status(404).json({'status': 'error', 'cause': 'id not found'});
 		}
 	});
 };
