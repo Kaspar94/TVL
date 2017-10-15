@@ -1,4 +1,5 @@
 <header-shared [title]="sharedService.title"></header-shared>
-<user-form *ngIf="!sharedService.loggedIn"></user-form>
+<user-form *ngIf="!sharedService.loggedIn && !sharedService.successfullyReturned"></user-form>
+<app-success *ngIf="!sharedService.loggedIn && sharedService.successfullyReturned"></app-success>
 <client-view-data *ngIf="sharedService.loggedIn"></client-view-data>
 

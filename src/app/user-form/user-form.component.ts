@@ -56,5 +56,6 @@ export class UserFormComponent implements OnInit{
     console.log(this.name);
     console.log(this.mobile);
     console.log(this.email);
+    this.sharedService.successfullyReturned = !this.sharedService.successfullyReturned;
   }
 }

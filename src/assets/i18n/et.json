@@ -14,6 +14,11 @@
       "submitReturn": "TAGASTA TOODE"
     }
   },
+  "success": {
+    "info": "Toote tagastamine õnnestus. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "button": "TAGASTA UUESTI",
+    "return": "TAGASI OMNIVA LEHELE"
+  },
   "login": {
     "username": "Kasutajanimi",
     "password": "Parool",

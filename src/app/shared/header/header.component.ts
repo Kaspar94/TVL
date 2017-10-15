@@ -25,8 +25,8 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
     var canvas : any = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     ctx.moveTo(174,0);
-    ctx.lineTo(70,100);
-    ctx.lineTo(175,100);
+    ctx.lineTo(70,80);
+    ctx.lineTo(175,80);
     ctx.lineTo(175,0);
     ctx.strokeStyle ="#FFFFFF";
     ctx.stroke();

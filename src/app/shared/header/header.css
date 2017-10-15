@@ -1,26 +1,22 @@
-.header-height {
-  height: 100px;
-  margin-top: 35px;
+.header {
+  height: 80px;
 }
 
-.text-attr {
-  padding-top: 40px;
-  padding-right: 20px;
-  color: white;
-  display:flex;
-  float: right;
-}
-
-.padding-between-title {
-  padding-left:23px;
-  cursor:pointer;
-  margin: auto;
+.language {
+  padding: 0.5em;
 }
 
 .white {
   color: white;
 }
 
+.header h3, #dropdownLanguage {
+  margin-right: 1em;
+}
+
+.language a {
+  cursor: pointer;
+}
 
 .canvas-attr {
   position: absolute;
@@ -28,20 +24,4 @@
   bottom: 0;
   margin: auto;
   right: 0;
-}
-
-.align-right-custom {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  right: 0;
-}
-
-.chevron-margin {
-  margin-top: 2px;
-}
-
-.empty-filters {
-  margin: auto;
 }
