@@ -28,3 +28,11 @@
 .empty-filters {
   margin: auto;
 }
+
+.logo-pos {
+  padding-left: 43px;
+}
+
+.header-margin {
+  margin-right: -1px
+}

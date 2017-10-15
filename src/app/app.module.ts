@@ -12,7 +12,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome/angular-font-awes
 import {SharedService} from "./shared/shared.service";
 import {ClientViewComponent} from "./client/view/client-view.component";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {Http, ConnectionBackend, HttpModule} from "@angular/http";
+import {Http, ConnectionBackend, HttpModule, Headers} from "@angular/http";
 import {ClientEditComponent} from "./client/edit/client-edit.component";
 import {LoginComponent} from "./shared/login/login.component";
 import {ClientService} from "./client/client.service";

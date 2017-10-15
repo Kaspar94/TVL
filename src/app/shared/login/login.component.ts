@@ -10,10 +10,6 @@ import {SharedService} from "../../shared/shared.service";
 })
 export class LoginComponent {
 
-
-  username: any;
-  password: any;
-
   constructor(translate: TranslateService,
               public activeModal: NgbActiveModal,
               public sharedService: SharedService,
@@ -25,11 +21,17 @@ export class LoginComponent {
   }
 
   validateLogin() {
-    // TODO: Back-End'iga valideerida
-    if (this.username === 'admin' && this.password === 'admin' && !this.sharedService.loggedIn) {
+    if (this.isValid()) {
       this.sharedService.loggedIn = !this.sharedService.loggedIn;
       this.sharedService.title = 'header.adminTitle';
       this.close();
     }
+  }
+
+  isValid() {
+    this.sharedService.login().subscribe((res) => {
+      return res.status === 'success';
+    });
+    return false;
   }
 }

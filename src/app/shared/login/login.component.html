@@ -7,9 +7,9 @@
     </div>
       <div class="modal-body">
         <label for="username" class="col-12">{{ 'login.username' | translate }}
-          <input type="text" [(ngModel)]="username" class="form-control" id="username" name="username" required></label>
+          <input type="text" [(ngModel)]="sharedService.username" class="form-control" id="username" name="username" required></label>
         <label for="password" class="col-12">{{ 'login.password' | translate }}
-          <input type="password" [(ngModel)]="password" class="form-control" id="password" name="password" required></label>
+          <input type="password" [(ngModel)]="sharedService.password" class="form-control" id="password" name="password" required></label>
       </div>
       <div class="modal-footer">
         <div class="col-4"></div>
