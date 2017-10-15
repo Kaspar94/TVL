@@ -21,17 +21,12 @@ export class LoginComponent {
   }
 
   validateLogin() {
-    if (this.isValid()) {
-      this.sharedService.loggedIn = !this.sharedService.loggedIn;
-      this.sharedService.title = 'header.adminTitle';
-      this.close();
-    }
-  }
-
-  isValid() {
     this.sharedService.login().subscribe((res) => {
-      return res.status === 'success';
+      if (res.status === 'success') {
+        this.sharedService.loggedIn = !this.sharedService.loggedIn;
+        this.sharedService.title = 'header.adminTitle';
+        this.close();
+      }
     });
-    return false;
   }
 }
