@@ -1,5 +1,5 @@
 'use strict';
 
 exports.login = function (req, res) {
-  res.json({status: "succes", user: {id: req.user.id, username: req.user.username}});
+  res.json({status: "success", user: {id: req.user.id, username: req.user.username}});
 }
