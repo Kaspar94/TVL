@@ -1,6 +1,7 @@
 import {Component, AfterViewInit, OnInit} from '@angular/core';
 import {BusinessClient} from "../shared/shared.model";
 import {SharedService} from "../shared/shared.service";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'user-form',
@@ -51,11 +52,8 @@ export class UserFormComponent implements OnInit{
   }
 
   validate() {
-    console.log(this.recipient);
-    console.log(this.deliveryCountry);
-    console.log(this.name);
-    console.log(this.mobile);
-    console.log(this.email);
-    this.sharedService.successfullyReturned = !this.sharedService.successfullyReturned;
+    if (!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) {
+      this.sharedService.successfullyReturned = !this.sharedService.successfullyReturned;
+    }
   }
 }
