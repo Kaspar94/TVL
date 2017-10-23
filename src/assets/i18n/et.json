@@ -17,7 +17,10 @@
   "success": {
     "info": "Toote tagastamine õnnestus. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
     "button": "TAGASTA UUESTI",
-    "return": "TAGASI OMNIVA LEHELE"
+    "return": "TAGASI OMNIVA LEHELE",
+    "title": "Õnnestus!",
+    "modifiedData": "Ärikliendi andmed uuendatud.",
+    "newData": "Uus äriklient lisatud."
   },
   "login": {
     "username": "Kasutajanimi",
@@ -45,5 +48,9 @@
 
     },
     "logout": "Logi välja"
+  },
+  "error": {
+    "atleastOne": "Tagastamiseks peab olema emaili väli või telefoni numbri väli täidetud.",
+    "failed": "Ebaõnnestus!"
   }
 }

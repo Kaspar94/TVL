@@ -17,6 +17,7 @@ import {ClientEditComponent} from "./client/edit/client-edit.component";
 import {LoginComponent} from "./shared/login/login.component";
 import {ClientService} from "./client/client.service";
 import { SuccessComponent } from './user-form/success/success.component';
+import {AlertService} from "./shared/alert/alert.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -49,7 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModule.forRoot()
   ],
   entryComponents: [ClientEditComponent, LoginComponent],
-  providers: [SharedService, ClientService],
+  providers: [SharedService, ClientService, AlertService],
   bootstrap: [AppComponent],
   exports: [ClientEditComponent, LoginComponent]
 })

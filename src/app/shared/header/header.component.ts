@@ -2,6 +2,7 @@ import {Component, AfterViewInit, Input, ViewChild, ElementRef} from '@angular/c
 import {SharedService} from "../shared.service";
 import {LoginComponent} from "../login/login.component";
 import {NgbModal, NgbModalOptions} from "@ng-bootstrap/ng-bootstrap";
+import {AlertService} from "../alert/alert.service";
 
 declare var $;
 @Component({
@@ -15,7 +16,8 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
   modalOption: NgbModalOptions = {};
 
   constructor(private sharedService: SharedService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              public alertService: AlertService) {
     this.modalOption.backdrop = 'static';
     this.modalOption.keyboard = false;
   }

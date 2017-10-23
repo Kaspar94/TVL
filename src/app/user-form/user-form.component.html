@@ -7,7 +7,7 @@
       <div class="col-12 center form-group">
         <input type="text" [(ngModel)]="deliveryCountry" class="form-control" id="deliveryCountry" name="deliveryCountry" disabled required>
         <div class="input-group-btn dropdown-attr">
-          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
           <div class="dropdown-menu dropdown-menu-right">
             <a *ngFor="let country of countries" class="dropdown-item" href="#" (click)="changeActiveCountry(country)">{{country}}</a>
@@ -18,7 +18,7 @@
       <div class="col-12 center form-group">
         <input type="text" [(ngModel)]="recipient" class="form-control" id="recipient" name="recipient" disabled required>
         <div class="input-group-btn dropdown-attr">
-          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
           <div class="dropdown-menu dropdown-menu-right">
             <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" href="#" (click)="changeActiveCompany(indx)">{{company.name + ' ('+ company.country+')'}}</a>

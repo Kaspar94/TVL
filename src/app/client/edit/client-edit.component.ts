@@ -5,6 +5,7 @@ import {SharedService} from "../../shared/shared.service";
 import {BusinessClient} from "../../shared/shared.model";
 import {isNull} from "util";
 import {ClientService} from "../client.service";
+import {AlertService} from "../../shared/alert/alert.service";
 
 @Component({
   selector: 'client-edit-data',
@@ -20,7 +21,9 @@ export class ClientEditComponent {
               public activeModal: NgbActiveModal,
               public sharedService: SharedService,
               public clientService: ClientService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private alertService: AlertService,
+              private translateService: TranslateService) {
   }
 
   setClient(client: BusinessClient) {
@@ -34,24 +37,21 @@ export class ClientEditComponent {
   }
 
   confirmChanges() {
-    console.log("something");
-    console.log(this.clientEquals(this.tempClient, this.client));
     if (this.clientEquals(this.tempClient, this.client)) {
       this.close();
     } else {
-      //TODO: Success/error message
       if (isNull(this.client.id)) {
         this.sharedService.createClient(this.client).subscribe((response) => {
-          console.log(response);
           this.clientService.loadWithFilters();
           this.close();
-        })
+          this.alertService.success(this.translateService.instant('success.newData'), this.translateService.instant('success.title'))
+        },(err) => this.alertService.error(err))
       } else {
         this.sharedService.updateClient(this.client).subscribe((response) => {
-          console.log(response);
           this.clientService.loadWithFilters();
           this.close();
-        })
+          this.alertService.success(this.translateService.instant('success.modifiedData'), this.translateService.instant('success.title'))
+        },(err) => this.alertService.error(err))
       }
     }
   }
