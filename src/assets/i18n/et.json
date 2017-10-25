@@ -51,6 +51,9 @@
   },
   "error": {
     "atleastOne": "Tagastamiseks peab olema emaili väli või telefoni numbri väli täidetud.",
-    "failed": "Ebaõnnestus!"
+    "failed": "Ebaõnnestus!",
+    "deliveryCountryNotChosen": "Saadetise üleandmise riik valimata.",
+    "recipientNotChosen": "Saadetise kättesaaja valimata.",
+    "noName": "Nime lahter täitmata."
   }
 }

@@ -58,4 +58,10 @@ export class SharedService {
     headers.append('Authorization', 'Basic '+ btoa(this.username + ':' + this.password));
     return new RequestOptions({headers: headers});
   }
+
+  sendReturnInformation(body: {business_id: any; client_name: any; client_email: any; client_number: any}) {
+    return this.http.put(this.resourceUrl + '/return/client', body).subscribe((res) => {
+        this.successfullyReturned = !this.successfullyReturned;
+    });
+  }
 }

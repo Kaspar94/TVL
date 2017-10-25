@@ -20,6 +20,7 @@ export class UserFormComponent implements OnInit{
   name: any;
   mobile: any;
   email: any;
+  chosenCompany;
 
   constructor(public sharedService: SharedService,
               private alertService: AlertService,
@@ -45,6 +46,7 @@ export class UserFormComponent implements OnInit{
   changeActiveCompany(id: number) {
     const indx = this.companies.findIndex((x) => x.id === id);
     this.recipient = this.companies[indx].name + ' (' + this.companies[indx].country + ')';
+    this.chosenCompany = id;
   }
 
   changeActiveCountry(country: any) {
@@ -58,10 +60,24 @@ export class UserFormComponent implements OnInit{
   }
 
   validate() {
-    if (!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) {
-      this.sharedService.successfullyReturned = !this.sharedService.successfullyReturned;
+    if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&
+      !isNullOrUndefined(this.name) && !isNullOrUndefined(this.deliveryCountry) && !isNullOrUndefined(this.recipient)) {
+      const body = {
+        business_id: this.chosenCompany,
+        client_name: this.name,
+        client_email: isNullOrUndefined(this.email) ? null : this.email,
+        client_number: isNullOrUndefined(this.mobile) ? null : this.mobile
+      };
+      this.sharedService.sendReturnInformation(body);
+
     }
-    if (isNullOrUndefined(this.email) && isNullOrUndefined(this.mobile)) {
+    if (isNullOrUndefined(this.deliveryCountry)) {
+      this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),this.translateService.instant('error.failed'));
+    } else if (isNullOrUndefined(this.recipient)) {
+      this.alertService.error(this.translateService.instant('error.recipientNotChosen'),this.translateService.instant('error.failed'));
+    } else if (isNullOrUndefined(this.name)) {
+      this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
+    } else if (isNullOrUndefined(this.email) && isNullOrUndefined(this.mobile)) {
       this.alertService.error(this.translateService.instant('error.atleastOne'),this.translateService.instant('error.failed'));
     }
   }
