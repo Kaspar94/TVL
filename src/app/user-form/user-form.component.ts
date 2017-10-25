@@ -42,7 +42,8 @@ export class UserFormComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  changeActiveCompany(indx: number) {
+  changeActiveCompany(id: number) {
+    const indx = this.companies.findIndex((x) => x.id === id);
     this.recipient = this.companies[indx].name + ' (' + this.companies[indx].country + ')';
   }
 
