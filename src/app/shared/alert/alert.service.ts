@@ -12,7 +12,7 @@ export class AlertService {
     $.notify({
       title: title,
       message: msg,
-      icon: icon ? icon : 'fa fa-check-circle fa-lg'
+      icon: icon ? icon : 'fa fa-check-circle fa-lg',
     }, {
       type: 'success'
     });
@@ -22,7 +22,7 @@ export class AlertService {
     $.notify({
       title: title,
       message: msg,
-      icon: icon ? icon : 'fa fa-exclamation-triangle fa-lg'
+      icon: icon ? icon : 'fa fa-exclamation-triangle fa-lg',
     }, {
       type: 'danger'
     });

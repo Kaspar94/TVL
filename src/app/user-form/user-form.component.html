@@ -9,7 +9,7 @@
         <div class="input-group-btn dropdown-attr">
           <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
-          <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-menu dropdown-menu-right scrollable-menu">
             <a *ngFor="let country of countries" class="dropdown-item" href="#" (click)="changeActiveCountry(country)">{{country}}</a>
           </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="input-group-btn dropdown-attr">
           <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
-          <div class="dropdown-menu dropdown-menu-right">
+          <div class="dropdown-menu dropdown-menu-right scrollable-menu">
             <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" href="#" (click)="changeActiveCompany(company.id)">{{company.name + ' ('+ company.country+')'}}</a>
           </div>
         </div>

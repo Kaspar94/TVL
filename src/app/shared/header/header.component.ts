@@ -32,7 +32,7 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
     ctx.lineTo(175,0);
     ctx.strokeStyle ="#FFFFFF";
     ctx.stroke();
-    ctx.fillStyle = "#F04E23";
+    ctx.fillStyle = "#FF6319";
     ctx.fill();
   }
 
