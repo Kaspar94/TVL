@@ -18,6 +18,15 @@ import {LoginComponent} from "./shared/login/login.component";
 import {ClientService} from "./client/client.service";
 import { SuccessComponent } from './user-form/success/success.component';
 import {AlertService} from "./shared/alert/alert.service";
+import {Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  {
+    path: '/ee',
+    component: AppComponent,
+    data: { startLang: 'et' }
+  }
+];
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {

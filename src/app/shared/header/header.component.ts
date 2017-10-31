@@ -3,6 +3,8 @@ import {SharedService} from "../shared.service";
 import {LoginComponent} from "../login/login.component";
 import {NgbModal, NgbModalOptions} from "@ng-bootstrap/ng-bootstrap";
 import {AlertService} from "../alert/alert.service";
+import {TranslateService} from "@ngx-translate/core";
+import {Language} from "../shared.model";
 
 declare var $;
 @Component({
@@ -17,7 +19,8 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
 
   constructor(private sharedService: SharedService,
               private modalService: NgbModal,
-              public alertService: AlertService) {
+              public alertService: AlertService,
+              private translateService: TranslateService) {
     this.modalOption.backdrop = 'static';
     this.modalOption.keyboard = false;
   }
@@ -38,7 +41,9 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
 
 
   changeLang(lang: any) {
-    this.sharedService.lang = lang;
+    const indx = this.sharedService.languages.findIndex( (x) => x.countryLetters === lang);
+    this.sharedService.lang = this.sharedService.languages[indx];
+    this.translateService.use(this.sharedService.lang.jsonLetters);
   }
 
   logout() {

@@ -25,11 +25,11 @@
         <input type="text" [(ngModel)]="client.serviceNumber" class="form-control" id="serviceNumber_s" name="serviceNumber" required autocomplete="off"></label>
     </div>
     <div class="modal-footer">
-      <div class="col-4"></div>
-      <div class="col-4 center">
+      <div class="col-3"></div>
+      <div class="col-6 center no-padding">
         <button *ngIf="client.id === null" type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.addButton' | translate }}</button>
         <button *ngIf="client.id !== null" type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button>
       </div>
-      <div class="col-4"></div>
+      <div class="col-3"></div>
     </div>
 </form>

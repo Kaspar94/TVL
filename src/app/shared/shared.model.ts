@@ -20,3 +20,12 @@ export class BusinessClient {
     this.serviceNumber = serviceNumber;
   }
 }
+
+export class Language {
+  countryLetters: string;
+  jsonLetters: string;
+  constructor(countryLetters, jsonLetters) {
+    this.countryLetters = countryLetters;
+    this.jsonLetters = jsonLetters;
+  }
+}

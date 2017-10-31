@@ -1,0 +1,69 @@
+{
+  "header": {
+    "returnTitle": "ВОЗВРАТ ТОВАРА",
+    "adminTitle": "УПРАВЛЕНИЕ БИЗНЕС-КЛИЕНТАМИ"
+  },
+  "user": {
+    "info": "Lorem ipsum dolor сидит агент, consectetur adispiscing elit. Приостановить euismod mauris при ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Это был год в молли.",
+    "recipient": "УСТРОЙСТВО ПЕРЕВОЗКИ",
+    "deliveryCountry": "СТРАН ПЕРЕДАЧИ",
+    "name": "ИМЯ",
+    "mobile": "МОБИЛЬНЫЙ НОМЕР",
+    "email": "ЭЛЕКТРОННАЯ ПОЧТА",
+    "button": {
+      "submitReturn": "НАЗАД"
+    }
+  },
+  "success": {
+    "info": "Возврат продукта возвращен. Lorem ipsum dolor сидит агент, consectetur adispiscing elit. Приостановить euismod mauris при ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Это был год в молли.",
+    "button": "ЗАЧИТАЙТЕ",
+    "return": "НАЗАД НА СТРАНИЦУ OMNIВA",
+    "title": "Успех!",
+    "modifiedData": "Обновлены данные о бизнес-клиентах.",
+    "newData": "Добавлен новый бизнес-клиент."
+  },
+  "login": {
+    "username": "имя пользователя",
+    "password": "пароль",
+    "button": "Вход",
+    "logIn": "Вход"
+  },
+  "admin": {
+    "title": "Управление бизнес-клиентами",
+    "edit": "Изменение бизнес-клиентов",
+    "addButton": "ПРИЛОЖЕНИЕ",
+    "add": "Деловые клиенты",
+    "languageChoice": "Выбор языков",
+    "table": {
+      "id": "ид",
+      "axapta": "AXAPTA",
+      "name": "ИМЯ",
+      "street": "УЛИЦА",
+      "city": "ГОРОД",
+      "postIndex": "ИНДЕКС ПОСЛЕ",
+      "country": "СТРАНА",
+      "deliveryCountry": "СТРАН ПЕРЕДАЧИ",
+      "serviceNumber": "КОД СЕРВИСА",
+      "edit": "РЕДАКТИРОВАТЬ"
+
+    },
+    "logout": "выйти"
+  },
+  "error": {
+    "atleastOne": "Поле возврата электронной почты или номера телефона должно быть заполнено для возврата.",
+    "failed": "Ошибка!",
+    "deliveryCountryNotChosen": "Состояние передачи не выбрано.",
+    "recipientNotChosen": "Распаковка груза.",
+    "noName": "Поле имени пусто."
+  },
+  "filter": {
+    "title": "ФИЛЬТР",
+    "placeholder": {
+      "axapta": "AXAPTA",
+      "clientName": "ИМЯ",
+      "street": "УЛИЦА",
+      "city": "ГОРОД",
+      "country": "СТРАНА"
+    }
+  }
+}

@@ -60,6 +60,7 @@ export class UserFormComponent implements OnInit{
   }
 
   validate() {
+    console.log(window.location);
     if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&
       !isNullOrUndefined(this.name) && !isNullOrUndefined(this.deliveryCountry) && !isNullOrUndefined(this.recipient)) {
       const body = {

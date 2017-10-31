@@ -1,20 +1,20 @@
 <div class="col-12 view-header-attr">
   <form name="filterForm" id="filterForm" class="row" (ngSubmit)="clientService.filter()">
-    <div class="col-12 form-group">FILTREERI</div>
+    <div class="col-12 form-group">{{ 'filter.title' | translate }}</div>
     <div class="col-2 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterAxapta" id="filterAxapta" placeholder="AXAPTA" [(ngModel)]="clientService.filterAxapta"/>
+      <input type="text" class="form-control view-input-attr" name="filterAxapta" id="filterAxapta" [placeholder]="'filter.placeholder.axapta' | translate" [(ngModel)]="clientService.filterAxapta"/>
     </div>
     <div class="col-2 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterName" id="filterName" placeholder="KLIENDI NIMI" [(ngModel)]="clientService.filterName"/>
+      <input type="text" class="form-control view-input-attr" name="filterName" id="filterName" [placeholder]="'filter.placeholder.clientName' | translate" [(ngModel)]="clientService.filterName"/>
     </div>
     <div class="col-3 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterStreet" id="filterStreet" placeholder="TÄNAV" [(ngModel)]="clientService.filterStreet"/>
+      <input type="text" class="form-control view-input-attr" name="filterStreet" id="filterStreet" [placeholder]="'filter.placeholder.street' | translate" [(ngModel)]="clientService.filterStreet"/>
     </div>
-    <div class="col-3 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterCity" id="filterCity" placeholder="ASULA" [(ngModel)]="clientService.filterCity"/>
+    <div class="col-2 form-group">
+      <input type="text" class="form-control view-input-attr" name="filterCity" id="filterCity" [placeholder]="'filter.placeholder.city' | translate" [(ngModel)]="clientService.filterCity"/>
     </div>
-    <div class="col-1 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterCountry" id="filterCountry" placeholder="RIIK" [(ngModel)]="clientService.filterCountry"/>
+    <div class="col-2 form-group">
+      <input type="text" class="form-control view-input-attr" name="filterCountry" id="filterCountry" [placeholder]="'filter.placeholder.country' | translate" [(ngModel)]="clientService.filterCountry"/>
     </div>
     <div class="col-1 form-group row">
       <button type="submit" class="btn omniva-red-background no-border white"><i class="fa fa-search"></i></button>
