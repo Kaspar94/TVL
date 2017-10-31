@@ -54,7 +54,8 @@
     "failed": "Nepavyko!",
     "deliveryCountryNotChosen": "Perkėlimo būsena nėra pasirinkta.",
     "recipientNotChosen": "Išpakavimas siuntą.",
-    "noName": "Vardas laukas yra tuščias."
+    "noName": "Vardas laukas yra tuščias.",
+    "doesNotExist": "Duomenų gavėjo duomenų nėra."
   },
   "filter": {
     "title": "FILTRAS",

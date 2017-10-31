@@ -5,6 +5,10 @@ import {isNullOrUndefined} from "util";
 import {isNull} from "util";
 import {AlertService} from "../shared/alert/alert.service";
 import {TranslateService} from "@ngx-translate/core";
+import {Observable} from "rxjs";
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'user-form',
@@ -14,6 +18,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class UserFormComponent implements OnInit{
   companies: BusinessClient[];
   filteredCompanies: BusinessClient[];
+  filteredCompaniesString: string[];
   countries: any;
   recipient: any;
   deliveryCountry: any;
@@ -25,6 +30,7 @@ export class UserFormComponent implements OnInit{
   constructor(public sharedService: SharedService,
               private alertService: AlertService,
               private translateService: TranslateService) {
+    this.deliveryCountry = '';
     this.companies = [];
     this.filteredCompanies = [];
     this.countries = [];
@@ -51,18 +57,25 @@ export class UserFormComponent implements OnInit{
 
   changeActiveCountry(country: any) {
     this.filteredCompanies = [];
+    this.filteredCompaniesString = [];
     this.deliveryCountry = country;
     this.companies.forEach((company) => {
       if (company.deliveryCountry === country) {
         this.filteredCompanies.push(company);
+        this.filteredCompaniesString.push(company.name);
       }
     })
   }
 
   validate() {
-    console.log(window.location);
+    if ((!isNullOrUndefined(this.chosenCompany) && this.chosenCompany.name !== this.recipient) || isNullOrUndefined(this.chosenCompany)) {
+      const indx = this.companies.findIndex((x) => x.name === this.recipient);
+      if (indx > -1) {
+        this.chosenCompany = this.companies[indx];
+      }
+    }
     if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&
-      !isNullOrUndefined(this.name) && !isNullOrUndefined(this.deliveryCountry) && !isNullOrUndefined(this.recipient)) {
+      !isNullOrUndefined(this.name) && !isNullOrUndefined(this.deliveryCountry) && !isNullOrUndefined(this.recipient) && this.chosenCompany.name === this.recipient) {
       const body = {
         business_id: this.chosenCompany,
         client_name: this.name,
@@ -80,6 +93,15 @@ export class UserFormComponent implements OnInit{
       this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
     } else if (isNullOrUndefined(this.email) && isNullOrUndefined(this.mobile)) {
       this.alertService.error(this.translateService.instant('error.atleastOne'),this.translateService.instant('error.failed'));
+    } else if (this.chosenCompany.name !== this.recipient) {
+      this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
     }
   }
+
+  search = (text$: Observable<string>) =>
+    text$
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .map(term => term.length < 2 ? []
+        : this.filteredCompaniesString.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 }

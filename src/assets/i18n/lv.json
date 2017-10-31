@@ -54,7 +54,8 @@
     "failed": "Neizdevās!",
     "deliveryCountryNotChosen": "Pārvietošanas stāvoklis nav izvēlēts.",
     "recipientNotChosen": "Sūtījuma izpakošana.",
-    "noName": "Vārda lodziņš ir tukšs."
+    "noName": "Vārda lodziņš ir tukšs.",
+    "doesNotExist": "Sūtījuma saņēmējs datiem nepastāv."
   },
   "filter": {
     "title": "FILTERS",

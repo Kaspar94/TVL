@@ -54,7 +54,8 @@
     "failed": "Ошибка!",
     "deliveryCountryNotChosen": "Состояние передачи не выбрано.",
     "recipientNotChosen": "Распаковка груза.",
-    "noName": "Поле имени пусто."
+    "noName": "Поле имени пусто.",
+    "doesNotExist": "Получатель отгрузки не существует в данных."
   },
   "filter": {
     "title": "ФИЛЬТР",

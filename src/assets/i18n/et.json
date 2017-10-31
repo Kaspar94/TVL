@@ -54,7 +54,8 @@
     "failed": "Ebaõnnestus!",
     "deliveryCountryNotChosen": "Saadetise üleandmise riik valimata.",
     "recipientNotChosen": "Saadetise kättesaaja valimata.",
-    "noName": "Nime lahter täitmata."
+    "noName": "Nime lahter täitmata.",
+    "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes."
   },
   "filter": {
     "title": "FILTREERI",
