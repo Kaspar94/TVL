@@ -26,6 +26,11 @@ export class ClientEditComponent {
               private translateService: TranslateService) {
   }
 
+  remove(client: BusinessClient) {
+    this.clientService.removeClient(client);
+
+  }
+
   setClient(client: BusinessClient) {
     this.client = client;
     this.tempClient = new BusinessClient(client.id, client.axapta, client.name, client.street, client.city,

@@ -44,7 +44,8 @@
       "country": "VALSTS",
       "deliveryCountry": "PIEGĀDES VALSTS",
       "serviceNumber": "SERVISA NUMURS",
-      "edit": "REDIĢĒT"
+      "edit": "REDIĢĒT",
+      "remove": "NOŅEMŠANA"
 
     },
     "logout": "izlogoties"

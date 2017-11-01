@@ -44,8 +44,8 @@
       "country": "ŠALIS",
       "deliveryCountry": "PRISTATYMO ŠALIS",
       "serviceNumber": "PASLAUGOS NUMERIS",
-      "edit": "REDAGUOTI"
-
+      "edit": "REDAGUOTI",
+      "remove": "IŠTRINTI"
     },
     "logout": "Atsijungti"
   },

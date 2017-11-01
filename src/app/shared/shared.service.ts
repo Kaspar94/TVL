@@ -6,6 +6,7 @@ import {Injectable} from "@angular/core";
 import {headersToString} from "selenium-webdriver/http";
 import {LanguageService} from "@angular/language-service";
 import {TranslateService} from "@ngx-translate/core";
+import {ClientService} from "../client/client.service";
 
 @Injectable()
 export class SharedService {
@@ -17,7 +18,6 @@ export class SharedService {
   languages: Language[];
   lang: Language;
   successfullyReturned: boolean;
-  resourceUrl = '';
 
   constructor(private http: Http) {
     this.languages = [];
@@ -29,34 +29,34 @@ export class SharedService {
   }
 
   public getClients() {
-    return this.http.get(this.resourceUrl + '/businessClient')
+    return this.http.get('/businessClient')
       .map(response => {
         return response.json();
       });
   }
 
   public getClient(id: number) {
-    return this.http.get(this.resourceUrl + '/businessClient/' + id)
+    return this.http.get('/businessClient/' + id)
       .map(response => {
         return response.json();
       });
   }
 
   createClient(client: BusinessClient) {
-    return this.http.post(this.resourceUrl + '/businessClient', client, this.headerOptions()).map(response => {
+    return this.http.post('/businessClient', client, this.headerOptions()).map(response => {
       return response.json();
     })
 
   }
 
   updateClient(client: BusinessClient) {
-    return this.http.put(this.resourceUrl + '/businessClient/' + client.id, client, this.headerOptions()).map(response => {
+    return this.http.put('/businessClient/' + client.id, client, this.headerOptions()).map(response => {
       return response.json();
     })
   }
 
   login() {
-    return this.http.get(this.resourceUrl + '/login', this.headerOptions()).map(response => {
+    return this.http.get('/login', this.headerOptions()).map(response => {
       return response.json();
     });
   }
@@ -69,7 +69,7 @@ export class SharedService {
   }
 
   sendReturnInformation(body: {business_id: any; client_name: any; client_email: any; client_number: any}) {
-    return this.http.put(this.resourceUrl + '/return/client', body).subscribe((res) => {
+    return this.http.put('/return/client', body).subscribe((res) => {
         this.successfullyReturned = !this.successfullyReturned;
     });
   }

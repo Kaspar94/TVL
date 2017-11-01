@@ -44,7 +44,8 @@
       "country": "COUNTRY",
       "deliveryCountry": "DELIVERY COUNTRY",
       "serviceNumber": "SERVICE NUMBER",
-      "edit": "EDIT"
+      "edit": "EDIT",
+      "remove": "REMOVE"
 
     },
     "logout": "Log out"

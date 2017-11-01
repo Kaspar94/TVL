@@ -44,7 +44,8 @@
       "country": "СТРАНА",
       "deliveryCountry": "СТРАН ПЕРЕДАЧИ",
       "serviceNumber": "КОД СЕРВИСА",
-      "edit": "РЕДАКТИРОВАТЬ"
+      "edit": "РЕДАКТИРОВАТЬ",
+      "remove": "УДАЛИТЬ"
 
     },
     "logout": "выйти"

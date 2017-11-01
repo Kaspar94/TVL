@@ -44,7 +44,8 @@
         "country": "RIIK",
         "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
         "serviceNumber": "TEENUSE KOOD",
-        "edit": "MUUDA"
+        "edit": "MUUDA",
+        "remove": "EEMALDA"
 
     },
     "logout": "Logi välja"

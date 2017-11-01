@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {SharedService} from "../shared/shared.service";
 import {BusinessClient} from "../shared/shared.model";
 import {isNullOrUndefined} from "util";
+import {Http} from "@angular/http";
 
 @Injectable()
 export class ClientService {
@@ -14,7 +15,8 @@ export class ClientService {
   filterCity: string;
   filterCountry: string;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService,
+              private http: Http) {
     this.clients = [];
     this.filteredClients = [];
     this.loadAll();
@@ -77,6 +79,16 @@ export class ClientService {
       }
     });
     return tempClients;
+  }
+
+
+  removeClient(client: BusinessClient) {
+    return this.http.delete('/businessClient/'+ client.id, this.sharedService.headerOptions()).subscribe((res) => {
+      const result = res.json();
+      if (result.status === 'success') {
+        this.loadWithFilters();
+      }
+    });
   }
 
 }

@@ -11,3 +11,7 @@
 .table .btn {
   min-width: 100%;
 }
+
+.auto-margin {
+  margin: auto;
+}
