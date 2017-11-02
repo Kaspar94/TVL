@@ -25,7 +25,7 @@ export class UserFormComponent implements OnInit{
   name: any;
   mobile: any;
   email: any;
-  chosenCompany;
+  chosenCompany: any;
 
   constructor(public sharedService: SharedService,
               private alertService: AlertService,
@@ -51,8 +51,8 @@ export class UserFormComponent implements OnInit{
 
   changeActiveCompany(id: number) {
     const indx = this.companies.findIndex((x) => x.id === id);
-    this.recipient = this.companies[indx].name + ' (' + this.companies[indx].country + ')';
-    this.chosenCompany = id;
+    this.recipient = this.companies[indx].name;
+    this.chosenCompany = this.companies[indx];
   }
 
   changeActiveCountry(country: any) {
@@ -77,7 +77,7 @@ export class UserFormComponent implements OnInit{
     if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&
       !isNullOrUndefined(this.name) && !isNullOrUndefined(this.deliveryCountry) && !isNullOrUndefined(this.recipient) && this.chosenCompany.name === this.recipient) {
       const body = {
-        business_id: this.chosenCompany,
+        business_id: this.chosenCompany.id,
         client_name: this.name,
         client_email: isNullOrUndefined(this.email) ? null : this.email,
         client_number: isNullOrUndefined(this.mobile) ? null : this.mobile
