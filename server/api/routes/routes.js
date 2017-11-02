@@ -19,7 +19,7 @@ module.exports = function(app, passport) {
 		.put(passport.authenticate('basic', { session: false }), businessClient.update_a_client)
 		.delete(passport.authenticate('basic', { session: false }), businessClient.delete_a_client);
 	app.route('/return/client')
-		.post(xmlController.send_xml);
+		.put(xmlController.send_xml);
 	app.route('/returnCountries')
 		.get(xmlController.get_returns);
 };
