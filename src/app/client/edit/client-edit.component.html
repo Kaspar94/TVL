@@ -7,22 +7,52 @@
     </button>
   </div>
     <div class="modal-body">
-      <label for="axapta_s" class="col-12">{{ 'admin.table.axapta' | translate }}
-        <input type="text" [(ngModel)]="client.axapta" class="form-control" id="axapta_s" name="axapta" required autocomplete="off"></label>
-      <label for="street_s" class="col-12">{{ 'admin.table.street' | translate }}
-        <input type="text" [(ngModel)]="client.street" class="form-control" id="street_s" name="street" required autocomplete="off"></label>
-      <label for="name_s" class="col-12">{{ 'admin.table.name' | translate }}
-        <input type="text" [(ngModel)]="client.name" class="form-control" id="name_s" name="name" required autocomplete="off"></label>
-      <label for="city_s" class="col-12">{{ 'admin.table.city' | translate }}
-        <input type="text" [(ngModel)]="client.city" class="form-control" id="city_s" name="city" required autocomplete="off"></label>
-      <label for="postIndex_s" class="col-12">{{ 'admin.table.postIndex' | translate }}
-        <input type="text" [(ngModel)]="client.postIndex" class="form-control" id="postIndex_s" name="postIndex" required autocomplete="off"></label>
-      <label for="country_s" class="col-12">{{ 'admin.table.country' | translate }}
-        <input type="text" [(ngModel)]="client.country" class="form-control" id="country_s" name="country" required autocomplete="off"></label>
-      <label for="deliveryCountry_s" class="col-12">{{ 'admin.table.deliveryCountry' | translate }}
-        <input type="text" [(ngModel)]="client.deliveryCountry" class="form-control" id="deliveryCountry_s" name="deliveryCountry" required autocomplete="off"></label>
-      <label for="serviceNumber_s" class="col-12">{{ 'admin.table.serviceNumber' | translate }}
-        <input type="text" [(ngModel)]="client.serviceNumber" class="form-control" id="serviceNumber_s" name="serviceNumber" required autocomplete="off"></label>
+      <label for="axapta_s" class="col-12">{{ 'admin.table.axapta' | translate }}</label>
+      <div class="col-12 form-group">
+        <input type="text" [(ngModel)]="client.axapta" class="form-control" id="axapta_s" name="axapta" required autocomplete="off">
+      </div>
+      <label for="street_s" class="col-12">{{ 'admin.table.street' | translate }}</label>
+      <div class="col-12 form-group">
+        <input type="text" [(ngModel)]="client.street" class="form-control" id="street_s" name="street" required autocomplete="off">
+      </div>
+      <label for="name_s" class="col-12">{{ 'admin.table.name' | translate }}</label>
+        <div class="col-12 form-group">
+          <input type="text" [(ngModel)]="client.name" class="form-control" id="name_s" name="name" required autocomplete="off">
+      </div>
+      <label for="city_s" class="col-12">{{ 'admin.table.city' | translate }}</label>
+      <div class="col-12 form-group">
+        <input type="text" [(ngModel)]="client.city" class="form-control" id="city_s" name="city" required autocomplete="off">
+      </div>
+      <label for="postIndex_s" class="col-12">{{ 'admin.table.postIndex' | translate }}</label>
+      <div class="col-12 form-group">
+        <input type="text" [(ngModel)]="client.postIndex" class="form-control" id="postIndex_s" name="postIndex" required autocomplete="off">
+      </div>
+      <label for="country_s" class="col-12">{{ 'admin.table.country' | translate }}</label>
+      <div class="col-12 form-group input-group">
+        <input type="text" [(ngModel)]="client.country" class="form-control" id="country_s" name="country" required disabled autocomplete="off">
+        <div class="input-group-btn dropdown-attr">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+            <a *ngFor="let wareHouse of clientService.wareHouses" class="dropdown-item" (click)="changeCountry(wareHouse)">{{ wareHouse }}</a>
+          </div>
+        </div>
+      </div>
+      <label for="deliveryCountry_s" class="col-12">{{ 'admin.table.deliveryCountry' | translate }}</label>
+      <div class="col-12 form-group input-group">
+        <input type="text" [(ngModel)]="client.deliveryCountry" class="form-control" id="deliveryCountry_s" name="deliveryCountry" required disabled autocomplete="off">
+        <div class="input-group-btn dropdown-attr">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          </button>
+          <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+            <a *ngFor="let wareHouse of clientService.wareHouses" class="dropdown-item" (click)="changeDeliveryCountry(wareHouse)">{{ wareHouse }}</a>
+          </div>
+        </div>
+      </div>
+      <label for="serviceNumber_s" class="col-12">{{ 'admin.table.serviceNumber' | translate }}</label>
+      <div class="col-12 form-group">
+        <input type="text" [(ngModel)]="client.serviceNumber" class="form-control" id="serviceNumber_s" name="serviceNumber" required autocomplete="off">
+      </div>
     </div>
     <div class="modal-footer">
       <div *ngIf="client.id === null" class="col-12 row auto-margin">

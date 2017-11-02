@@ -10,7 +10,7 @@ import {AlertService} from "../../shared/alert/alert.service";
 @Component({
   selector: 'client-edit-data',
   templateUrl: './client-edit.component.html',
-  styleUrls: ['../../app.component.css', '../../shared/header/header.css', '../client.css']
+  styleUrls: ['../../app.component.css', '../../shared/header/header.css', '../client.css', '../../user-form/user-form.css']
 })
 export class ClientEditComponent {
 
@@ -71,5 +71,13 @@ export class ClientEditComponent {
       original.deliveryCountry === changed.deliveryCountry &&
       original.serviceNumber === changed.serviceNumber
     );
+  }
+
+  changeCountry(wareHouse: string) {
+      this.client.country = wareHouse;
+  }
+
+  changeDeliveryCountry(wareHouse: string) {
+      this.client.deliveryCountry = wareHouse;
   }
 }
