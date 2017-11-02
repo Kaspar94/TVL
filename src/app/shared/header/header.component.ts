@@ -48,6 +48,7 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
 
   logout() {
     this.sharedService.loggedIn = false;
+    this.sharedService.title = 'header.returnTitle';
   }
 
   openLogin() {
