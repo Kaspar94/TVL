@@ -25,7 +25,7 @@ export class UserFormComponent implements OnInit{
   name: any;
   mobile: any;
   email: any;
-  chosenCompany: any;
+  chosenCompany: BusinessClient;
 
   constructor(public sharedService: SharedService,
               private alertService: AlertService,
