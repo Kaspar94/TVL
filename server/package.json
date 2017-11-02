@@ -25,6 +25,7 @@
     "express": "^4.16.2",
     "passport": "^0.4.0",
     "passport-http": "^0.3.0",
-    "xmlbuilder": "^9.0.4"
+    "xmlbuilder": "^9.0.4",
+    "randomstring": "^1.1.5"
   }
 }
