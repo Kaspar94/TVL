@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/distinctUntilChanged';
+import {ClientService} from "../client/client.service";
 
 @Component({
   selector: 'user-form',
@@ -19,34 +20,32 @@ export class UserFormComponent implements OnInit{
   companies: BusinessClient[];
   filteredCompanies: BusinessClient[];
   filteredCompaniesString: string[];
-  countries: any;
   recipient: any;
-  deliveryCountry: any;
   name: any;
   mobile: any;
   email: any;
   chosenCompany: BusinessClient;
 
   constructor(public sharedService: SharedService,
+              public clientService: ClientService,
               private alertService: AlertService,
               private translateService: TranslateService) {
-    this.deliveryCountry = '';
     this.companies = [];
     this.filteredCompanies = [];
-    this.countries = [];
     this.sharedService.getClients().subscribe((res) => {
       this.companies = res;
-      this.filteredCompanies = res;
-      this.companies.forEach((company) => {
-        if (this.countries.findIndex((x) => x === company.deliveryCountry) === -1) {
-            this.countries.push(company.deliveryCountry);
-        }
-      })
-    } );
+      if (this.sharedService.deliveryCountry.length !== 0) {
+          this.changeActiveCountry(this.sharedService.deliveryCountry);
+      } else {
+          this.filteredCompanies = res;
+      }
+      this.sharedService.loadWareHouseCountries();
+      });
   }
 
 
   ngOnInit(): void {
+
   }
 
   changeActiveCompany(id: number) {
@@ -58,7 +57,7 @@ export class UserFormComponent implements OnInit{
   changeActiveCountry(country: any) {
     this.filteredCompanies = [];
     this.filteredCompaniesString = [];
-    this.deliveryCountry = country;
+    this.sharedService.deliveryCountry = country;
     this.companies.forEach((company) => {
       if (company.deliveryCountry === country) {
         this.filteredCompanies.push(company);
@@ -75,7 +74,8 @@ export class UserFormComponent implements OnInit{
       }
     }
     if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&
-      !isNullOrUndefined(this.name) && !isNullOrUndefined(this.deliveryCountry) && !isNullOrUndefined(this.recipient) && this.chosenCompany.name === this.recipient) {
+      !isNullOrUndefined(this.name) && !isNullOrUndefined(this.sharedService.deliveryCountry)
+      && !isNullOrUndefined(this.recipient) && this.chosenCompany.name === this.recipient) {
       const body = {
         business_id: this.chosenCompany.id,
         client_name: this.name,
@@ -85,7 +85,7 @@ export class UserFormComponent implements OnInit{
       this.sharedService.sendReturnInformation(body);
 
     }
-    if (isNullOrUndefined(this.deliveryCountry)) {
+    if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
       this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),this.translateService.instant('error.failed'));
     } else if (isNullOrUndefined(this.recipient)) {
       this.alertService.error(this.translateService.instant('error.recipientNotChosen'),this.translateService.instant('error.failed'));

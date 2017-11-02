@@ -8,7 +8,6 @@ import {Http} from "@angular/http";
 export class ClientService {
   clients: BusinessClient[];
   filteredClients: BusinessClient[];
-  wareHouses: string[];
   filterAxapta: string;
   filterName: string;
   filterStreet: string;
@@ -20,11 +19,6 @@ export class ClientService {
     this.clients = [];
     this.filteredClients = [];
     this.loadAll();
-    this.wareHouses = [];
-    this.wareHouses.push('EE');
-    this.wareHouses.push('LV');
-    this.wareHouses.push('LT');
-
   }
 
   loadAll() {

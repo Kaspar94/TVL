@@ -18,14 +18,24 @@ export class SharedService {
   languages: Language[];
   lang: Language;
   successfullyReturned: boolean;
+  deliveryCountry: any;
+  wareHouses: string[];
 
   constructor(private http: Http) {
+    this.deliveryCountry = '';
     this.languages = [];
     this.languages.push(new Language('EST','et'));
     this.languages.push(new Language('LAT','lv'));
     this.languages.push(new Language('LIT','lt'));
     this.languages.push(new Language('RUS','ru'));
     this.languages.push(new Language('ENG','en'));
+    this.wareHouses = [];
+  }
+
+  loadWareHouseCountries() {
+    return this.http.get('/returnCountries').subscribe((res) => {
+      this.wareHouses = res.json();
+    });
   }
 
   public getClients() {
