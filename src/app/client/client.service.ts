@@ -42,13 +42,13 @@ export class ClientService {
       params.push({ name: 'axapta', value: this.filterAxapta });
     }
     if (!isNullOrUndefined(this.filterName) && this.filterName.length > 0) {
-      params.push({ name: 'name', value: this.filterName });
+      params.push({ name: 'name', value: '*' + this.filterName });
     }
     if (!isNullOrUndefined(this.filterStreet) && this.filterStreet.length > 0) {
-      params.push({ name: 'street', value: this.filterStreet });
+      params.push({ name: 'street', value: '*' + this.filterStreet });
     }
     if (!isNullOrUndefined(this.filterCity) && this.filterCity.length > 0) {
-      params.push({ name: 'city', value: this.filterCity });
+      params.push({ name: 'city', value: '*' + this.filterCity });
     }
     if (!isNullOrUndefined(this.filterCountry) && this.filterCountry.length > 0) {
       params.push({ name: 'country', value: this.filterCountry });
