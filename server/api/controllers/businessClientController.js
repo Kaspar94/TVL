@@ -19,7 +19,12 @@ exports.filter_clients = function(req, res) {
 		for (var i in req.query) {
 			if (clientCollection.fields.indexOf(i) > -1) {
 				for (var client in clients) {
-					if (clients[client][i] == req.query[i]) {
+					if (req.query[i].charAt(0) === "*") {
+						var query = req.query[i].substring(1).replace(/[^\w\s!?]/g,'').toLowerCase();
+						if (String(clients[client][i]).toLowerCase().match(query)) {
+							result.push(clients[client]);
+						}
+					} else if (clients[client][i] == req.query[i]) {
 						result.push(clients[client]);
 					}
 				}
