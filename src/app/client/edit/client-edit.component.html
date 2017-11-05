@@ -34,7 +34,7 @@
           <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
           <div class="dropdown-menu dropdown-menu-right scrollable-menu">
-            <a *ngFor="let wareHouse of clientService.wareHouses" class="dropdown-item" (click)="changeCountry(wareHouse)">{{ wareHouse }}</a>
+            <a *ngFor="let wareHouse of sharedService.wareHouses" class="dropdown-item" (click)="changeCountry(wareHouse)">{{ wareHouse }}</a>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
           <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           </button>
           <div class="dropdown-menu dropdown-menu-right scrollable-menu">
-            <a *ngFor="let wareHouse of clientService.wareHouses" class="dropdown-item" (click)="changeDeliveryCountry(wareHouse)">{{ wareHouse }}</a>
+            <a *ngFor="let wareHouse of sharedService.wareHouses" class="dropdown-item" (click)="changeDeliveryCountry(wareHouse)">{{ wareHouse }}</a>
           </div>
         </div>
       </div>

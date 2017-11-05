@@ -37,20 +37,20 @@ export class ClientViewComponent {
   }
 
   canFilter() {
-    return (isNullOrUndefined(this.clientService.filterAxapta) &&
-        isNullOrUndefined(this.clientService.filterName) &&
-        isNullOrUndefined(this.clientService.filterStreet) &&
-        isNullOrUndefined(this.clientService.filterCity) &&
-        isNullOrUndefined(this.clientService.filterCountry)
-    )
+    return (this.clientService.filterAxapta.length === 0 &&
+      this.clientService.filterName.length === 0 &&
+      this.clientService.filterStreet.length === 0 &&
+      this.clientService.filterCity.length === 0 &&
+      this.clientService.filterCountry.length === 0
+    );
   }
 
   emptyFilters() {
-    this.clientService.filterAxapta = null;
-    this.clientService.filterName = null;
-    this.clientService.filterStreet = null;
-    this.clientService.filterCity = null;
-    this.clientService.filterCountry = null;
+    this.clientService.filterAxapta = '';
+    this.clientService.filterName = '';
+    this.clientService.filterStreet = '';
+    this.clientService.filterCity = '';
+    this.clientService.filterCountry = '';
     this.clientService.filter();
   }
 }

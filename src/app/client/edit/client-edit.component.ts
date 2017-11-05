@@ -46,13 +46,13 @@ export class ClientEditComponent {
       this.close();
     } else {
       if (isNull(this.client.id)) {
-        this.sharedService.createClient(this.client).subscribe((response) => {
+        this.clientService.createClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
           this.close();
           this.alertService.success(this.translateService.instant('success.newData'), this.translateService.instant('success.title'))
         },(err) => this.alertService.error(err))
       } else {
-        this.sharedService.updateClient(this.client).subscribe((response) => {
+        this.clientService.updateClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
           this.close();
           this.alertService.success(this.translateService.instant('success.modifiedData'), this.translateService.instant('success.title'))

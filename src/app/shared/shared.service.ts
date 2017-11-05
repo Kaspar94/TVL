@@ -38,33 +38,6 @@ export class SharedService {
     });
   }
 
-  public getClients() {
-    return this.http.get('/businessClient')
-      .map(response => {
-        return response.json();
-      });
-  }
-
-  public getClient(id: number) {
-    return this.http.get('/businessClient/' + id)
-      .map(response => {
-        return response.json();
-      });
-  }
-
-  createClient(client: BusinessClient) {
-    return this.http.post('/businessClient', client, this.headerOptions()).map(response => {
-      return response.json();
-    })
-
-  }
-
-  updateClient(client: BusinessClient) {
-    return this.http.put('/businessClient/' + client.id, client, this.headerOptions()).map(response => {
-      return response.json();
-    })
-  }
-
   login() {
     return this.http.get('/login', this.headerOptions()).map(response => {
       return response.json();
@@ -82,5 +55,9 @@ export class SharedService {
     return this.http.put('/return/client', body).subscribe((res) => {
         this.successfullyReturned = !this.successfullyReturned;
     });
+  }
+
+  filterDeliveryCountry(country: any) {
+    return this.http.get('/businessClient/where?deliveryCountry='+country);
   }
 }

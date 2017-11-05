@@ -17,7 +17,6 @@ import {ClientService} from "../client/client.service";
   styleUrls: ['./user-form.css', '../app.component.css']
 })
 export class UserFormComponent implements OnInit{
-  companies: BusinessClient[];
   filteredCompanies: BusinessClient[];
   filteredCompaniesString: string[];
   recipient: any;
@@ -30,17 +29,11 @@ export class UserFormComponent implements OnInit{
               public clientService: ClientService,
               private alertService: AlertService,
               private translateService: TranslateService) {
-    this.companies = [];
     this.filteredCompanies = [];
-    this.sharedService.getClients().subscribe((res) => {
-      this.companies = res;
-      if (this.sharedService.deliveryCountry.length !== 0) {
-          this.changeActiveCountry(this.sharedService.deliveryCountry);
-      } else {
-          this.filteredCompanies = res;
-      }
-      this.sharedService.loadWareHouseCountries();
-      });
+    this.sharedService.loadWareHouseCountries();
+    if (this.sharedService.deliveryCountry.length !== 0) {
+      this.changeActiveCountry(this.sharedService.deliveryCountry);
+    }
   }
 
 
@@ -49,28 +42,29 @@ export class UserFormComponent implements OnInit{
   }
 
   changeActiveCompany(id: number) {
-    const indx = this.companies.findIndex((x) => x.id === id);
-    this.recipient = this.companies[indx].name;
-    this.chosenCompany = this.companies[indx];
+    const indx = this.filteredCompanies.findIndex((x) => x.id === id);
+    this.recipient = this.filteredCompanies[indx].name;
+    this.chosenCompany = this.filteredCompanies[indx];
   }
 
   changeActiveCountry(country: any) {
-    this.filteredCompanies = [];
-    this.filteredCompaniesString = [];
     this.sharedService.deliveryCountry = country;
-    this.companies.forEach((company) => {
-      if (company.deliveryCountry === country) {
-        this.filteredCompanies.push(company);
-        this.filteredCompaniesString.push(company.name);
-      }
+    this.sharedService.filterDeliveryCountry(country).subscribe((res) => {
+      this.filteredCompanies = [];
+      this.filteredCompaniesString = [];
+      res.json().forEach((x) => {
+        this.filteredCompanies.push(x);
+        this.filteredCompaniesString.push(x.name);
+      });
+      this.recipient = null;
     })
   }
 
   validate() {
     if ((!isNullOrUndefined(this.chosenCompany) && this.chosenCompany.name !== this.recipient) || isNullOrUndefined(this.chosenCompany)) {
-      const indx = this.companies.findIndex((x) => x.name === this.recipient);
+      const indx = this.filteredCompanies.findIndex((x) => x.name === this.recipient);
       if (indx > -1) {
-        this.chosenCompany = this.companies[indx];
+        this.chosenCompany = this.filteredCompanies[indx];
       }
     }
     if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&

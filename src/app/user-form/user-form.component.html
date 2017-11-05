@@ -18,7 +18,7 @@
       <div class="col-12 center form-group">
         <input type="text" [(ngModel)]="recipient" class="form-control" id="recipient" name="recipient" [ngbTypeahead]="search" required [disabled]="sharedService.deliveryCountry.length === 0">
         <div class="input-group-btn dropdown-attr">
-          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="sharedService.deliveryCountry.length === 0">
           </button>
           <div class="dropdown-menu dropdown-menu-right scrollable-menu">
             <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" (click)="changeActiveCompany(company.id)">{{company.name}}</a>
