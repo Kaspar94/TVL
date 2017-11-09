@@ -55,7 +55,9 @@
     "deliveryCountryNotChosen": "Perkėlimo būsena nėra pasirinkta.",
     "recipientNotChosen": "Išpakavimas siuntą.",
     "noName": "Vardas laukas yra tuščias.",
-    "doesNotExist": "Duomenų gavėjo duomenų nėra."
+    "doesNotExist": "Duomenų gavėjo duomenų nėra.",
+    "invalidNumber": "Mobiliojo telefono numeris neteisingas.",
+    "invalidEmail": "El. Paštas neteisingas."
   },
   "filter": {
     "title": "FILTRAS",

@@ -56,7 +56,9 @@
     "deliveryCountryNotChosen": "Saadetise üleandmise riik valimata.",
     "recipientNotChosen": "Saadetise kättesaaja valimata.",
     "noName": "Nime lahter täitmata.",
-    "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes."
+    "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes.",
+    "invalidNumber": "Mobiilinumber ei vasta nõuetele.",
+    "invalidEmail": "E-mail ei vasta nõuetele."
   },
   "filter": {
     "title": "FILTREERI",

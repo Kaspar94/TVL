@@ -56,7 +56,9 @@
     "deliveryCountryNotChosen": "Pārvietošanas stāvoklis nav izvēlēts.",
     "recipientNotChosen": "Sūtījuma izpakošana.",
     "noName": "Vārda lodziņš ir tukšs.",
-    "doesNotExist": "Sūtījuma saņēmējs datiem nepastāv."
+    "doesNotExist": "Sūtījuma saņēmējs datiem nepastāv.",
+    "invalidNumber": "Mobilā tālruņa numurs ir nederīgs.",
+    "invalidEmail": "E-pasts nav derīgs."
   },
   "filter": {
     "title": "FILTERS",
