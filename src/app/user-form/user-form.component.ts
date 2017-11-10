@@ -96,17 +96,21 @@ export class UserFormComponent implements OnInit{
     else return true
   }
   validateNumber(number:any) {
-    var re = new RegExp('^\\d+$');
-    console.log(number + " : " + re.test(number))
-    return re.test(number);
+    var est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$/,
+        lv = /^(\+)?(371)?(2\d{7})$/,
+        lt = /^(\+)?(370)?(6\d{7}|86\d{7})$/;
+    console.log(number + " est : " + est.test(number))
+    console.log(number + " lv : " + lv.test(number))
+    console.log(number + " lt : " + lt.test(number))
+    return  lv.test(number)||lt.test(number)||est.test(number);
   }
   validateEmail(email:any) {
-    var re = new RegExp('\\w+\\@\\w+\\.\\w+');
+    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     console.log(email + " : " + re.test(email))
     return re.test(email);
   }
   validateName(name:any) {
-    var re = new RegExp('[a-zõüäöA-ZÕÜÄÖ ]*');
+    var re = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
     console.log(name + " : " + re.test(name))
     return re.test(name);
   }
