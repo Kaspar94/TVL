@@ -1,8 +1,6 @@
 import {Component, AfterViewInit, OnInit} from '@angular/core';
 import {BusinessClient} from "../shared/shared.model";
 import {SharedService} from "../shared/shared.service";
-import {isNullOrUndefined} from "util";
-import {isNull} from "util";
 import {AlertService} from "../shared/alert/alert.service";
 import {TranslateService} from "@ngx-translate/core";
 import {Observable} from "rxjs";
@@ -61,35 +59,56 @@ export class UserFormComponent implements OnInit{
   }
 
   validate() {
-    if ((!isNullOrUndefined(this.chosenCompany) && this.chosenCompany.name !== this.recipient) || isNullOrUndefined(this.chosenCompany)) {
+    if (this.isNullOrUndefined(this.sharedService.deliveryCountry)) {
+      this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),this.translateService.instant('error.failed'));
+    } else if (this.isNullOrUndefined(this.recipient)) {
+      this.alertService.error(this.translateService.instant('error.recipientNotChosen'),this.translateService.instant('error.failed'));
+    } else if ((!this.isNullOrUndefined(this.chosenCompany) && this.chosenCompany.name !== this.recipient) || this.isNullOrUndefined(this.chosenCompany)){
       const indx = this.filteredCompanies.findIndex((x) => x.name === this.recipient);
       if (indx > -1) {
         this.chosenCompany = this.filteredCompanies[indx];
       }
-    }
-    if ((!isNullOrUndefined(this.email) || !isNullOrUndefined(this.mobile)) &&
-      !isNullOrUndefined(this.name) && !isNullOrUndefined(this.sharedService.deliveryCountry)
-      && !isNullOrUndefined(this.recipient) && this.chosenCompany.name === this.recipient) {
+    } else if (this.chosenCompany.name !== this.recipient) {
+      this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
+    } else if (this.isNullOrUndefined(this.name)) {
+      this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
+    } else if (!this.validateName(this.name)) {
+      this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
+    } else if (this.isNullOrUndefined(this.email) && this.isNullOrUndefined(this.mobile)) {
+      this.alertService.error(this.translateService.instant('error.atleastOne'),this.translateService.instant('error.failed'));
+    } else if (!this.validateNumber(this.mobile) && !this.isNullOrUndefined(this.mobile)) {
+      this.alertService.error(this.translateService.instant('error.invalidNumber'),this.translateService.instant('error.failed'));
+    } else if (!this.validateEmail(this.email) && !this.isNullOrUndefined(this.email)) {
+      this.alertService.error(this.translateService.instant('error.invalidEmail'),this.translateService.instant('error.failed'));
+    } else {
       const body = {
         business_id: this.chosenCompany.id,
         client_name: this.name,
-        client_email: isNullOrUndefined(this.email) ? null : this.email,
-        client_number: isNullOrUndefined(this.mobile) ? null : this.mobile
+        client_email: this.isNullOrUndefined(this.email) ? null : this.email,
+        client_number: this.isNullOrUndefined(this.mobile) ? null : this.mobile
       };
       this.sharedService.sendReturnInformation(body);
+    }
+  }
 
-    }
-    if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
-      this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.recipient)) {
-      this.alertService.error(this.translateService.instant('error.recipientNotChosen'),this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.name)) {
-      this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.email) && isNullOrUndefined(this.mobile)) {
-      this.alertService.error(this.translateService.instant('error.atleastOne'),this.translateService.instant('error.failed'));
-    } else if (this.chosenCompany.name !== this.recipient) {
-      this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
-    }
+  isNullOrUndefined(any:any) {
+    if(any) return false 
+    else return true
+  }
+  validateNumber(number:any) {
+    var re = new RegExp('^\\d+$');
+    console.log(number + " : " + re.test(number))
+    return re.test(number);
+  }
+  validateEmail(email:any) {
+    var re = new RegExp('\\w+\\@\\w+\\.\\w+');
+    console.log(email + " : " + re.test(email))
+    return re.test(email);
+  }
+  validateName(name:any) {
+    var re = new RegExp('[a-zõüäöA-ZÕÜÄÖ ]*');
+    console.log(name + " : " + re.test(name))
+    return re.test(name);
   }
 
   search = (text$: Observable<string>) =>
