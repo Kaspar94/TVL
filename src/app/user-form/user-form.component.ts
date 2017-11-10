@@ -96,22 +96,22 @@ export class UserFormComponent implements OnInit{
     else return true
   }
   validateNumber(number:any) {
-    var est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$/,
-        lv = /^(\+)?(371)?(2\d{7})$/,
-        lt = /^(\+)?(370)?(6\d{7}|86\d{7})$/;
-    console.log(number + " est : " + est.test(number))
-    console.log(number + " lv : " + lv.test(number))
-    console.log(number + " lt : " + lt.test(number))
+    var est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$|^(\+)?(372\s)?(5\d{1}\s\d{2,3}\s\d{3}|8\d{1}\s\d{3}\s\d{3})$/,
+        lv = /^(\+)?(371)?(2\d{7})$|^(\+)?(371\s)?(2\d{1}\s\d{3}\s\d{3})$/,
+        lt = /^(\+)?(370)?(6\d{7}|86\d{7})$|^(\+)?(370\s)?(6\d{1}\s\d{3}\s\d{3}|86\s\d{2}\s\d{2}\s\d{3})$/;
+    //console.log(number + " est : " + est.test(number))
+    //console.log(number + " lv : " + lv.test(number))
+    //console.log(number + " lt : " + lt.test(number))
     return  lv.test(number)||lt.test(number)||est.test(number);
   }
   validateEmail(email:any) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    console.log(email + " : " + re.test(email))
+    //console.log(email + " : " + re.test(email))
     return re.test(email);
   }
   validateName(name:any) {
     var re = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
-    console.log(name + " : " + re.test(name))
+    //console.log(name + " : " + re.test(name))
     return re.test(name);
   }
 
