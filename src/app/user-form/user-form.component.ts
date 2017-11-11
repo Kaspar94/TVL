@@ -1,20 +1,21 @@
 import {Component, AfterViewInit, OnInit} from '@angular/core';
-import {BusinessClient} from "../shared/shared.model";
-import {SharedService} from "../shared/shared.service";
-import {AlertService} from "../shared/alert/alert.service";
-import {TranslateService} from "@ngx-translate/core";
-import {Observable} from "rxjs";
+import {BusinessClient} from '../shared/shared.model';
+import {SharedService} from '../shared/shared.service';
+import {AlertService} from '../shared/alert/alert.service';
+import {TranslateService} from '@ngx-translate/core';
+import {Observable} from 'rxjs';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/distinctUntilChanged';
-import {ClientService} from "../client/client.service";
+import {ClientService} from '../client/client.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'user-form',
   templateUrl: 'user-form.component.html',
   styleUrls: ['./user-form.css', '../app.component.css']
 })
-export class UserFormComponent implements OnInit{
+export class UserFormComponent implements OnInit {
   filteredCompanies: BusinessClient[];
   filteredCompaniesString: string[];
   recipient: any;
@@ -55,64 +56,87 @@ export class UserFormComponent implements OnInit{
         this.filteredCompaniesString.push(x.name);
       });
       this.recipient = null;
-    })
+    });
   }
 
   validate() {
-    if (this.isNullOrUndefined(this.sharedService.deliveryCountry)) {
-      this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),this.translateService.instant('error.failed'));
-    } else if (this.isNullOrUndefined(this.recipient)) {
-      this.alertService.error(this.translateService.instant('error.recipientNotChosen'),this.translateService.instant('error.failed'));
-    } else if ((!this.isNullOrUndefined(this.chosenCompany) && this.chosenCompany.name !== this.recipient) || this.isNullOrUndefined(this.chosenCompany)){
-      const indx = this.filteredCompanies.findIndex((x) => x.name === this.recipient);
-      if (indx > -1) {
-        this.chosenCompany = this.filteredCompanies[indx];
-      }
-    } else if (this.chosenCompany.name !== this.recipient) {
-      this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
-    } else if (this.isNullOrUndefined(this.name)) {
-      this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
-    } else if (!this.validateName(this.name)) {
-      this.alertService.error(this.translateService.instant('error.noName'),this.translateService.instant('error.failed'));
-    } else if (this.isNullOrUndefined(this.email) && this.isNullOrUndefined(this.mobile)) {
-      this.alertService.error(this.translateService.instant('error.atleastOne'),this.translateService.instant('error.failed'));
-    } else if (!this.validateNumber(this.mobile) && !this.isNullOrUndefined(this.mobile)) {
-      this.alertService.error(this.translateService.instant('error.invalidNumber'),this.translateService.instant('error.failed'));
-    } else if (!this.validateEmail(this.email) && !this.isNullOrUndefined(this.email)) {
-      this.alertService.error(this.translateService.instant('error.invalidEmail'),this.translateService.instant('error.failed'));
-    } else {
+    if (this.validateName() && (this.validateEmail() || this.validateNumber()) && !isNullOrUndefined(this.chosenCompany)) {
       const body = {
         business_id: this.chosenCompany.id,
         client_name: this.name,
-        client_email: this.isNullOrUndefined(this.email) ? null : this.email,
-        client_number: this.isNullOrUndefined(this.mobile) ? null : this.mobile
+        client_email: isNullOrUndefined(this.email) ? null : this.email,
+        client_number: isNullOrUndefined(this.mobile) ? null : this.trimWhitespace(this.mobile)
       };
       this.sharedService.sendReturnInformation(body);
+    } else if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
+        this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),
+          this.translateService.instant('error.failed'));
+    } else if (isNullOrUndefined(this.recipient)) {
+      this.alertService.error(this.translateService.instant('error.recipientNotChosen'),
+          this.translateService.instant('error.failed'));
+    } else if ((!isNullOrUndefined(this.chosenCompany)
+        && this.chosenCompany.name !== this.recipient) || isNullOrUndefined(this.chosenCompany)) {
+        const indx = this.filteredCompanies.findIndex((x) => x.name === this.recipient);
+        if (indx > -1) {
+            this.chosenCompany = this.filteredCompanies[indx];
+        }
+    } else if (this.chosenCompany.name !== this.recipient) {
+        this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
+    } else if (isNullOrUndefined(this.name) || !this.validateName()) {
+        this.alertService.error(this.translateService.instant('error.noName'), this.translateService.instant('error.failed'));
+    } else if (isNullOrUndefined(this.email) && isNullOrUndefined(this.mobile)) {
+        this.alertService.error(this.translateService.instant('error.atleastOne'), this.translateService.instant('error.failed'));
     }
+
+    if ((isNullOrUndefined(this.email) || this.email === '') && !isNullOrUndefined(this.mobile)) {
+        if (!this.validateNumber()) {
+            this.alertService.error(this.translateService.instant('error.invalidNumber'), this.translateService.instant('error.failed'));
+        }
+    } else if (!isNullOrUndefined(this.email) && (isNullOrUndefined(this.mobile) || this.mobile === '')) {
+        if (!this.validateEmail()) {
+          this.alertService.error(this.translateService.instant('error.invalidEmail'), this.translateService.instant('error.failed'));
+        }
+    }
+
   }
 
-  isNullOrUndefined(any:any) {
-    if(any) return false 
-    else return true
+  validateNumber() {
+    if (!isNullOrUndefined(this.mobile)) {
+      const est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$|^(\+)?(372\s)?(5\d{1}\s\d{2,3}\s\d{3}|8\d{1}\s\d{3}\s\d{3})$/;
+      const lv = /^(\+)?(371)?(2\d{7})$|^(\+)?(371\s)?(2\d{1}\s\d{3}\s\d{3})$/;
+      const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$|^(\+)?(370\s)?(6\d{1}\s\d{3}\s\d{3}|86\s\d{2}\s\d{2}\s\d{3})$/;
+      const mobileTrimmed = this.trimWhitespace(this.mobile);
+      console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
+      console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
+      console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
+      return  lv.test(mobileTrimmed) || lt.test(mobileTrimmed) || est.test(mobileTrimmed);
+    }
+    return false;
   }
-  validateNumber(number:any) {
-    var est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$|^(\+)?(372\s)?(5\d{1}\s\d{2,3}\s\d{3}|8\d{1}\s\d{3}\s\d{3})$/,
-        lv = /^(\+)?(371)?(2\d{7})$|^(\+)?(371\s)?(2\d{1}\s\d{3}\s\d{3})$/,
-        lt = /^(\+)?(370)?(6\d{7}|86\d{7})$|^(\+)?(370\s)?(6\d{1}\s\d{3}\s\d{3}|86\s\d{2}\s\d{2}\s\d{3})$/;
-    //console.log(number + " est : " + est.test(number))
-    //console.log(number + " lv : " + lv.test(number))
-    //console.log(number + " lt : " + lt.test(number))
-    return  lv.test(number)||lt.test(number)||est.test(number);
+
+  private trimWhitespace(text: any) {
+    let trimmedText = text;
+    while (trimmedText.indexOf(' ') > 1) {
+      trimmedText = trimmedText.replace(' ', '');
+    }
+    return trimmedText;
   }
-  validateEmail(email:any) {
-    var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    //console.log(email + " : " + re.test(email))
-    return re.test(email);
+
+  validateEmail() {
+    if (!isNullOrUndefined(this.email)) {
+      const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/;
+      console.log(this.email + ' : ' + emailRegEx.test(this.email));
+      return emailRegEx.test(this.email);
+    }
+    return false;
   }
-  validateName(name:any) {
-    var re = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
-    //console.log(name + " : " + re.test(name))
-    return re.test(name);
+  validateName() {
+    if (!isNullOrUndefined(this.name)) {
+      const nameRegEx = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
+      console.log(this.name + ' : ' + nameRegEx.test(this.name));
+      return nameRegEx.test(this.name);
+    }
+    return false;
   }
 
   search = (text$: Observable<string>) =>
@@ -120,5 +144,5 @@ export class UserFormComponent implements OnInit{
       .debounceTime(200)
       .distinctUntilChanged()
       .map(term => term.length < 2 ? []
-        : this.filteredCompaniesString.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+        : this.filteredCompaniesString.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
 }

@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateService} from "@ngx-translate/core";
-import {SharedService} from "../../shared/shared.service";
-import {BusinessClient} from "../../shared/shared.model";
-import {isNull} from "util";
-import {ClientService} from "../client.service";
-import {AlertService} from "../../shared/alert/alert.service";
+import {TranslateService} from '@ngx-translate/core';
+import {SharedService} from '../../shared/shared.service';
+import {BusinessClient} from '../../shared/shared.model';
+import {isNull} from 'util';
+import {ClientService} from '../client.service';
+import {AlertService} from '../../shared/alert/alert.service';
 
 @Component({
   selector: 'client-edit-data',

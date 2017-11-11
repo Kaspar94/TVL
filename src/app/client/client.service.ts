@@ -1,8 +1,8 @@
-import {Injectable} from "@angular/core";
-import {SharedService} from "../shared/shared.service";
-import {BusinessClient} from "../shared/shared.model";
-import {isNullOrUndefined} from "util";
-import {Http} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {SharedService} from '../shared/shared.service';
+import {BusinessClient} from '../shared/shared.model';
+import {isNullOrUndefined} from 'util';
+import {Http} from '@angular/http';
 
 declare const $: any;
 
@@ -57,7 +57,7 @@ export class ClientService {
   }
 
   removeClient(client: BusinessClient) {
-    return this.http.delete('/businessClient/'+ client.id, this.sharedService.headerOptions()).subscribe((res) => {
+    return this.http.delete('/businessClient/' + client.id, this.sharedService.headerOptions()).subscribe((res) => {
       const result = res.json();
       if (result.status === 'success') {
         this.loadWithFilters();
@@ -93,7 +93,7 @@ export class ClientService {
   }
 
   private filterBackEnd(params: any[]) {
-    return this.http.get('/businessClient/where?'+ $.param(params)).subscribe((res) => {
+    return this.http.get('/businessClient/where?' + $.param(params)).subscribe((res) => {
         this.filteredClients = res.json();
     });
   }

@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateService} from "@ngx-translate/core";
-import {SharedService} from "../../shared/shared.service";
-import {BusinessClient} from "../../shared/shared.model";
-import {ClientEditComponent} from "../edit/client-edit.component";
-import {isNullOrUndefined} from "util";
-import {isNull} from "util";
-import {ClientService} from "../client.service";
+import {TranslateService} from '@ngx-translate/core';
+import {SharedService} from '../../shared/shared.service';
+import {BusinessClient} from '../../shared/shared.model';
+import {ClientEditComponent} from '../edit/client-edit.component';
+import {isNullOrUndefined} from 'util';
+import {isNull} from 'util';
+import {ClientService} from '../client.service';
 
 @Component({
   selector: 'client-view-data',

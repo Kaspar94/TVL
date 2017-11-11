@@ -1,12 +1,12 @@
 
-import {Http, Headers, RequestOptions} from "@angular/http";
-import {Observable} from "rxjs";
-import {BusinessClient, Language} from "./shared.model";
-import {Injectable} from "@angular/core";
-import {headersToString} from "selenium-webdriver/http";
-import {LanguageService} from "@angular/language-service";
-import {TranslateService} from "@ngx-translate/core";
-import {ClientService} from "../client/client.service";
+import {Http, Headers, RequestOptions} from '@angular/http';
+import {Observable} from 'rxjs';
+import {BusinessClient, Language} from './shared.model';
+import {Injectable} from '@angular/core';
+import {headersToString} from 'selenium-webdriver/http';
+import {LanguageService} from '@angular/language-service';
+import {TranslateService} from '@ngx-translate/core';
+import {ClientService} from '../client/client.service';
 
 @Injectable()
 export class SharedService {
@@ -24,11 +24,11 @@ export class SharedService {
   constructor(private http: Http) {
     this.deliveryCountry = '';
     this.languages = [];
-    this.languages.push(new Language('EST','et'));
-    this.languages.push(new Language('LAT','lv'));
-    this.languages.push(new Language('LIT','lt'));
-    this.languages.push(new Language('RUS','ru'));
-    this.languages.push(new Language('ENG','en'));
+    this.languages.push(new Language('EST', 'et'));
+    this.languages.push(new Language('LAT', 'lv'));
+    this.languages.push(new Language('LIT', 'lt'));
+    this.languages.push(new Language('RUS', 'ru'));
+    this.languages.push(new Language('ENG', 'en'));
     this.wareHouses = [];
   }
 
@@ -58,6 +58,6 @@ export class SharedService {
   }
 
   filterDeliveryCountry(country: any) {
-    return this.http.get('/businessClient/where?deliveryCountry='+country);
+    return this.http.get('/businessClient/where?deliveryCountry=' + country);
   }
 }
