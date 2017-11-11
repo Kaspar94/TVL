@@ -106,9 +106,9 @@ export class UserFormComponent implements OnInit {
       const lv = /^(\+)?(371)?(2\d{7})$|^(\+)?(371\s)?(2\d{1}\s\d{3}\s\d{3})$/;
       const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$|^(\+)?(370\s)?(6\d{1}\s\d{3}\s\d{3}|86\s\d{2}\s\d{2}\s\d{3})$/;
       const mobileTrimmed = this.trimWhitespace(this.mobile);
-      console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
-      console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
-      console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
+      // console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
+      // console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
+      // console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
       return  lv.test(mobileTrimmed) || lt.test(mobileTrimmed) || est.test(mobileTrimmed);
     }
     return false;
@@ -119,13 +119,16 @@ export class UserFormComponent implements OnInit {
     while (trimmedText.indexOf(' ') > 1) {
       trimmedText = trimmedText.replace(' ', '');
     }
+    while (trimmedText.indexOf('-') > 1) {
+      trimmedText = trimmedText.replace('-', '');
+    }
     return trimmedText;
   }
 
   validateEmail() {
     if (!isNullOrUndefined(this.email)) {
       const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/;
-      console.log(this.email + ' : ' + emailRegEx.test(this.email));
+      // console.log(this.email + ' : ' + emailRegEx.test(this.email));
       return emailRegEx.test(this.email);
     }
     return false;
@@ -133,7 +136,7 @@ export class UserFormComponent implements OnInit {
   validateName() {
     if (!isNullOrUndefined(this.name)) {
       const nameRegEx = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
-      console.log(this.name + ' : ' + nameRegEx.test(this.name));
+      // console.log(this.name + ' : ' + nameRegEx.test(this.name));
       return nameRegEx.test(this.name);
     }
     return false;
