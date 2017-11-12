@@ -56,7 +56,6 @@ var validateEmailOrPhone = function (email, number) {
 	if (!validateNumber(number)) {
 		isPhone = false;
 	}
-	console.log(isMail, isPhone);
 	return isMail || isPhone;
 }
 
@@ -153,7 +152,7 @@ exports.send_xml = function (req, res) {
 							return;
 						}
 						var pw = JSON.parse(data);
-						console.log(pw);
+						//console.log(pw);
 						if(pw != null) {
 							if(config.util.getEnv('NODE_ENV') !== 'test') {
 								var options = {
