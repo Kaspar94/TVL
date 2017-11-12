@@ -47,13 +47,22 @@ var trimWhitespace = function (text) {
 		return text;
 };
 
+var validateEmailOrPhone = function (email, number) {
+	var isMail = true;
+	var isPhone = true;
+	if (!email || !email.match(/\w+@\w+\.\w+/g)) {
+		isMail = false;
+	}
+	if (!validateNumber(number)) {
+		isPhone = false;
+	}
+	console.log(isMail, isPhone);
+	return isMail || isPhone;
+}
+
 exports.send_xml = function (req, res) {
-	if (!req.body.client_email || !req.body.client_email.match(/\w+@\w+\.\w+/g)) {
-		res.status(400).json({'status': 'error', 'cause': 'email wrong or missing'});
-		return;
-	} else if (!validateNumber(req.body.client_number)) {
-		res.status(400).json({'status': 'error', 'cause': 'mobile number wrong or missing'});
-		return;
+	if (!validateEmailOrPhone(req.body.client_email, req.body.client_number)) {
+		res.status(400).json({'status': 'error', 'cause': 'mail or phone wrong or both missing'});
 	} else if (!req.body.client_name || req.body.client_name.length < 2) {
 		res.status(400).json({'status': 'error', 'cause': 'name empty or missing'});
 		return;
@@ -61,6 +70,9 @@ exports.send_xml = function (req, res) {
 		res.status(400).json({'status': 'error', 'cause': 'id not a number or missing'});
 		return;
 	}
+
+	res.end();
+	return;
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
 			var client = helper.findOneById(JSON.parse(data).data, req.body.business_id);
 			if (client) {
