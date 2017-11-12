@@ -7,9 +7,9 @@
     "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
     "recipient": "SAADETISE KÄTTESAAJA",
     "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
-    "name": "SINU NIMI",
-    "mobile": "SINU MOBIILINUMBER",
-    "email": "SINU E-MAIL",
+    "name": "NIMI",
+    "mobile": "MOBIILINUMBER",
+    "email": "E-MAIL",
     "button": {
       "submitReturn": "TAGASTA TOODE"
     }
@@ -17,7 +17,10 @@
   "success": {
     "info": "Toote tagastamine õnnestus. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
     "button": "TAGASTA UUESTI",
-    "return": "TAGASI OMNIVA LEHELE"
+    "return": "TAGASI OMNIVA LEHELE",
+    "title": "Õnnestus!",
+    "modifiedData": "Ärikliendi andmed uuendatud.",
+    "newData": "Uus äriklient lisatud."
   },
   "login": {
     "username": "Kasutajanimi",
@@ -41,9 +44,30 @@
         "country": "RIIK",
         "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
         "serviceNumber": "TEENUSE KOOD",
-        "edit": "MUUDA"
+        "edit": "MUUDA",
+        "remove": "EEMALDA"
 
     },
     "logout": "Logi välja"
+  },
+  "error": {
+    "atleastOne": "Tagastamiseks peab olema emaili väli või telefoni numbri väli täidetud.",
+    "failed": "Ebaõnnestus!",
+    "deliveryCountryNotChosen": "Saadetise üleandmise riik valimata.",
+    "recipientNotChosen": "Saadetise kättesaaja valimata.",
+    "noName": "Nime lahter täitmata.",
+    "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes.",
+    "invalidNumber": "Mobiilinumber ei vasta nõuetele.",
+    "invalidEmail": "E-mail ei vasta nõuetele."
+  },
+  "filter": {
+    "title": "FILTREERI",
+    "placeholder": {
+      "axapta": "AXAPTA",
+      "clientName": "NIMI",
+      "street": "TÄNAV",
+      "city": "ASULA",
+      "country": "RIIK"
+    }
   }
 }

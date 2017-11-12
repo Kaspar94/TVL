@@ -1,0 +1,5 @@
+{"data" : [
+ { "country" : "EE", "postcode" : "10001", "street" : "Pallasti 28", "deliverypoint" : "Tallinn" },
+{ "country" : "LT", "postcode" : "52119", "street" : "Ateities pl. 45B", "deliverypoint" : "Kaunas" },
+{ "country" : "LV", "postcode" : "LV-1055", "street" : "Daugavgrivas iela 114", "deliverypoint" : "Riga" }
+]}

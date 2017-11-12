@@ -1,46 +1,56 @@
 <div class="row">
-  <div class="col-4"></div>
-  <div class="col-4">
-    <form name="return-form" class="padding-from-header" (submit)="validate()">
-      <div class="col-12 center form-group">{{ 'user.info' | translate }}</div>
-      <label for="deliveryCountry" class="col-12">{{ 'user.deliveryCountry' | translate }}</label>
-      <div class="col-12 center form-group">
-        <input type="text" [(ngModel)]="deliveryCountry" class="form-control" id="deliveryCountry" name="deliveryCountry" disabled required>
-        <div class="input-group-btn dropdown-attr">
-          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a *ngFor="let country of countries" class="dropdown-item" href="#" (click)="changeActiveCountry(country)">{{country}}</a>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <form name="return-form" class="padding-from-header col-12" (submit)="validate()">
+        <div class="center form-group">{{ 'user.info' | translate }}</div>
+
+        <div class="form-group">
+          <label for="deliveryCountry">{{ 'user.deliveryCountry' | translate }}</label>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="sharedService.deliveryCountry" class="form-control" id="deliveryCountry" name="deliveryCountry" disabled required>
+            <div class="input-group-btn dropdown-attr">
+              <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+                <a *ngFor="let country of sharedService.wareHouses" class="dropdown-item" (click)="changeActiveCountry(country)">{{country}}</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <label for="recipient" class="col-12">{{ 'user.recipient' | translate }}</label>
-      <div class="col-12 center form-group">
-        <input type="text" [(ngModel)]="recipient" class="form-control" id="recipient" name="recipient" disabled required>
-        <div class="input-group-btn dropdown-attr">
-          <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" href="#" (click)="changeActiveCompany(indx)">{{company.name + ' ('+ company.country+')'}}</a>
+
+        <div class="form-group">
+          <label for="recipient">{{ 'user.recipient' | translate }}</label>
+          <div class="input-group">
+            <input type="text" [(ngModel)]="recipient" class="form-control" id="recipient" name="recipient" [ngbTypeahead]="search" [disabled]="sharedService.deliveryCountry.length === 0" required>
+            <div class="input-group-btn dropdown-attr">
+              <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="sharedService.deliveryCountry.length === 0">
+              </button>
+              <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+                <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" (click)="changeActiveCompany(company.id)">{{company.name}}</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <label for="name" class="col-12">{{ 'user.name' | translate }}</label>
-      <div class="col-12 center form-group">
-        <input type="text" [(ngModel)]="name" class="form-control col-12" id="name" name="name" required>
-      </div>
-      <label for="mobile" class="col-12">{{ 'user.mobile' | translate }}</label>
-      <div class="col-12 center form-group">
-        <input type="text" [(ngModel)]="mobile" class="form-control col-12" id="mobile" name="mobile" required>
-      </div>
-      <label for="email" class="col-12">{{ 'user.email' | translate }}</label>
-      <div class="col-12 center form-group">
-        <input type="text" [(ngModel)]="email" class="form-control col-12" id="email" name="email" required>
-      </div>
-      <div class="col-12 center form-group">
-        <button type="submit" class="btn btn-primary btn-lg col-12 omniva-red-background no-border">{{ 'user.button.submitReturn' | translate }}</button>
-      </div>
-    </form>
+
+        <div class="form-group">
+          <label for="name">{{ 'user.name' | translate }}</label>
+          <input type="text" [(ngModel)]="name" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">{{ 'user.mobile' | translate }}</label>
+          <input type="tel" [(ngModel)]="mobile" class="form-control " id="mobile" name="mobile" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">{{ 'user.email' | translate }}</label>
+          <input type="email" [(ngModel)]="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-lg col-12 omniva-red-background no-border">{{ 'user.button.submitReturn' | translate }}</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-4"></div>
   </div>
-  <div class="col-4"></div>
-</div>

@@ -4,7 +4,7 @@
   "description": "Server for TVL app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \\\"Error: no tests yet\\\" && exit 1",
+    "test": "mocha --timeout 10000",
     "start": "nodemon server.js --ignore *.json"
   },
   "repository": {
@@ -18,12 +18,18 @@
   },
   "homepage": "https://github.com/CardoKambla/TVL#readme",
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "express": "^4.16.2",
     "passport": "^0.4.0",
-    "passport-http": "^0.3.0"
+    "passport-http": "^0.3.0",
+    "xmlbuilder": "^9.0.4",
+    "randomstring": "^1.1.5",
+    "config": "^1.28.1"
   }
 }

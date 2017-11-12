@@ -11,6 +11,21 @@ exports.list_all_clients = function(req, res) {
 	});
 };
 
+exports.list_all_clients_limited = function(req, res) {
+	fs.readFile(clientsFilePath, encoding, function(err, data) {
+		var data = JSON.parse(data).data;
+		var clients = [];
+		for (var i in data) {
+			clients.push({
+				"id": data[i].id,
+				"name": data[i].name,
+				"deliveryCountry": data[i].deliveryCountry
+			});
+		}
+		res.json(clients);
+	});
+};
+
 exports.filter_clients = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
 		var clientCollection = JSON.parse(data);
@@ -19,7 +34,12 @@ exports.filter_clients = function(req, res) {
 		for (var i in req.query) {
 			if (clientCollection.fields.indexOf(i) > -1) {
 				for (var client in clients) {
-					if (clients[client][i] == req.query[i]) {
+					if (req.query[i].charAt(0) === "*") {
+						var query = req.query[i].substring(1).replace(/[^\w\s!?]/g,'').toLowerCase();
+						if (String(clients[client][i]).toLowerCase().match(query)) {
+							result.push(clients[client]);
+						}
+					} else if (clients[client][i] == req.query[i]) {
 						result.push(clients[client]);
 					}
 				}
@@ -29,7 +49,7 @@ exports.filter_clients = function(req, res) {
 		}
 		res.json(clients);
 	});
-}
+};
 
 exports.create_a_client = function(req, res) {
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
@@ -52,6 +72,21 @@ exports.read_a_client = function(req, res) {
 		var client = helper.findOneById(JSON.parse(data).data, req.params.clientId);
 		if (client) {
 			res.json(client);
+		} else { // Id not found
+			res.status(404).json({'status': 'error', 'cause': 'id not found'});
+		}
+	});
+};
+
+exports.read_a_client_limited = function(req, res) {
+	fs.readFile(clientsFilePath, encoding, function(err, data) {
+		var client = helper.findOneById(JSON.parse(data).data, req.params.clientId);
+		if (client) {
+			res.json({
+				"id": client.id,
+				"name": client.name,
+				"deliveryCountry": client.deliveryCountry
+			});
 		} else { // Id not found
 			res.status(404).json({'status': 'error', 'cause': 'id not found'});
 		}

@@ -2,4 +2,14 @@
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  font-family: tahoma-regular, sans-serif;
+}
+
+@font-face {
+  font-family: 'Tahoma_regular';
+  src: url('assets/font/Tahoma_Regular_font.ttf')
+}
+
+button[id^=ngb-typeahead]:active, button[id^=ngb-typeahead]:focus, button[id^=ngb-typeahead].active {
+  background-color: #FF6319 !important;
 }

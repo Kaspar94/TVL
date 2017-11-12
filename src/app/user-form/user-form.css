@@ -11,10 +11,15 @@
 }
 
 .selection-button {
-  background-color: #F04E23;
+  background-color: #FF6319;
   border-color: transparent;
 }
 
 .dropdown-attr {
   margin-left: 0px;
 }
+
+.dropdown-button-white{
+  color: white;
+}
+

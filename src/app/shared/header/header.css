@@ -22,7 +22,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  margin: auto;
+  margin: auto 15px auto auto;
   right: 0;
 }
 .empty-filters {
@@ -34,5 +34,10 @@
 }
 
 .header-margin {
-  margin-right: -1px
+  margin-right: -1px;
 }
+
+.header-attr {
+  margin: 6px;
+}
+

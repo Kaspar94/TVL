@@ -5,9 +5,13 @@
 
 .view-header-attr {
   margin-top: 40px;
-  border: solid 1px #F04E23
+  border: solid 1px #FF6319
 }
 
 .table .btn {
   min-width: 100%;
+}
+
+.auto-margin {
+  margin: auto;
 }

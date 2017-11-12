@@ -1,15 +1,16 @@
 import {Component} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {TranslateService} from "@ngx-translate/core";
-import {SharedService} from "../../shared/shared.service";
-import {BusinessClient} from "../../shared/shared.model";
-import {isNull} from "util";
-import {ClientService} from "../client.service";
+import {TranslateService} from '@ngx-translate/core';
+import {SharedService} from '../../shared/shared.service';
+import {BusinessClient} from '../../shared/shared.model';
+import {isNull} from 'util';
+import {ClientService} from '../client.service';
+import {AlertService} from '../../shared/alert/alert.service';
 
 @Component({
   selector: 'client-edit-data',
   templateUrl: './client-edit.component.html',
-  styleUrls: ['../../app.component.css', '../../shared/header/header.css', '../client.css']
+  styleUrls: ['../../app.component.css', '../../shared/header/header.css', '../client.css', '../../user-form/user-form.css']
 })
 export class ClientEditComponent {
 
@@ -20,7 +21,14 @@ export class ClientEditComponent {
               public activeModal: NgbActiveModal,
               public sharedService: SharedService,
               public clientService: ClientService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private alertService: AlertService,
+              private translateService: TranslateService) {
+  }
+
+  remove(client: BusinessClient) {
+    this.clientService.removeClient(client);
+
   }
 
   setClient(client: BusinessClient) {
@@ -34,24 +42,21 @@ export class ClientEditComponent {
   }
 
   confirmChanges() {
-    console.log("something");
-    console.log(this.clientEquals(this.tempClient, this.client));
     if (this.clientEquals(this.tempClient, this.client)) {
       this.close();
     } else {
-      //TODO: Success/error message
       if (isNull(this.client.id)) {
-        this.sharedService.createClient(this.client).subscribe((response) => {
-          console.log(response);
+        this.clientService.createClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
           this.close();
-        })
+          this.alertService.success(this.translateService.instant('success.newData'), this.translateService.instant('success.title'))
+        },(err) => this.alertService.error(err))
       } else {
-        this.sharedService.updateClient(this.client).subscribe((response) => {
-          console.log(response);
+        this.clientService.updateClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
           this.close();
-        })
+          this.alertService.success(this.translateService.instant('success.modifiedData'), this.translateService.instant('success.title'))
+        },(err) => this.alertService.error(err))
       }
     }
   }
@@ -66,5 +71,13 @@ export class ClientEditComponent {
       original.deliveryCountry === changed.deliveryCountry &&
       original.serviceNumber === changed.serviceNumber
     );
+  }
+
+  changeCountry(wareHouse: string) {
+      this.client.country = wareHouse;
+  }
+
+  changeDeliveryCountry(wareHouse: string) {
+      this.client.deliveryCountry = wareHouse;
   }
 }

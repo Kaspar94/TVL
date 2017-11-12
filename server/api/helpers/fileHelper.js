@@ -4,6 +4,10 @@ exports.findOneById = function (array, id) {
   return exports.findOne(array, 'id', id);
 }
 
+exports.findOneByCountry = function(array, country) {
+  return exports.findOne(array, 'country', country);
+}
+
 exports.findOne = function (array, key, value) {
   for (var i in array) {
     if (array[i][key] == value)

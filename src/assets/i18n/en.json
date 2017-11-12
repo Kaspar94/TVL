@@ -1,0 +1,73 @@
+{
+  "header": {
+    "returnTitle": "PRODUCT RETURNS",
+    "adminTitle": "BUSINESS CLIENT MANAGEMENT"
+  },
+  "user": {
+    "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "recipient": "RECIPIENT",
+    "deliveryCountry": "DELIVERY COUNTRY",
+    "name": "NAME",
+    "mobile": "MOBILE NUMBER",
+    "email": "E-MAIL",
+    "button": {
+      "submitReturn": "SUBMIT"
+    }
+  },
+  "success": {
+    "info": "SUCCESS!. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "button": "AGAIN",
+    "return": "BACK TO OMNIVA WEBPAGE",
+    "title": "Success!",
+    "modifiedData": "Business clients data updated!",
+    "newData": "New business client added."
+  },
+  "login": {
+    "username": "Username",
+    "password": "Password",
+    "button": "Log in",
+    "logIn": "Authentication"
+  },
+  "admin": {
+    "title": "Business client management",
+    "edit": "Business client edit",
+    "addButton": "ADD",
+    "add": "Adding a new business client",
+    "languageChoice": "Languages",
+    "table": {
+      "id": "ID",
+      "axapta": "AXAPTA",
+      "name": "NAME",
+      "street": "STREET",
+      "city": "CITY",
+      "postIndex": "POST INDEX",
+      "country": "COUNTRY",
+      "deliveryCountry": "DELIVERY COUNTRY",
+      "serviceNumber": "SERVICE NUMBER",
+      "edit": "EDIT",
+      "remove": "REMOVE"
+
+    },
+    "logout": "Log out"
+  },
+  "error": {
+    "atleastOne": "Atleast email or mobile number have to be filled out.",
+    "failed": "Failed!",
+    "deliveryCountryNotChosen": "Delivery country not chosen.",
+    "recipientNotChosen": "Recipient not chosen.",
+    "noName": "No name entered.",
+    "doesNotExist": "Recipient does not exist.",
+    "invalidNumber": "Mobile number is invalid.",
+    "invalidEmail": "E-mail is invalid."
+  },
+  "filter": {
+    "title": "FILTER",
+    "placeholder": {
+      "axapta": "AXAPTA",
+      "clientName": "NAME",
+      "street": "STREET",
+      "city": "CITY",
+      "country": "COUNTRY"
+    }
+  }
+}

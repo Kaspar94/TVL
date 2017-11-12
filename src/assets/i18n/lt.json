@@ -1,0 +1,72 @@
+{
+  "header": {
+    "returnTitle": "PRODUKTO ATGALAVIMAS",
+    "adminTitle": "VERSLO KLIENTŲ VALDYMAS"
+  },
+  "user": {
+    "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "recipient": "LAIVO ĮRENGINYS",
+    "deliveryCountry": "TRANSMISIJOS ŠALIS",
+    "name": "VARDAS",
+    "mobile": "TELEFONO NUMERIS",
+    "email": "ELEKTRONINIS PAŠTAS",
+    "button": {
+      "submitReturn": "GRĮŽTI"
+    }
+  },
+  "success": {
+    "info": "grįžti sėkmingai. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "button": "Grįžti atgal",
+    "return": "GRĮŽTI Į OMNIPA PUSLAPĮ",
+    "title": "Sėkmė!",
+    "modifiedData": "Verslo kliento duomenys atnaujinti.",
+    "newData": "Pridėtas naujas verslo klientas."
+  },
+  "login": {
+    "username": "Vartotojo vardas",
+    "password": "Slaptažodis",
+    "button": "Prisijunkite",
+    "logIn": "Prisijunkite"
+  },
+  "admin": {
+    "title": "Verslo klientų valdymas",
+    "edit": "Verslo klientų keitimas",
+    "addButton": "PRIEDAS",
+    "add": "Verslo klientai",
+    "languageChoice": "Kalbos pasirinkimas",
+    "table": {
+      "id": "ID",
+      "axapta": "AXAPTA",
+      "name": "VARDAS",
+      "street": "GATVĖ",
+      "city": "MIESTAS",
+      "postIndex": "SKELBIMO INDEKSAS",
+      "country": "ŠALIS",
+      "deliveryCountry": "PRISTATYMO ŠALIS",
+      "serviceNumber": "PASLAUGOS NUMERIS",
+      "edit": "REDAGUOTI",
+      "remove": "IŠTRINTI"
+    },
+    "logout": "Atsijungti"
+  },
+  "error": {
+    "atleastOne": "El. Pašto laukas arba telefono numerio laukas turi būti užpildytas, kad grįžtumėte.",
+    "failed": "Nepavyko!",
+    "deliveryCountryNotChosen": "Perkėlimo būsena nėra pasirinkta.",
+    "recipientNotChosen": "Išpakavimas siuntą.",
+    "noName": "Vardas laukas yra tuščias.",
+    "doesNotExist": "Duomenų gavėjo duomenų nėra.",
+    "invalidNumber": "Mobiliojo telefono numeris neteisingas.",
+    "invalidEmail": "El. Paštas neteisingas."
+  },
+  "filter": {
+    "title": "FILTRAS",
+    "placeholder": {
+      "axapta": "AXAPTA",
+      "clientName": "VARDAS",
+      "street": "GATVĖ",
+      "city": "MIESTAS",
+      "country": "ŠALIS"
+    }
+  }
+}
