@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/CardoKambla/TVL#readme",
   "devDependencies": {
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^2.4.5"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -27,10 +30,5 @@
     "passport-http": "^0.3.0",
     "xmlbuilder": "^9.0.4",
     "randomstring": "^1.1.5"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-http": "^2.0.1",
-    "mocha": "^2.4.5"
   }
 }

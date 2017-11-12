@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {SharedService} from '../../shared/shared.service';
@@ -13,7 +13,7 @@ import {ClientService} from '../client.service';
   templateUrl: './client-view.component.html',
   styleUrls: ['../../app.component.css', '../../shared/header/header.css', '../client.css']
 })
-export class ClientViewComponent {
+export class ClientViewComponent implements OnInit{
   modalOption: NgbModalOptions = {};
 
 
@@ -23,6 +23,10 @@ export class ClientViewComponent {
               private modalService: NgbModal) {
     this.modalOption.backdrop = 'static';
     this.modalOption.keyboard = false;
+  }
+
+  ngOnInit() {
+    this.clientService.loadAll();
   }
 
 

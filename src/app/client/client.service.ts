@@ -23,7 +23,6 @@ export class ClientService {
     this.filterCity = '';
     this.filterCountry = '';
     this.filteredClients = [];
-    this.loadAll();
   }
 
   loadAll() {
