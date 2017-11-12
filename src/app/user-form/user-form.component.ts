@@ -102,9 +102,10 @@ export class UserFormComponent implements OnInit {
 
   validateNumber() {
     if (!isNullOrUndefined(this.mobile)) {
-      const est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$|^(\+)?(372\s)?(5\d{1}\s\d{2,3}\s\d{3}|8\d{1}\s\d{3}\s\d{3})$/;
-      const lv = /^(\+)?(371)?(2\d{7})$|^(\+)?(371\s)?(2\d{1}\s\d{3}\s\d{3})$/;
-      const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$|^(\+)?(370\s)?(6\d{1}\s\d{3}\s\d{3}|86\s\d{2}\s\d{2}\s\d{3})$/;
+      // Validaatorid on tehtud Omniva juhendi järgi mobiilinumbrite valideerimise osas. Viide -> https://www.omniva.ee/public/files/failid/manual_xml_dataexchange_eng.pdf -> lk. 7
+      const est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$/;
+      const lv = /^(\+)?(371)?(2\d{7})$/;
+      const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$/;
       const mobileTrimmed = this.trimWhitespace(this.mobile);
       // console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
       // console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
@@ -116,10 +117,10 @@ export class UserFormComponent implements OnInit {
 
   private trimWhitespace(text: any) {
     let trimmedText = text;
-    while (trimmedText.indexOf(' ') > 1) {
+    while (trimmedText.indexOf(' ') > -1) {
       trimmedText = trimmedText.replace(' ', '');
     }
-    while (trimmedText.indexOf('-') > 1) {
+    while (trimmedText.indexOf('-') > -1) {
       trimmedText = trimmedText.replace('-', '');
     }
     return trimmedText;
@@ -127,6 +128,7 @@ export class UserFormComponent implements OnInit {
 
   validateEmail() {
     if (!isNullOrUndefined(this.email)) {
+      // Kasutatud on email validaatorit (viide: http://emailregex.com/), kuhu on juurde lisatud ka täpitähed
       const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/;
       // console.log(this.email + ' : ' + emailRegEx.test(this.email));
       return emailRegEx.test(this.email);
