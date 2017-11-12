@@ -46,7 +46,7 @@ describe('BusinessClients', () => {
         res.body[0].should.have.property('name');
         res.body[0].should.have.property('city');
         res.body[0].should.have.property('postIndex');
-        res.body[0].should.have.property('countrye');
+        res.body[0].should.have.property('country');
         res.body[0].should.have.property('deliveryCountry');
         res.body[0].should.have.property('serviceNumber');
         res.body[0].id.should.equal(0);
