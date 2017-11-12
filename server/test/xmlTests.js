@@ -8,7 +8,7 @@ var fs = require('fs');
 chai.use(chaiHttp);
 
 describe('xmlController', () => {
-  it('it should retrieve XML file on /return/client POST', (done) => {
+  it('it should retrieve XML file on /return/client PUT', (done) => {
     chai.request(server)
       .put('/return/client')
       .send({
@@ -17,10 +17,21 @@ describe('xmlController', () => {
         "business_id" : 1
       })
       .end((err, res) => {
-	      //console.log(err);
         res.should.have.status(200);
         res.should.be.xml;
         done();
       });
   });
+
+  it('it should list all available countries /returnCountries GET', (done) => {
+    chai.request(server)
+      .get('/returnCountries')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        done();
+      });
+  });
+
+
 });
