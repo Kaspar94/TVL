@@ -8,23 +8,60 @@ var returnsFilePath = './api/data/returnAddresses.json';
 var pwFilePath = './api/data/password.json';
 var randomstring = require("randomstring");
 
-exports.get_returns = function(req, res) {
+exports.get_returns = function (req, res) {
 	fs.readFile(returnsFilePath, encoding, function(err, data) {
 		data = JSON.parse(data).data
 		var arr = [];
 		if (data) {
 			for (var i = 0; i<data.length;i++) {
-				arr.push(data[i].country);	
+				arr.push(data[i].country);
 			}
 			res.json(arr);
-		} else { // Id not found
-			res.status(404).json({'status': 'error', 'cause': 'unable to read data'});
+		} else {
+			res.status(500).json({'status': 'error', 'cause': 'unable to read data'});
 		}
 	});
 };
 
-exports.send_xml = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {			
+var validateNumber = function (number) {
+	if (number) {
+		const est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$|^(\+)?(372\s)?(5\d{1}\s\d{2,3}\s\d{3}|8\d{1}\s\d{3}\s\d{3})$/g;
+		const lv = /^(\+)?(371)?(2\d{7})$|^(\+)?(371\s)?(2\d{1}\s\d{3}\s\d{3})$/g;
+		const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$|^(\+)?(370\s)?(6\d{1}\s\d{3}\s\d{3}|86\s\d{2}\s\d{2}\s\d{3})$/g;
+		const mobileTrimmed = trimWhitespace(number);
+		// console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
+		// console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
+		// console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
+		return  mobileTrimmed.match(est) || mobileTrimmed.match(lv) || mobileTrimmed.match(lt);
+	}
+	return false;
+}
+
+var trimWhitespace = function (text) {
+		while (text.indexOf(' ') > 1) {
+			text = text.replace(' ', '');
+		}
+		while (text.indexOf('-') > 1) {
+			text = text.replace('-', '');
+		}
+		return text;
+};
+
+exports.send_xml = function (req, res) {
+	if (!req.body.client_email || !req.body.client_email.match(/\w+@\w+\.\w+/g)) {
+		res.status(400).json({'status': 'error', 'cause': 'email wrong or missing'});
+		return;
+	} else if (!validateNumber(req.body.client_number)) {
+		res.status(400).json({'status': 'error', 'cause': 'mobile number wrong or missing'});
+		return;
+	} else if (!req.body.client_name || req.body.client_name.length < 2) {
+		res.status(400).json({'status': 'error', 'cause': 'name empty or missing'});
+		return;
+	} else if (!req.body.business_id || ! (typeof req.body.business_id === 'number')) {
+		res.status(400).json({'status': 'error', 'cause': 'id not a number or missing'});
+		return;
+	}
+	fs.readFile(clientsFilePath, encoding, function(err, data) {
 			var client = helper.findOneById(JSON.parse(data).data, req.body.business_id);
 			if (client) {
 
@@ -49,7 +86,7 @@ exports.send_xml = function(req, res) {
 						       "header": {
 							  "@sender_cd": "24510",
 							  "@file_id" : randomstring.generate(14)
-								
+
 						       },
 						       "item_list": {
 							  "item": {
@@ -98,7 +135,7 @@ exports.send_xml = function(req, res) {
 
 					var builder = require('xmlbuilder');
 					var xml = builder.create(obj);
-					
+
 					// send xml to ominva API
 					fs.readFile(pwFilePath, encoding, function(err, data) {
 						if(err) {
@@ -108,16 +145,16 @@ exports.send_xml = function(req, res) {
 						var pw = JSON.parse(data);
 						console.log(pw);
 						if(pw != null) {
-							var options = {                 
-								method: 'POST',             
-								uri: 'https://edixml.post.ee/epmx/services/messagesService/',    
-								body: xml.toString(),                
-								headers: {    
-									'Content-Type': 'text/xml;charset=utf-8',           
-									'Authorization': 'Basic ' + new Buffer(pw.username+":"+pw.password).toString('base64')                  
+							var options = {
+								method: 'POST',
+								uri: 'https://edixml.post.ee/epmx/services/messagesService/',
+								body: xml.toString(),
+								headers: {
+									'Content-Type': 'text/xml;charset=utf-8',
+									'Authorization': 'Basic ' + new Buffer(pw.username+":"+pw.password).toString('base64')
 								}
-							};                                         
-							request(options, function(error, response, body) {  
+							};
+							request(options, function(error, response, body) {
 								if(response.statusCode == 200) {
 									res.send('{"status" : "success"}');
 								} else {
