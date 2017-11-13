@@ -3,7 +3,7 @@ import {BusinessClient} from '../shared/shared.model';
 import {SharedService} from '../shared/shared.service';
 import {AlertService} from '../shared/alert/alert.service';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable} from 'rxjs';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/distinctUntilChanged';

@@ -11,13 +11,13 @@
       <div class="col-12 form-group">
         <input type="text" [(ngModel)]="client.axapta" class="form-control" id="axapta_s" name="axapta" required autocomplete="off">
       </div>
+      <label for="name_s" class="col-12">{{ 'admin.table.name' | translate }}</label>
+      <div class="col-12 form-group">
+        <input type="text" [(ngModel)]="client.name" class="form-control" id="name_s" name="name" required autocomplete="off">
+      </div>
       <label for="street_s" class="col-12">{{ 'admin.table.street' | translate }}</label>
       <div class="col-12 form-group">
         <input type="text" [(ngModel)]="client.street" class="form-control" id="street_s" name="street" required autocomplete="off">
-      </div>
-      <label for="name_s" class="col-12">{{ 'admin.table.name' | translate }}</label>
-        <div class="col-12 form-group">
-          <input type="text" [(ngModel)]="client.name" class="form-control" id="name_s" name="name" required autocomplete="off">
       </div>
       <label for="city_s" class="col-12">{{ 'admin.table.city' | translate }}</label>
       <div class="col-12 form-group">
