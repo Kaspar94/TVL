@@ -7,7 +7,7 @@ var clientsFilePath = './api/data/clients.json';
 var returnsFilePath = './api/data/returnAddresses.json';
 var pwFilePath = './api/data/password.json';
 var randomstring = require("randomstring");
-
+var config = require('config');
 exports.get_returns = function (req, res) {
 	fs.readFile(returnsFilePath, encoding, function(err, data) {
 		data = JSON.parse(data).data
@@ -56,7 +56,6 @@ var validateEmailOrPhone = function (email, number) {
 	if (!validateNumber(number)) {
 		isPhone = false;
 	}
-	console.log(isMail, isPhone);
 	return isMail || isPhone;
 }
 
@@ -71,8 +70,6 @@ exports.send_xml = function (req, res) {
 		return;
 	}
 
-	res.end();
-	return;
 	fs.readFile(clientsFilePath, encoding, function(err, data) {
 			var client = helper.findOneById(JSON.parse(data).data, req.body.business_id);
 			if (client) {
@@ -155,25 +152,29 @@ exports.send_xml = function (req, res) {
 							return;
 						}
 						var pw = JSON.parse(data);
-						console.log(pw);
+						//console.log(pw);
 						if(pw != null) {
-							var options = {
-								method: 'POST',
-								uri: 'https://edixml.post.ee/epmx/services/messagesService/',
-								body: xml.toString(),
-								headers: {
-									'Content-Type': 'text/xml;charset=utf-8',
-									'Authorization': 'Basic ' + new Buffer(pw.username+":"+pw.password).toString('base64')
-								}
-							};
-							request(options, function(error, response, body) {
-								if(response.statusCode == 200) {
-									res.send('{"status" : "success"}');
-								} else {
-									res.send('{"status" : "error", "cause" : "'+error+'"}');
-								}
+							if(config.util.getEnv('NODE_ENV') !== 'test') {
+								var options = {
+									method: 'POST',
+									uri: 'https://edixml.post.ee/epmx/services/messagesService/',
+									body: xml.toString(),
+									headers: {
+										'Content-Type': 'text/xml;charset=utf-8',
+										'Authorization': 'Basic ' + new Buffer(pw.username+":"+pw.password).toString('base64')
+									}
+								};
+								request(options, function(error, response, body) {
+									if(response.statusCode == 200) {
+										res.send('{"status" : "success"}');
+									} else {
+										res.send('{"status" : "error", "cause" : "'+error+'"}');
+									}
 
-							});
+								});
+							} else {
+								res.send(xml.toString());
+							}
 						} else {
 							res.status(404).json({'status': 'error', 'cause': 'password file data not found'});
 						}
