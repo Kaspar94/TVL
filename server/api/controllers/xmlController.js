@@ -90,10 +90,10 @@ exports.send_xml = function (req, res) {
 					   "soapenv:Envelope": {
 					      "soapenv:Body": {
 						 "xsd:businessToClientMsgRequest": {
-						    "partner": "24510",
+						    "partner": client.axapta,
 						    "interchange": {
 						       "header": {
-							  "@sender_cd": "24510",
+							  "@sender_cd": client.axapta,
 							  "@file_id" : randomstring.generate(14)
 
 						       },
@@ -118,7 +118,7 @@ exports.send_xml = function (req, res) {
 								"mobile": req.body.client_number,
 								"email": req.body.client_email,
 								"address": {
-								   "@postcode": ret.postcode,
+								   "@postcode":  ret.postcode,
 								   "@deliverypoint": ret.deliverypoint,
 								   "@country": ret.country,
 								   "@street": ret.street
