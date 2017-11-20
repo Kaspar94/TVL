@@ -1,0 +1,6 @@
+{
+  "credentials": {
+    "privateKeyPath": "privatekey.key",
+    "certificatePath": "certificate.crt"
+  }
+}
