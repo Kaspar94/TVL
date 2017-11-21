@@ -5,14 +5,14 @@ var helper = require('../helpers/fileHelper');
 var encoding = 'utf8';
 var clientsFilePath = './api/data/clients.json';
 
-exports.list_all_clients = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.list_all_clients = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		res.json(JSON.parse(data).data);
 	});
 };
 
-exports.list_all_clients_limited = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.list_all_clients_limited = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var data = JSON.parse(data).data;
 		var clients = [];
 		for (var i in data) {
@@ -26,33 +26,32 @@ exports.list_all_clients_limited = function(req, res) {
 	});
 };
 
-exports.filter_clients = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.filter_clients_limited = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var clientCollection = JSON.parse(data);
-		var clients = clientCollection.data;
-		var result = [];
-		for (var i in req.query) {
-			if (clientCollection.fields.indexOf(i) > -1) {
-				for (var client in clients) {
-					if (req.query[i].charAt(0) === "*") {
-						var query = req.query[i].substring(1).replace(/[^\w\s!?]/g,'').toLowerCase();
-						if (String(clients[client][i]).toLowerCase().match(query)) {
-							result.push(clients[client]);
-						}
-					} else if (clients[client][i] == req.query[i]) {
-						result.push(clients[client]);
-					}
-				}
-				clients = result;
-				result = [];
-			}
+		var clients = [];
+		for (var i in clientCollection.data) {
+			clients.push({
+				"id": clientCollection.data[i].id,
+				"name": clientCollection.data[i].name,
+				"deliveryCountry": clientCollection.data[i].deliveryCountry
+			});
 		}
+		clients = helper.filter({fields: ["id", "name", "deliveryCountry"], data: clients}, req.query);
 		res.json(clients);
 	});
 };
 
-exports.create_a_client = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.filter_clients = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
+		var clientCollection = JSON.parse(data);
+		var clients = helper.filter(clientCollection, req.query);
+		res.json(clients);
+	});
+};
+
+exports.create_a_client = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var clientCollection = JSON.parse(data);
 		var newClient = helper.create(clientCollection.data, clientCollection.nextId, clientCollection.fields, req.body);
 		clientCollection.nextId += 1;
@@ -67,8 +66,8 @@ exports.create_a_client = function(req, res) {
 	});
 };
 
-exports.read_a_client = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.read_a_client = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var client = helper.findOneById(JSON.parse(data).data, req.params.clientId);
 		if (client) {
 			res.json(client);
@@ -78,8 +77,8 @@ exports.read_a_client = function(req, res) {
 	});
 };
 
-exports.read_a_client_limited = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.read_a_client_limited = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var client = helper.findOneById(JSON.parse(data).data, req.params.clientId);
 		if (client) {
 			res.json({
@@ -93,8 +92,8 @@ exports.read_a_client_limited = function(req, res) {
 	});
 };
 
-exports.update_a_client = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.update_a_client = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var clientCollection = JSON.parse(data);
 		var updatedClient = helper.updateOneById(clientCollection.data, req.params.clientId, req.body);
 
@@ -112,8 +111,8 @@ exports.update_a_client = function(req, res) {
 	});
 };
 
-exports.delete_a_client = function(req, res) {
-	fs.readFile(clientsFilePath, encoding, function(err, data) {
+exports.delete_a_client = function (req, res) {
+	fs.readFile(clientsFilePath, encoding, function (err, data) {
 		var clientCollection = JSON.parse(data);
 		if (helper.removeOneById(clientCollection.data, req.params.clientId)) {
 			fs.writeFile(clientsFilePath, JSON.stringify(clientCollection), encoding, function (err) {
