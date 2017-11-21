@@ -69,5 +69,21 @@
       "city": "ASULA",
       "country": "RIIK"
     }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Kas olete kindel, et soovite ärikliendi eemaldada?",
+      "edit": "Kas olete kindel, et soovite ärikliendi andmeid muuta?",
+      "new": "Kas olete kindel, et soovite uut ärikliendi luua?"
+    },
+    "message": {
+      "remove": "Äriklient eemaldatakse.",
+      "edit": "Ärikliendi andmed muudetakse.",
+      "new": "Uus äriklient lisatakse nimekirja."
+    },
+    "option": {
+      "accept": "Jah",
+      "decline": "ei"
+    }
   }
 }

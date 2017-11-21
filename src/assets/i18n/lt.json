@@ -68,5 +68,21 @@
       "city": "MIESTAS",
       "country": "ŠALIS"
     }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Ar tikrai norite pašalinti šį klientą?",
+      "edit": "Ar tikrai norite redaguoti šį klientą?",
+      "new": "Ar tikrai norite sukurti naują klientą?"
+    },
+    "message": {
+      "remove": "Klientas bus pašalintas.",
+      "edit": "Kliento duomenys bus pakeisti.",
+      "new": "Bus sukurtas naujas klientas."
+    },
+    "option": {
+      "accept": "Taip",
+      "decline": "Ne"
+    }
   }
 }

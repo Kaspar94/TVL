@@ -58,13 +58,13 @@
       <div *ngIf="client.id === null" class="col-12 row auto-margin">
         <div class="col-3"></div>
         <div class="col-6 center">
-          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.addButton' | translate }}</button>
+          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white" [disabled]="!isFormFilled()">{{ 'admin.addButton' | translate }}</button>
         </div>
         <div class="col-3"></div>
       </div>
       <div *ngIf="client.id !== null" class="col-12 row auto-margin">
         <div class="col-6">
-          <button class="btn btn-lg col-12 omniva-red-background no-border white" (click)="remove(client)">{{ 'admin.table.remove' | translate }}</button>
+          <button type="button" class="btn btn-lg col-12 omniva-red-background no-border white" (click)="remove()">{{ 'admin.table.remove' | translate }}</button>
         </div>
         <div class="col-6">
           <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button>

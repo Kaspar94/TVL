@@ -69,5 +69,21 @@
       "city": "PILSĒTA",
       "country": "VALSTS"
     }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Vai tiešām vēlaties noņemt šo klientu?",
+      "edit": "Vai tiešām vēlaties rediģēt šo klientu?",
+      "new": "Vai tiešām vēlaties izveidot jaunu klientu?"
+    },
+    "message": {
+      "remove": "Klients tiks noņemts.",
+      "edit": "Klienta dati tiks mainīti.",
+      "new": "Jauns klients tiks izveidots."
+    },
+    "option": {
+      "accept": "Jā",
+      "decline": "Nē"
+    }
   }
 }

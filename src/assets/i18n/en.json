@@ -69,5 +69,21 @@
       "city": "CITY",
       "country": "COUNTRY"
     }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Are you sure you want to remove this client?",
+      "edit": "Are you sure you want to edit this client?",
+      "new": "Are you sure you want to create a new client?"
+    },
+    "message": {
+      "remove": "Client will be removed.",
+      "edit": "Client's data will be changed.",
+      "new": "A new client will be created."
+    },
+    "option": {
+      "accept": "Yes",
+      "decline": "No"
+    }
   }
 }
