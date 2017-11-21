@@ -38,21 +38,24 @@ app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
 
-if (config.util.getEnv('NODE_ENV') === 'production') {
+if (config.get("https")) {
   var https = require('https');
   var fs = require('fs');
 
   var credetialsPaths = config.get('credentials');
-  console.log(credetialsPaths);
 
   https.createServer({
       key: fs.readFileSync(credetialsPaths.privateKeyPath),
       cert: fs.readFileSync(credentialsPaths.certificatePath)
-  }, app).listen(55555);
-  console.log('RESTful API server started on: ' + port);
+  }, app).listen(443);
+  console.log('RESTful API server started on: ' + 443 + "\n");
 } else {
   app.listen(port);
-  console.log('RESTful API server started on: ' + port + "\nServer running in development mode. Set environment value 'NODE_ENV=production' to enable production mode.");
+  console.log('RESTful API server started on: ' + port);
+}
+
+if (config.util.getEnv('NODE_ENV') !== 'production') {
+  console.log("Server running in development mode. Set environment value 'NODE_ENV=production' to enable production mode.");
 }
 
 module.exports = app;
