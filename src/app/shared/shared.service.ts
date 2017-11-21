@@ -58,6 +58,6 @@ export class SharedService {
   }
 
   filterDeliveryCountry(country: any) {
-    return this.http.get('/businessClient/where?deliveryCountry=' + country);
+    return this.http.get('/businessClient/l/where?deliveryCountry=' + country);
   }
 }
