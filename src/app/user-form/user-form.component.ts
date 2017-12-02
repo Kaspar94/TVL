@@ -107,22 +107,16 @@ export class UserFormComponent implements OnInit {
       const lv = /^(\+)?(371)?(2\d{7})$/;
       const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$/;
       const mobileTrimmed = this.trimWhitespace(this.mobile);
-      // console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
-      // console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
-      // console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
+      console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
+      console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
+      console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
       return  lv.test(mobileTrimmed) || lt.test(mobileTrimmed) || est.test(mobileTrimmed);
     }
     return false;
   }
 
   private trimWhitespace(text: any) {
-    let trimmedText = text;
-    while (trimmedText.indexOf(' ') > -1) {
-      trimmedText = trimmedText.replace(' ', '');
-    }
-    while (trimmedText.indexOf('-') > -1) {
-      trimmedText = trimmedText.replace('-', '');
-    }
+    let trimmedText = text.replace(/( |-)/g, '');
     return trimmedText;
   }
 

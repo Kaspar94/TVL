@@ -26,7 +26,7 @@
               <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="sharedService.deliveryCountry.length === 0">
               </button>
               <div class="dropdown-menu dropdown-menu-right scrollable-menu">
-                <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" (click)="changeActiveCompany(company.id)">{{company.name}}</a>
+                <a *ngFor="let company of filteredCompanies" class="dropdown-item" (click)="changeActiveCompany(company.id)">{{company.name}}</a>
               </div>
             </div>
           </div>

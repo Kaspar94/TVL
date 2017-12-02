@@ -13,3 +13,6 @@ html, body {
 button[id^=ngb-typeahead]:active, button[id^=ngb-typeahead]:focus, button[id^=ngb-typeahead].active {
   background-color: #FF6319 !important;
 }
+button:hover, a:hover {
+  cursor: pointer;
+}
