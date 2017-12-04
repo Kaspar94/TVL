@@ -11,11 +11,9 @@
         <label for="password" class="col-12">{{ 'login.password' | translate }}
           <input type="password" [(ngModel)]="sharedService.password" class="form-control" id="password" name="password" required autocomplete="off"></label>
       </div>
-      <div class="modal-footer">
-        <div class="col-4"></div>
-        <div class="col-4 center">
+      <div class="modal-footer row justify-content-center">
+        <div class="col-6">
           <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'login.button' | translate }}</button>
         </div>
-        <div class="col-4"></div>
       </div>
 </form>
