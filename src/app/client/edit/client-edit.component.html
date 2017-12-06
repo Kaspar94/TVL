@@ -71,7 +71,7 @@
           <button type="button" class="btn btn-lg col-12 omniva-red-background no-border white center-text" (click)="close()">{{ 'admin.table.close' | translate }}</button>
         </div>
         <div class="col-4">
-          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white center-text">{{ 'admin.table.edit' | translate }}</button>
+          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white center-text" [disabled]="!isFormFilled()">{{ 'admin.table.edit' | translate }}</button>
         </div>
       </div>
     </div>
