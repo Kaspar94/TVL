@@ -76,13 +76,13 @@ exports.send_xml = function (req, res) {
 
 				fs.readFile(returnsFilePath, encoding, function(err, data) {
 					if(err) {
-						res.status(404).json({'status': 'error', 'cause': 'could not load storage countries file returnAddresses.json'});
+						res.status(500).json({'status': 'error', 'cause': 'could not load storage countries file returnAddresses.json'});
 						return;
 					}
 					var ret = null;
 					ret = helper.findOneByCountry(JSON.parse(data).data, client.deliveryCountry);
 					if(ret == null) {
-						res.status(404).json({'status': 'error', 'cause': 'deliveryCountry ' + client.deliveryCountry + ' not found'});
+						res.status(500).json({'status': 'error', 'cause': 'deliveryCountry ' + client.deliveryCountry + ' not found'});
 						return;
 					}
 					// create XML object
@@ -148,7 +148,7 @@ exports.send_xml = function (req, res) {
 					// send xml to ominva API
 					fs.readFile(pwFilePath, encoding, function(err, data) {
 						if(err) {
-							res.status(404).json({'status': 'error', 'cause': 'could not find API password file'});
+							res.status(500).json({'status': 'error', 'cause': 'could not find API password file'});
 							return;
 						}
 						var pw = JSON.parse(data);
@@ -176,12 +176,12 @@ exports.send_xml = function (req, res) {
 								res.send(xml.toString());
 							}
 						} else {
-							res.status(404).json({'status': 'error', 'cause': 'password file data not found'});
+							res.status(500).json({'status': 'error', 'cause': 'password file data not found'});
 						}
 					});
 				});
 			} else { // Id not found
-				res.status(404).json({'status': 'error', 'cause': 'id not found'});
+				res.status(500).json({'status': 'error', 'cause': 'id not found'});
 			}
 	});
 };
