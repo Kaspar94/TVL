@@ -25,3 +25,8 @@
   justify-content: center;
   font-size: 13px;
 }
+
+.confirm-button {
+  width: 70px;
+  margin-right: 15px;
+}

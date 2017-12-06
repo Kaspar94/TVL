@@ -33,9 +33,13 @@ export class CustomerSideHeaderComponent{
   logout() {
     this.sharedService.loggedIn = false;
     this.sharedService.title = 'header.returnTitle';
+    this.sharedService.username = null;
+    this.sharedService.password = null;
   }
 
   openLogin() {
     const dialog = (<LoginComponent>this.modalService.open(LoginComponent, this.modalOption).componentInstance);
+    this.sharedService.username = null;
+    this.sharedService.password = null;
   }
 }
