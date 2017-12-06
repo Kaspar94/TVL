@@ -20,7 +20,6 @@ export class UserFormComponent implements OnInit {
   filteredCompanies: BusinessClient[];
   filteredCompaniesString: string[];
   recipient: any;
-  email: any;
   chosenCompany: BusinessClient;
 
   constructor(public sharedService: SharedService,
