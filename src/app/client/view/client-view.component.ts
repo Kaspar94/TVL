@@ -49,6 +49,10 @@ export class ClientViewComponent implements OnInit{
     );
   }
 
+  changeCountry(country: any) {
+    this.clientService.filterCountry = country;
+  }
+
   emptyFilters() {
     this.clientService.filterAxapta = '';
     this.clientService.filterName = '';
