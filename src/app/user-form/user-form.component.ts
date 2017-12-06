@@ -1,5 +1,5 @@
-import {Component, AfterViewInit, OnInit} from '@angular/core';
-import {BusinessClient} from '../shared/shared.model';
+import {Component, OnInit} from '@angular/core';
+import {BusinessClient, FormInfo} from '../shared/shared.model';
 import {SharedService} from '../shared/shared.service';
 import {AlertService} from '../shared/alert/alert.service';
 import {TranslateService} from '@ngx-translate/core';
@@ -19,8 +19,6 @@ export class UserFormComponent implements OnInit {
   filteredCompanies: BusinessClient[];
   filteredCompaniesString: string[];
   recipient: any;
-  name: any;
-  mobile: any;
   email: any;
   chosenCompany: BusinessClient;
 
@@ -37,7 +35,7 @@ export class UserFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.sharedService.formInfo = new FormInfo(null, null, null);
   }
 
   changeActiveCompany(id: number) {
@@ -63,9 +61,9 @@ export class UserFormComponent implements OnInit {
     if (this.validateName() && (this.validateEmail() || this.validateNumber()) && !isNullOrUndefined(this.chosenCompany)) {
       const body = {
         business_id: this.chosenCompany.id,
-        client_name: this.name,
-        client_email: isNullOrUndefined(this.email) ? null : this.email,
-        client_number: isNullOrUndefined(this.mobile) ? null : this.trimWhitespace(this.mobile)
+        client_name: this.sharedService.formInfo.name,
+        client_email: isNullOrUndefined(this.sharedService.formInfo.email) ? null : this.sharedService.formInfo.email,
+        client_number: isNullOrUndefined(this.sharedService.formInfo.mobile) ? null : this.trimWhitespace(this.sharedService.formInfo.mobile)
       };
       this.sharedService.sendReturnInformation(body);
     } else if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
@@ -82,17 +80,17 @@ export class UserFormComponent implements OnInit {
         }
     } else if (this.chosenCompany.name !== this.recipient) {
         this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.name) || !this.validateName()) {
+    } else if (isNullOrUndefined(this.sharedService.formInfo.name) || !this.validateName()) {
         this.alertService.error(this.translateService.instant('error.noName'), this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.email) && isNullOrUndefined(this.mobile)) {
+    } else if (isNullOrUndefined(this.sharedService.formInfo.email) && isNullOrUndefined(this.sharedService.formInfo.mobile)) {
         this.alertService.error(this.translateService.instant('error.atleastOne'), this.translateService.instant('error.failed'));
     }
 
-    if ((isNullOrUndefined(this.email) || this.email === '') && !isNullOrUndefined(this.mobile)) {
+    if ((isNullOrUndefined(this.sharedService.formInfo.email) || this.sharedService.formInfo.email === '') && !isNullOrUndefined(this.sharedService.formInfo.mobile)) {
         if (!this.validateNumber()) {
             this.alertService.error(this.translateService.instant('error.invalidNumber'), this.translateService.instant('error.failed'));
         }
-    } else if (!isNullOrUndefined(this.email) && (isNullOrUndefined(this.mobile) || this.mobile === '')) {
+    } else if (!isNullOrUndefined(this.sharedService.formInfo.email) && (isNullOrUndefined(this.sharedService.formInfo.mobile) || this.sharedService.formInfo.mobile === '')) {
         if (!this.validateEmail()) {
           this.alertService.error(this.translateService.instant('error.invalidEmail'), this.translateService.instant('error.failed'));
         }
@@ -101,12 +99,12 @@ export class UserFormComponent implements OnInit {
   }
 
   validateNumber() {
-    if (!isNullOrUndefined(this.mobile)) {
+    if (!isNullOrUndefined(this.sharedService.formInfo.mobile)) {
       // Validaatorid on tehtud Omniva juhendi järgi mobiilinumbrite valideerimise osas. Viide -> https://www.omniva.ee/public/files/failid/manual_xml_dataexchange_eng.pdf -> lk. 7
       const est = /^(\+)?(372)?(5\d{6,7}|8\d{7})$/;
       const lv = /^(\+)?(371)?(2\d{7})$/;
       const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$/;
-      const mobileTrimmed = this.trimWhitespace(this.mobile);
+      const mobileTrimmed = this.trimWhitespace(this.sharedService.formInfo.mobile);
       console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
       console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
       console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
@@ -121,19 +119,19 @@ export class UserFormComponent implements OnInit {
   }
 
   validateEmail() {
-    if (!isNullOrUndefined(this.email)) {
+    if (!isNullOrUndefined(this.sharedService.formInfo.email)) {
       // Kasutatud on email validaatorit (viide: http://emailregex.com/), kuhu on juurde lisatud ka täpitähed
       const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/;
-      // console.log(this.email + ' : ' + emailRegEx.test(this.email));
-      return emailRegEx.test(this.email);
+      // console.log(this.sharedService.formInfo.email + ' : ' + emailRegEx.test(this.sharedService.formInfo.email));
+      return emailRegEx.test(this.sharedService.formInfo.email);
     }
     return false;
   }
   validateName() {
-    if (!isNullOrUndefined(this.name)) {
+    if (!isNullOrUndefined(this.sharedService.formInfo.name)) {
       const nameRegEx = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
-      // console.log(this.name + ' : ' + nameRegEx.test(this.name));
-      return nameRegEx.test(this.name);
+      // console.log(this.sharedService.formInfo.name + ' : ' + nameRegEx.test(this.sharedService.formInfo.name));
+      return nameRegEx.test(this.sharedService.formInfo.name);
     }
     return false;
   }
