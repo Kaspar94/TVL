@@ -40,15 +40,29 @@ app.use(function(req, res) {
 
 if (config.get("https")) {
   var https = require('https');
+  var http = require('http');
   var fs = require('fs');
 
   var credentialsPaths = config.get('credentials');
+
+  var http = express.createServer();
+
+  // set up a route to redirect http to https
+  http.get('*', function(req, res) {
+    res.redirect('https://' + req.headers.host + req.url);
+
+    // Or, if you don't want to automatically detect the domain name from the request header, you can hard code it:
+    // res.redirect('https://example.com' + req.url);
+  });
+
+  // have it listen on 8080
+  http.listen(port);
 
   https.createServer({
       key: fs.readFileSync(credentialsPaths.privateKeyPath),
       cert: fs.readFileSync(credentialsPaths.certificatePath)
   }, app).listen(443);
-  console.log('RESTful API server started on: ' + 443 + "\n");
+  console.log('RESTful API server started on: ' + 443 + "\n" + "Routing " + port + " over to 443");
 } else {
   app.listen(port);
   console.log('RESTful API server started on: ' + port);
