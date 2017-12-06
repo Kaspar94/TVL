@@ -58,7 +58,8 @@
     "noName": "Vārda lodziņš ir tukšs.",
     "doesNotExist": "Sūtījuma saņēmējs datiem nepastāv.",
     "invalidNumber": "Mobilā tālruņa numurs ir nederīgs.",
-    "invalidEmail": "E-pasts nav derīgs."
+    "invalidEmail": "E-pasts nav derīgs.",
+    "invalidLogin": "Nepareizs lietotājvārds vai parole."
   },
   "filter": {
     "title": "FILTERS",

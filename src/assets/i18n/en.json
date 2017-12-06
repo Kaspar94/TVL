@@ -58,7 +58,8 @@
     "noName": "No name entered.",
     "doesNotExist": "Recipient does not exist.",
     "invalidNumber": "Mobile number is invalid.",
-    "invalidEmail": "E-mail is invalid."
+    "invalidEmail": "E-mail is invalid.",
+    "invalidLogin": "Wrong username or password."
   },
   "filter": {
     "title": "FILTER",

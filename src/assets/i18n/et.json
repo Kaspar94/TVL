@@ -58,7 +58,8 @@
     "noName": "Nime lahter täitmata.",
     "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes.",
     "invalidNumber": "Mobiilinumber ei vasta nõuetele.",
-    "invalidEmail": "E-mail ei vasta nõuetele."
+    "invalidEmail": "E-mail ei vasta nõuetele.",
+    "invalidLogin": "Vale kasutaja või parool."
   },
   "filter": {
     "title": "FILTREERI",
