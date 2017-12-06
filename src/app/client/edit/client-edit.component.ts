@@ -49,21 +49,18 @@ export class ClientEditComponent {
   }
 
   close() {
-    this.revertChanges();
     this.activeModal.dismiss();
   }
 
-  revertChanges() {
-    if (!isNull(this.client.id)) {
-      this.client.axapta = this.tempClient.axapta;
-      this.client.name = this.tempClient.name;
-      this.client.street = this.tempClient.street;
-      this.client.city = this.tempClient.city;
-      this.client.postIndex = this.tempClient.postIndex;
-      this.client.country = this.tempClient.country;
-      this.client.deliveryCountry = this.tempClient.deliveryCountry;
-      this.client.serviceNumber = this.tempClient.serviceNumber;
-    }
+  makeChanges() {
+    this.client.axapta = this.tempClient.axapta;
+    this.client.name = this.tempClient.name;
+    this.client.street = this.tempClient.street;
+    this.client.city = this.tempClient.city;
+    this.client.postIndex = this.tempClient.postIndex;
+    this.client.country = this.tempClient.country;
+    this.client.deliveryCountry = this.tempClient.deliveryCountry;
+    this.client.serviceNumber = this.tempClient.serviceNumber;
   }
 
   confirmChanges() {
@@ -78,6 +75,7 @@ export class ClientEditComponent {
     if (this.clientEquals(this.tempClient, this.client)) {
       this.close();
     } else {
+      this.makeChanges();
       if (isNull(this.client.id)) {
         this.clientService.createClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
@@ -107,21 +105,21 @@ export class ClientEditComponent {
   }
 
   changeCountry(wareHouse: string) {
-      this.client.country = wareHouse;
+      this.tempClient.country = wareHouse;
   }
 
   changeDeliveryCountry(wareHouse: string) {
-      this.client.deliveryCountry = wareHouse;
+      this.tempClient.deliveryCountry = wareHouse;
   }
 
   isFormFilled() {
-    return !isNullOrUndefined(this.client.axapta) && this.client.axapta.length > 0
-      && !isNullOrUndefined(this.client.name) && this.client.name.length > 0
-      && !isNullOrUndefined(this.client.street) && this.client.street.length > 0
-      && !isNullOrUndefined(this.client.city) && this.client.city.length > 0
-      && !isNullOrUndefined(this.client.postIndex) && this.client.postIndex.length > 0
-      && !isNullOrUndefined(this.client.country) && this.client.country.length > 0
-      && !isNullOrUndefined(this.client.deliveryCountry) && this.client.deliveryCountry.length > 0
-      && !isNullOrUndefined(this.client.serviceNumber) && this.client.serviceNumber.length > 0;
+    return !isNullOrUndefined(this.tempClient.axapta) && this.tempClient.axapta.length > 0
+      && !isNullOrUndefined(this.tempClient.name) && this.tempClient.name.length > 0
+      && !isNullOrUndefined(this.tempClient.street) && this.tempClient.street.length > 0
+      && !isNullOrUndefined(this.tempClient.city) && this.tempClient.city.length > 0
+      && !isNullOrUndefined(this.tempClient.postIndex) && this.tempClient.postIndex.length > 0
+      && !isNullOrUndefined(this.tempClient.country) && this.tempClient.country.length > 0
+      && !isNullOrUndefined(this.tempClient.deliveryCountry) && this.tempClient.deliveryCountry.length > 0
+      && !isNullOrUndefined(this.tempClient.serviceNumber) && this.tempClient.serviceNumber.length > 0;
   }
 }
