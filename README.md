@@ -1,27 +1,42 @@
-# TVL
+# TVL ( Tagastuste Vormistamise Lahendus )
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
+#Running application locally
 
-## Development server
+* Download Node.js (LTS)
+* Clone git repository git clone https://github.com/Kaspar94/TVL.git
+* Go to project folder cd TVL
+* Install front-end dependencies npm install
+* Build front-end app npm run build
+* Go to server folder cd server
+* Install server dependencies npm install
+* Create file password.json at ./TVL/server/api/data/, and fill it with {"username" : "", "password" : ""}. This is used by xmlController to authenticate itself at Omniva infosystems. Command on Ubuntu for lazy people echo "{\"username\" : \"\", \"password\" : \"\"}" > api/data/password.json
+* Launch server Windows: node server.js, Ubuntu: sudo node server.js or PORT=8080 node server.js
+* Open browser and type localhost or localhost:8080 if you set port to 8080
+* To stop the server, use Ctrl+C
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+#Käsud rakenduse üles seadmiseks linux masinal
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Installida nodejs ning npm(on kaasas Node pakiga): https://nodejs.org/en/download/
+ VÕI
+ apt-get install npm
+ apt-get install nodejs-legacy
 
-## Build
+# TVL kaustas
+Kui server teisiti ümber pole seadistatud, kasutada iga käskluse ees sudo.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* npm install -g @angular-cli (installib angulari)
+* npm install (installib angularile vajalikud teegid)
+* ng build --env=prod
 
-## Running unit tests
+#TVL/server kaustas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* npm install (installib nodele vajalikud teegid)
 
-## Running end-to-end tests
+* NODE_ENV=prod node server.js (käivitab serveri)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+#Rollid
+ 
+* Klient - saab tagastada toodet
+* Haldaja/administraator - saab lisada/muuta/eemaldada ärikliente. 
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
