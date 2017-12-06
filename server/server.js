@@ -42,10 +42,10 @@ if (config.get("https")) {
   var https = require('https');
   var fs = require('fs');
 
-  var credetialsPaths = config.get('credentials');
+  var credentialsPaths = config.get('credentials');
 
   https.createServer({
-      key: fs.readFileSync(credetialsPaths.privateKeyPath),
+      key: fs.readFileSync(credentialsPaths.privateKeyPath),
       cert: fs.readFileSync(credentialsPaths.certificatePath)
   }, app).listen(443);
   console.log('RESTful API server started on: ' + 443 + "\n");
