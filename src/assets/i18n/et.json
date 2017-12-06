@@ -29,10 +29,10 @@
     "logIn": "Sisselogimine"
   },
   "admin": {
-    "title": "Äriklientide haldus",
-    "edit": "Äriklientide muutmine",
+    "title": "Ärikliendi andmete haldus",
+    "edit": "Ärikliendi andmete muutmine",
     "addButton": "LISA",
-    "add": "Äriklientide lisamine",
+    "add": "Ärikliendi lisamine",
     "languageChoice": "Keeltevalik",
     "table": {
         "id": "ID",
