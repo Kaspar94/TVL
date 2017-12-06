@@ -8,6 +8,7 @@ var returnsFilePath = './api/data/returnAddresses.json';
 var pwFilePath = './api/data/password.json';
 var randomstring = require("randomstring");
 var config = require('config');
+
 exports.get_returns = function (req, res) {
 	fs.readFile(returnsFilePath, encoding, function(err, data) {
 		data = JSON.parse(data).data
@@ -50,7 +51,7 @@ var trimWhitespace = function (text) {
 var validateEmailOrPhone = function (email, number) {
 	var isMail = true;
 	var isPhone = true;
-	if (!email || !email.match(/\w+@\w+\.\w+/g)) {
+	if (!email || !email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/g)) {
 		isMail = false;
 	}
 	if (!validateNumber(number)) {
@@ -62,6 +63,7 @@ var validateEmailOrPhone = function (email, number) {
 exports.send_xml = function (req, res) {
 	if (!validateEmailOrPhone(req.body.client_email, req.body.client_number)) {
 		res.status(400).json({'status': 'error', 'cause': 'mail or phone wrong or both missing'});
+		return;
 	} else if (!req.body.client_name || req.body.client_name.length < 2) {
 		res.status(400).json({'status': 'error', 'cause': 'name empty or missing'});
 		return;
