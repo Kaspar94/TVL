@@ -35,7 +35,6 @@ export class UserFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.sharedService.formInfo = new FormInfo(null, null, null);
   }
 
   changeActiveCompany(id: number) {

@@ -31,6 +31,7 @@ export class SharedService {
     this.languages.push(new Language('RUS', 'ru'));
     this.languages.push(new Language('ENG', 'en'));
     this.wareHouses = [];
+    this.formInfo = new FormInfo(null, null, null);
   }
 
   loadWareHouseCountries() {
