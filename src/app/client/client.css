@@ -19,3 +19,9 @@
 .empty-filters {
   margin: auto;
 }
+
+.center-text {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+}

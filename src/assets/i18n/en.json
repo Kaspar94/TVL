@@ -45,7 +45,8 @@
       "deliveryCountry": "DELIVERY COUNTRY",
       "serviceNumber": "SERVICE NUMBER",
       "edit": "EDIT",
-      "remove": "REMOVE"
+      "remove": "REMOVE",
+      "close": "CLOSE"
 
     },
     "logout": "Log out"
@@ -75,12 +76,14 @@
     "title": {
       "remove": "Are you sure you want to remove this client?",
       "edit": "Are you sure you want to edit this client?",
-      "new": "Are you sure you want to create a new client?"
+      "new": "Are you sure you want to create a new client?",
+      "close": "Are you sure you want to close?"
     },
     "message": {
       "remove": "Client will be removed.",
       "edit": "Client's data will be changed.",
-      "new": "A new client will be created."
+      "new": "A new client will be created.",
+      "close": "All changes will be reverted."
     },
     "option": {
       "accept": "Yes",

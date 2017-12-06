@@ -12,10 +12,10 @@
       <div class="col-6"></div>
       <div class="col-6 row">
         <div class="col-6">
-          <button type="submit" class="btn btn-lg omniva-red-background no-border white">{{ 'dialog.option.accept' | translate }}</button>
+          <button type="button" (click)="cancel()" class="btn btn-lg omniva-red-background no-border white center-text">{{ 'dialog.option.decline' | translate }}</button>
         </div>
         <div class="col-6">
-          <button type="button" (click)="cancel()" class="btn btn-lg omniva-red-background no-border white">{{ 'dialog.option.decline' | translate }}</button>
+          <button type="submit" class="btn btn-lg omniva-red-background no-border white center-text">{{ 'dialog.option.accept' | translate }}</button>
         </div>
       </div>
     </div>

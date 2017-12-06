@@ -45,7 +45,8 @@
       "deliveryCountry": "PIEGĀDES VALSTS",
       "serviceNumber": "SERVISA NUMURS",
       "edit": "REDIĢĒT",
-      "remove": "NOŅEMŠANA"
+      "remove": "NOŅEMŠANA",
+      "close": "TUVU"
 
     },
     "logout": "izlogoties"
@@ -75,12 +76,14 @@
     "title": {
       "remove": "Vai tiešām vēlaties noņemt šo klientu?",
       "edit": "Vai tiešām vēlaties rediģēt šo klientu?",
-      "new": "Vai tiešām vēlaties izveidot jaunu klientu?"
+      "new": "Vai tiešām vēlaties izveidot jaunu klientu?",
+      "close": "Vai tiešām vēlaties aizvērt?"
     },
     "message": {
       "remove": "Klients tiks noņemts.",
       "edit": "Klienta dati tiks mainīti.",
-      "new": "Jauns klients tiks izveidots."
+      "new": "Jauns klients tiks izveidots.",
+      "close": "Visas izmaiņas tiks atsauktas."
     },
     "option": {
       "accept": "Jā",

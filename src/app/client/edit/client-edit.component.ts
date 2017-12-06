@@ -49,8 +49,17 @@ export class ClientEditComponent {
   }
 
   close() {
+    const dialog = (<ConfirmDialogComponent>this.modalService.open(ConfirmDialogComponent, this.modalOption).componentInstance);
+    dialog.setParentModal(this.activeModal);
+    dialog.setConfirmCallbackMethod(this.closeEditForm);
+    dialog.setTitle(this.translateService.instant('dialog.title.close'));
+    dialog.setMessage(this.translateService.instant('dialog.message.close'));
+  }
+
+  closeEditForm = () => {
     this.activeModal.dismiss();
   }
+
 
   makeChanges() {
     this.client.axapta = this.tempClient.axapta;
@@ -73,19 +82,19 @@ export class ClientEditComponent {
 
   confirmClient = () => {
     if (this.clientEquals(this.tempClient, this.client)) {
-      this.close();
+      this.closeEditForm();
     } else {
       this.makeChanges();
       if (isNull(this.client.id)) {
         this.clientService.createClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
-          this.close();
+          this.closeEditForm();
           this.alertService.success(this.translateService.instant('success.newData'), this.translateService.instant('success.title'));
         }, (err) => this.alertService.error(err));
       } else {
         this.clientService.updateClient(this.client).subscribe((response) => {
           this.clientService.loadWithFilters();
-          this.close();
+          this.closeEditForm();
           this.alertService.success(this.translateService.instant('success.modifiedData'), this.translateService.instant('success.title'));
         }, (err) => this.alertService.error(err));
       }

@@ -56,18 +56,22 @@
     </div>
     <div class="modal-footer">
       <div *ngIf="client.id === null" class="col-12 row auto-margin">
-        <div class="col-3"></div>
         <div class="col-6 center">
-          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white" [disabled]="!isFormFilled()">{{ 'admin.addButton' | translate }}</button>
+          <button type="button" class="btn btn-lg col-12 omniva-red-background no-border white center-text" (click)="close()">{{ 'admin.table.close' | translate }}</button>
         </div>
-        <div class="col-3"></div>
+        <div class="col-6 center">
+          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white center-text" [disabled]="!isFormFilled()">{{ 'admin.addButton' | translate }}</button>
+        </div>
       </div>
       <div *ngIf="client.id !== null" class="col-12 row auto-margin">
-        <div class="col-6">
-          <button type="button" class="btn btn-lg col-12 omniva-red-background no-border white" (click)="remove()">{{ 'admin.table.remove' | translate }}</button>
+        <div class="col-4">
+          <button type="button" class="btn btn-lg col-12 omniva-red-background no-border white center-text" (click)="remove()">{{ 'admin.table.remove' | translate }}</button>
         </div>
-        <div class="col-6">
-          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white">{{ 'admin.table.edit' | translate }}</button>
+        <div class="col-4">
+          <button type="button" class="btn btn-lg col-12 omniva-red-background no-border white center-text" (click)="close()">{{ 'admin.table.close' | translate }}</button>
+        </div>
+        <div class="col-4">
+          <button type="submit" class="btn btn-lg col-12 omniva-red-background no-border white center-text">{{ 'admin.table.edit' | translate }}</button>
         </div>
       </div>
     </div>

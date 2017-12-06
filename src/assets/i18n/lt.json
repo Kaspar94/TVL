@@ -45,7 +45,8 @@
       "deliveryCountry": "PRISTATYMO ŠALIS",
       "serviceNumber": "PASLAUGOS NUMERIS",
       "edit": "REDAGUOTI",
-      "remove": "IŠTRINTI"
+      "remove": "IŠTRINTI",
+      "close": "UŽDARYTI"
     },
     "logout": "Atsijungti"
   },
@@ -74,12 +75,14 @@
     "title": {
       "remove": "Ar tikrai norite pašalinti šį klientą?",
       "edit": "Ar tikrai norite redaguoti šį klientą?",
-      "new": "Ar tikrai norite sukurti naują klientą?"
+      "new": "Ar tikrai norite sukurti naują klientą?",
+      "close": "Ar tikrai norite uždaryti?"
     },
     "message": {
       "remove": "Klientas bus pašalintas.",
       "edit": "Kliento duomenys bus pakeisti.",
-      "new": "Bus sukurtas naujas klientas."
+      "new": "Bus sukurtas naujas klientas.",
+      "close": "Visi pakeitimai bus grąžinami."
     },
     "option": {
       "accept": "Taip",
