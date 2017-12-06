@@ -1,6 +1,6 @@
 # TVL ( Tagastuste Vormistamise Lahendus )
 
-#Running application locally
+# Running application locally
 
 * Download Node.js (LTS)
 * Clone git repository git clone https://github.com/Kaspar94/TVL.git
@@ -15,7 +15,7 @@
 * To stop the server, use Ctrl+C
 
 
-#Käsud rakenduse üles seadmiseks linux masinal
+# Käsud rakenduse üles seadmiseks linux masinal
 
 * Installida nodejs ning npm(on kaasas Node pakiga): https://nodejs.org/en/download/
  VÕI
@@ -29,13 +29,13 @@ Kui server teisiti ümber pole seadistatud, kasutada iga käskluse ees sudo.
 * npm install (installib angularile vajalikud teegid)
 * ng build --env=prod
 
-#TVL/server kaustas
+# TVL/server kaustas
 
 * npm install (installib nodele vajalikud teegid)
 
 * NODE_ENV=prod node server.js (käivitab serveri)
 
-#Rollid
+# Rollid
  
 * Klient - saab tagastada toodet
 * Haldaja/administraator - saab lisada/muuta/eemaldada ärikliente. 
