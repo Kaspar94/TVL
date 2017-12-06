@@ -1,13 +1,11 @@
-<div class="row">
-  <div class="col-4"></div>
-  <div class="col-4">
+<div class="row justify-content-center">
+  <div class="col-xl-4 col-l-5 col-md-6 col-sm-7 col-11">
     <form name="return-form" class="padding-from-header" (submit)="returnAgain()">
-      <div class="col-12 center form-group">{{ 'success.info' | translate }}</div>
+      <div class="col-12 center form-group justify-text">{{ 'success.info' | translate }}</div>
       <div class="col-12 center form-group">
         <button type="submit" class="btn btn-primary btn-lg col-12 omniva-red-background no-border">{{ 'success.button' | translate }}</button>
       </div>
       <a class="col-12 center form-group" href="https://www.omniva.ee/">{{ 'success.return' | translate }}</a>
     </form>
   </div>
-  <div class="col-4"></div>
 </div>
