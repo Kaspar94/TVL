@@ -1,7 +1,7 @@
 
 import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {BusinessClient, Language} from './shared.model';
+import {BusinessClient, FormInfo, Language} from './shared.model';
 import {Injectable} from '@angular/core';
 import {headersToString} from 'selenium-webdriver/http';
 import {LanguageService} from '@angular/language-service';
@@ -20,6 +20,7 @@ export class SharedService {
   successfullyReturned: boolean;
   deliveryCountry: any;
   wareHouses: string[];
+  formInfo: FormInfo;
 
   constructor(private http: Http) {
     this.deliveryCountry = '';
@@ -30,6 +31,7 @@ export class SharedService {
     this.languages.push(new Language('RUS', 'ru'));
     this.languages.push(new Language('ENG', 'en'));
     this.wareHouses = [];
+    this.formInfo = new FormInfo(null, null, null);
   }
 
   loadWareHouseCountries() {
