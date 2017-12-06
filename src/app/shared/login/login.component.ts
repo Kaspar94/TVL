@@ -3,7 +3,6 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {SharedService} from '../../shared/shared.service';
 import {AlertService} from '../alert/alert.service';
-import { error } from 'selenium-webdriver';
 
 @Component({
   selector: 'login-component',
