@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/distinctUntilChanged';
 import {ClientService} from '../client/client.service';
 import { isNullOrUndefined } from 'util';
+const XRegExp = require('xregexp');
 
 @Component({
   selector: 'user-form',
@@ -104,9 +105,9 @@ export class UserFormComponent implements OnInit {
       const lv = /^(\+)?(371)?(2\d{7})$/;
       const lt = /^(\+)?(370)?(6\d{7}|86\d{7})$/;
       const mobileTrimmed = this.trimWhitespace(this.sharedService.formInfo.mobile);
-      console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
-      console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
-      console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
+      //console.log(mobileTrimmed + ' est : ' + est.test(mobileTrimmed));
+      //console.log(mobileTrimmed + ' lv : ' + lv.test(mobileTrimmed));
+      //console.log(mobileTrimmed + ' lt : ' + lt.test(mobileTrimmed));
       return  lv.test(mobileTrimmed) || lt.test(mobileTrimmed) || est.test(mobileTrimmed);
     }
     return false;
@@ -121,15 +122,15 @@ export class UserFormComponent implements OnInit {
     if (!isNullOrUndefined(this.sharedService.formInfo.email)) {
       // Kasutatud on email validaatorit (viide: http://emailregex.com/), kuhu on juurde lisatud ka täpitähed
       const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/;
-      // console.log(this.sharedService.formInfo.email + ' : ' + emailRegEx.test(this.sharedService.formInfo.email));
+      //console.log(this.sharedService.formInfo.email + ' : ' + emailRegEx.test(this.sharedService.formInfo.email));
       return emailRegEx.test(this.sharedService.formInfo.email);
     }
     return false;
   }
   validateName() {
     if (!isNullOrUndefined(this.sharedService.formInfo.name)) {
-      const nameRegEx = /^[a-zõüäöA-ZÕÜÄÖ ]*$/;
-      // console.log(this.sharedService.formInfo.name + ' : ' + nameRegEx.test(this.sharedService.formInfo.name));
+      const nameRegEx = XRegExp("^(\\pL+(\\s|\\-)*)+$");
+      //console.log(this.sharedService.formInfo.name + ' : ' + nameRegEx.test(this.sharedService.formInfo.name));
       return nameRegEx.test(this.sharedService.formInfo.name);
     }
     return false;
