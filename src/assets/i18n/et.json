@@ -46,7 +46,8 @@
         "serviceNumber": "TEENUSE KOOD",
         "edit": "MUUDA",
         "remove": "EEMALDA",
-        "close": "SULGE"
+        "close": "SULGE",
+        "noClientsFound": "Antud filtritega ei leitud ühtegi äriklienti."
 
     },
     "logout": "Logi välja"

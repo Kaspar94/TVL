@@ -46,8 +46,8 @@
       "serviceNumber": "SERVICE NUMBER",
       "edit": "EDIT",
       "remove": "REMOVE",
-      "close": "CLOSE"
-
+      "close": "CLOSE",
+      "noClientsFound": "No clients found with the searched filter."
     },
     "logout": "Log out"
   },

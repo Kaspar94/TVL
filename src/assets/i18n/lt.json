@@ -46,7 +46,8 @@
       "serviceNumber": "PASLAUGOS NUMERIS",
       "edit": "REDAGUOTI",
       "remove": "IŠTRINTI",
-      "close": "UŽDARYTI"
+      "close": "UŽDARYTI",
+      "noClientsFound": "Nerasta klientų su paieškos filtru."
     },
     "logout": "Atsijungti"
   },

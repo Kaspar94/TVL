@@ -46,7 +46,8 @@
       "serviceNumber": "SERVISA NUMURS",
       "edit": "REDIĢĒT",
       "remove": "NOŅEMŠANA",
-      "close": "TUVU"
+      "close": "TUVU",
+      "noClientsFound": "Netika atrasts neviens meklētājs ar meklēšanas filtru."
 
     },
     "logout": "izlogoties"
