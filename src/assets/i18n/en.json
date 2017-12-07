@@ -57,6 +57,7 @@
     "deliveryCountryNotChosen": "Delivery country not chosen.",
     "recipientNotChosen": "Recipient not chosen.",
     "noName": "No name entered.",
+    "invalidName": "Name is invalid.",
     "doesNotExist": "Recipient does not exist.",
     "invalidNumber": "Mobile number is invalid.",
     "invalidEmail": "E-mail is invalid.",

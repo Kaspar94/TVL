@@ -79,8 +79,10 @@ export class UserFormComponent implements OnInit {
         }
     } else if (this.chosenCompany.name !== this.recipient) {
         this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.sharedService.formInfo.name) || !this.validateName()) {
+    } else if (isNullOrUndefined(this.sharedService.formInfo.name)) {
         this.alertService.error(this.translateService.instant('error.noName'), this.translateService.instant('error.failed'));
+    } else if (!this.validateName()) {
+        this.alertService.error(this.translateService.instant('error.invalidName'), this.translateService.instant('error.failed'));
     } else if (isNullOrUndefined(this.sharedService.formInfo.email) && isNullOrUndefined(this.sharedService.formInfo.mobile)) {
         this.alertService.error(this.translateService.instant('error.atleastOne'), this.translateService.instant('error.failed'));
     }
