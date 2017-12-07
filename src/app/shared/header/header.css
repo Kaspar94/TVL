@@ -18,6 +18,9 @@
 .white {
   color: white;
 }
+#dropdownAdmin:hover {
+  cursor: pointer;
+}
 
 .title-column {
   position: relative;

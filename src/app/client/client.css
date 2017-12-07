@@ -18,6 +18,15 @@
 
 .empty-filters {
   margin: auto;
+  font-size: 2em;
+  color: #FF6319;
+  cursor: pointer;
+}
+
+.no-clients-found {
+  text-align: center;
+  margin-top: 70px;
+  color: #FF6319;
 }
 
 .center-text {
