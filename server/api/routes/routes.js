@@ -1,9 +1,11 @@
 'use strict';
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, dataPath) {
 	var businessClient = require('../controllers/businessClientController');
 	var auth = require('../controllers/authController');
 	var xmlController = require('../controllers/xmlController');
+	businessClient.setDataPath(dataPath);
+	xmlController.setDataPath(dataPath);
 
 	app.route('/login')
 		.get(passport.authenticate('basic', { session: false, failureRedirect: "/incorrectLogin" }), auth.login);

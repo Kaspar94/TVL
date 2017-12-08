@@ -9,6 +9,9 @@ var express = require('express'),
   BasicStrategy = require('passport-http').BasicStrategy,
   User = require('./api/helpers/userHelper');
 
+var dataPath = config.get('dataPath');
+User.setDataPath(dataPath);
+
 passport.use(new BasicStrategy(
   function(username, password, done) {
     User.findOneByUsername(username, function (err, user) {
@@ -32,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 var routes = require('./api/routes/routes');
-routes(app, passport);
+routes(app, passport, dataPath);
 
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})

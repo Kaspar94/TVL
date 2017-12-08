@@ -3,7 +3,11 @@
 var fs = require('fs');
 var helper = require('../helpers/fileHelper');
 var encoding = 'utf8';
-var clientsFilePath = './api/data/clients.json';
+var clientsFilePath = './api/dataDev/clients.json'; // Initial value, change it in config file.
+
+exports.setDataPath = function (dataPath) {
+	clientsFilePath = './api/' + dataPath + 'clients.json';
+}
 
 exports.list_all_clients = function (req, res) {
 	fs.readFile(clientsFilePath, encoding, function (err, data) {

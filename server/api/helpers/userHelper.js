@@ -1,13 +1,18 @@
 'use strict';
 
-var usersFilePath ='./api/data/users.json';
+var usersFilePath ='./api/data/users.json';  // Initial value, change it in config file.
 var encoding = 'utf8';
 var fs = require('fs');
 var helper = require('./fileHelper');
 var bcrypt = require('bcrypt-nodejs');
 
 // Usereid juurde registreerida hetkel ei saa, loetaks ühe korra fail sisse
-var usersCollection = require('../data/users.json');
+var usersCollection = undefined;
+
+exports.setDataPath = function (dataPath) {
+	usersFilePath = './api/' + dataPath + 'users.json';
+	usersCollection = require('../' + dataPath + '/users.json')
+}
 
 exports.findOneByUsername = function (username, callback) {
   /*
