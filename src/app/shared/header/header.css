@@ -18,7 +18,7 @@
 .white {
   color: white;
 }
-#dropdownAdmin:hover {
+#dropdownAdmin:hover, .header-logo:hover {
   cursor: pointer;
 }
 

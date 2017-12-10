@@ -57,15 +57,8 @@ export class UserFormComponent implements OnInit {
   }
 
   validate() {
-    if (this.validateName() && (this.validateEmail() || this.validateNumber()) && !isNullOrUndefined(this.chosenCompany)) {
-      const body = {
-        business_id: this.chosenCompany.id,
-        client_name: this.sharedService.formInfo.name,
-        client_email: isNullOrUndefined(this.sharedService.formInfo.email) ? null : this.sharedService.formInfo.email,
-        client_number: isNullOrUndefined(this.sharedService.formInfo.mobile) ? null : this.trimWhitespace(this.sharedService.formInfo.mobile)
-      };
-      this.sharedService.sendReturnInformation(body);
-    } else if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
+    
+    if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
         this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),
           this.translateService.instant('error.failed'));
     } else if (isNullOrUndefined(this.recipient)) {
@@ -76,24 +69,43 @@ export class UserFormComponent implements OnInit {
         const indx = this.filteredCompanies.findIndex((x) => x.name === this.recipient);
         if (indx > -1) {
             this.chosenCompany = this.filteredCompanies[indx];
+        } else {
+          this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
         }
-    } else if (this.chosenCompany.name !== this.recipient) {
-        this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
     } else if (isNullOrUndefined(this.sharedService.formInfo.name)) {
         this.alertService.error(this.translateService.instant('error.noName'), this.translateService.instant('error.failed'));
     } else if (!this.validateName()) {
         this.alertService.error(this.translateService.instant('error.invalidName'), this.translateService.instant('error.failed'));
     } else if (isNullOrUndefined(this.sharedService.formInfo.email) && isNullOrUndefined(this.sharedService.formInfo.mobile)) {
         this.alertService.error(this.translateService.instant('error.atleastOne'), this.translateService.instant('error.failed'));
-    }
-
-    if ((isNullOrUndefined(this.sharedService.formInfo.email) || this.sharedService.formInfo.email === '') && !isNullOrUndefined(this.sharedService.formInfo.mobile)) {
+    } else if (this.validateName() && (this.validateEmail() || this.validateNumber()) && !isNullOrUndefined(this.chosenCompany)) {
+      const indx = this.filteredCompanies.findIndex((x) => x.name === this.recipient);
+      if (indx > -1) {
+          this.chosenCompany = this.filteredCompanies[indx];
+          const body = {
+            business_id: this.chosenCompany.id,
+            client_name: this.sharedService.formInfo.name,
+            client_email: isNullOrUndefined(this.sharedService.formInfo.email) ? null : this.sharedService.formInfo.email,
+            client_number: isNullOrUndefined(this.sharedService.formInfo.mobile) ? null : this.trimWhitespace(this.sharedService.formInfo.mobile)
+          };
+          this.sharedService.sendReturnInformation(body);
+      } else {
+        this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
+      }
+    } else if ((isNullOrUndefined(this.sharedService.formInfo.email) || this.sharedService.formInfo.email === '') && !isNullOrUndefined(this.sharedService.formInfo.mobile)) {
         if (!this.validateNumber()) {
             this.alertService.error(this.translateService.instant('error.invalidNumber'), this.translateService.instant('error.failed'));
         }
     } else if (!isNullOrUndefined(this.sharedService.formInfo.email) && (isNullOrUndefined(this.sharedService.formInfo.mobile) || this.sharedService.formInfo.mobile === '')) {
         if (!this.validateEmail()) {
           this.alertService.error(this.translateService.instant('error.invalidEmail'), this.translateService.instant('error.failed'));
+        }
+    } else if (!isNullOrUndefined(this.sharedService.formInfo.email) && !isNullOrUndefined(this.sharedService.formInfo.mobile)) {
+        if (!this.validateEmail()) {
+          this.alertService.error(this.translateService.instant('error.invalidEmail'), this.translateService.instant('error.failed'));
+        }
+        if (!this.validateNumber()) {
+          this.alertService.error(this.translateService.instant('error.invalidNumber'), this.translateService.instant('error.failed'));
         }
     }
 
