@@ -1,5 +1,7 @@
 # TVL ( Tagastuste Vormistamise Lahendus )
 
+TVL'i kasutusjuhend: https://docs.google.com/document/d/1489TDJBvDBAZWvpk4rNomsg-zlUw0NH-uMfw5wkASls/edit?usp=sharing
+
 # Running application locally
 
 * Download Node.js (LTS)
