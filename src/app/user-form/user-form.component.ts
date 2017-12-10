@@ -57,11 +57,11 @@ export class UserFormComponent implements OnInit {
   }
 
   validate() {
-    
-    if (isNullOrUndefined(this.sharedService.deliveryCountry)) {
+
+    if (isNullOrUndefined(this.sharedService.deliveryCountry) || this.sharedService.deliveryCountry === '') {
         this.alertService.error(this.translateService.instant('error.deliveryCountryNotChosen'),
           this.translateService.instant('error.failed'));
-    } else if (isNullOrUndefined(this.recipient)) {
+    } else if (isNullOrUndefined(this.recipient) || this.recipient === '') {
       this.alertService.error(this.translateService.instant('error.recipientNotChosen'),
           this.translateService.instant('error.failed'));
     } else if ((!isNullOrUndefined(this.chosenCompany)
@@ -72,7 +72,7 @@ export class UserFormComponent implements OnInit {
         } else {
           this.alertService.error(this.translateService.instant('error.doesNotExist'), this.translateService.instant('error.failed'));
         }
-    } else if (isNullOrUndefined(this.sharedService.formInfo.name)) {
+    } else if (isNullOrUndefined(this.sharedService.formInfo.name) || this.sharedService.formInfo.name === '') {
         this.alertService.error(this.translateService.instant('error.noName'), this.translateService.instant('error.failed'));
     } else if (!this.validateName()) {
         this.alertService.error(this.translateService.instant('error.invalidName'), this.translateService.instant('error.failed'));
