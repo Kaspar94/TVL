@@ -3,11 +3,17 @@ var request = require('request');
 var fs = require('fs');
 var helper = require('../helpers/fileHelper');
 var encoding = 'utf8';
-var clientsFilePath = './api/data/clients.json';
-var returnsFilePath = './api/data/returnAddresses.json';
-var pwFilePath = './api/data/password.json';
+var clientsFilePath = './api/data/clients.json'; // Initial value, change it in config file.
+var returnsFilePath = './api/data/returnAddresses.json'; // Initial value, change it in config file.
+var pwFilePath = './api/data/password.json'; // Initial value, change it in config file.
 var randomstring = require("randomstring");
 var config = require('config');
+
+exports.setDataPath = function (dataPath) {
+	clientsFilePath = './api/' + dataPath + 'clients.json';
+	returnsFilePath = './api/' + dataPath + 'returnAddresses.json';
+	pwFilePath = './api/' + dataPath + 'password.json';
+}
 
 exports.get_returns = function (req, res) {
 	fs.readFile(returnsFilePath, encoding, function(err, data) {

@@ -4,7 +4,8 @@ var server = require('../server');
 var should = chai.should();
 var fs = require('fs');
 
-const clients = require("../api/data/clients.json"); // read in clients.json to reset it after all tests
+const dataPath = "dataDev/";
+const clients = require("../api/" + dataPath + "clients.json"); // read in clients.json to reset it after all tests
 
 const testClient1 = {"id":0,"axapta":"24510","street":"J. V. Jannseni 28","name":"Test klient","city":"Pärnu","postIndex":"80010","country":"EE","deliveryCountry":"LV","serviceNumber":"CI"}
 const emptyClientFile = {"nextId":1,"fields":["axapta","street","name","city","postIndex","country","deliveryCountry","serviceNumber"],"data":[testClient1]};
@@ -17,7 +18,7 @@ chai.use(chaiHttp);
 describe('BusinessClients', () => {
 
   beforeEach(function(done){ // before each test write clients.json to test one, where there is only one client
-    fs.writeFile("./api/data/clients.json", JSON.stringify(emptyClientFile), (err) => {
+    fs.writeFile("./api/" + dataPath + "clients.json", JSON.stringify(emptyClientFile), (err) => {
       done();
     });
   });
@@ -27,7 +28,7 @@ describe('BusinessClients', () => {
   });
 
   after(function(done) { // after all tests, reset clients.json to the old one.
-    fs.writeFile("./api/data/clients.json", JSON.stringify(clients), (err) => {
+    fs.writeFile("./api/" + dataPath + "clients.json", JSON.stringify(clients), (err) => {
       done();
     });
   });
