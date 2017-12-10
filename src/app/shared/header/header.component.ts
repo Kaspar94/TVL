@@ -11,7 +11,7 @@ declare const $;
   templateUrl: 'header.component.html',
   styleUrls: ['./header.css', '../../app.component.css']
 })
-export class CustomerSideHeaderComponent implements AfterViewInit{
+export class CustomerSideHeaderComponent{
 
   @Input() title: string;
   modalOption: NgbModalOptions = {};
@@ -24,21 +24,6 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
     this.modalOption.keyboard = false;
   }
 
-
-  ngAfterViewInit(): void {
-    let canvas : any = document.getElementById('myCanvas');
-    let ctx = canvas.getContext('2d');
-    ctx.moveTo(174,0);
-    ctx.lineTo(70,80);
-    ctx.lineTo(175,80);
-    ctx.lineTo(175,0);
-    ctx.strokeStyle = '#FFFFFF';
-    ctx.stroke();
-    ctx.fillStyle = '#FF6319';
-    ctx.fill();
-  }
-
-
   changeLang(lang: any) {
     const indx = this.sharedService.languages.findIndex( (x) => x.countryLetters === lang);
     this.sharedService.lang = this.sharedService.languages[indx];
@@ -48,9 +33,13 @@ export class CustomerSideHeaderComponent implements AfterViewInit{
   logout() {
     this.sharedService.loggedIn = false;
     this.sharedService.title = 'header.returnTitle';
+    this.sharedService.username = null;
+    this.sharedService.password = null;
   }
 
   openLogin() {
     const dialog = (<LoginComponent>this.modalService.open(LoginComponent, this.modalOption).componentInstance);
+    this.sharedService.username = null;
+    this.sharedService.password = null;
   }
 }

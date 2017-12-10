@@ -1,0 +1,11 @@
+{
+  "nextId": 1,
+  "fields": ["username", "password"],
+  "data": [
+    {
+      "id": 0,
+      "username": "admin",
+      "password": "$2a$10$AZApoDnK7vu0KyyNhVE7cukaC8D0zJNVDqg2PYYFDmVWkiLbzJ1zu"
+    }
+  ]
+}

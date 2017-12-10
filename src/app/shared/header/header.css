@@ -1,43 +1,48 @@
-.header {
+.language {
+  height: 20px;
+  margin: 5px 0;
+}
+.header, .header-logo img {
   height: 80px;
 }
-
-.language {
-  padding: 0.5em;
+.header h3, .header i {
+  padding: 0;
+  margin: 0;
 }
-
+.header h3 {
+  padding: 0 20px;
+}
+.header-logo img {
+  margin-left: 20px;
+}
 .white {
   color: white;
 }
-
-.header h3, #dropdownLanguage {
-  margin-right: 1em;
-}
-
-.language a {
+#dropdownAdmin:hover, .header-logo:hover {
   cursor: pointer;
 }
 
-.canvas-attr {
+.title-column {
+  position: relative;
+}
+.rectangle {
   position: absolute;
   top: 0;
-  bottom: 0;
-  margin: auto 15px auto auto;
-  right: 0;
-}
-.empty-filters {
-  margin: auto;
+  left: 0;
+	border-top: 80px solid white;
+	border-right: 80px solid transparent;
 }
 
-.logo-pos {
-  padding-left: 43px;
-}
-
-.header-margin {
-  margin-right: -1px;
-}
-
-.header-attr {
-  margin: 6px;
+@media (max-width: 767px) { 
+  .logo{
+    display: none;
+  }
+  .rectangle {
+    visibility: hidden;
+  }
+  .header {
+    height: auto;
+    min-height: 80px;
+  }
 }
 

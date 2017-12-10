@@ -1,8 +1,7 @@
-<div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
-      <form name="return-form" class="padding-from-header col-12" (submit)="validate()">
-        <div class="center form-group">{{ 'user.info' | translate }}</div>
+<div class="row justify-content-center">
+    <div class="col-xl-4 col-l-5 col-md-6 col-sm-7 col-11">
+      <form name="return-form" class="padding-from-header" (submit)="validate()">
+        <div class="center form-group justify-text">{{ 'user.info' | translate }}</div>
 
         <div class="form-group">
           <label for="deliveryCountry">{{ 'user.deliveryCountry' | translate }}</label>
@@ -26,7 +25,7 @@
               <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [disabled]="sharedService.deliveryCountry.length === 0">
               </button>
               <div class="dropdown-menu dropdown-menu-right scrollable-menu">
-                <a *ngFor="let company of filteredCompanies;let indx = index" class="dropdown-item" (click)="changeActiveCompany(company.id)">{{company.name}}</a>
+                <a *ngFor="let company of filteredCompanies" class="dropdown-item" (click)="changeActiveCompany(company.id)">{{company.name}}</a>
               </div>
             </div>
           </div>
@@ -34,17 +33,17 @@
 
         <div class="form-group">
           <label for="name">{{ 'user.name' | translate }}</label>
-          <input type="text" [(ngModel)]="name" class="form-control" id="name" name="name" required>
+          <input type="text" [(ngModel)]="sharedService.formInfo.name" class="form-control" id="name" name="name" required>
         </div>
 
         <div class="form-group">
           <label for="mobile">{{ 'user.mobile' | translate }}</label>
-          <input type="tel" [(ngModel)]="mobile" class="form-control " id="mobile" name="mobile" required>
+          <input type="tel" [(ngModel)]="sharedService.formInfo.mobile" class="form-control " id="mobile" name="mobile" required>
         </div>
 
         <div class="form-group">
           <label for="email">{{ 'user.email' | translate }}</label>
-          <input type="email" [(ngModel)]="email" class="form-control" id="email" name="email" required>
+          <input type="email" [(ngModel)]="sharedService.formInfo.email" class="form-control" id="email" name="email" required>
         </div>
 
         <div class="form-group">
@@ -52,5 +51,4 @@
         </div>
       </form>
     </div>
-    <div class="col-4"></div>
   </div>

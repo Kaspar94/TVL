@@ -45,7 +45,9 @@
       "deliveryCountry": "PRISTATYMO ŠALIS",
       "serviceNumber": "PASLAUGOS NUMERIS",
       "edit": "REDAGUOTI",
-      "remove": "IŠTRINTI"
+      "remove": "IŠTRINTI",
+      "close": "UŽDARYTI",
+      "noClientsFound": "Nerasta klientų su paieškos filtru."
     },
     "logout": "Atsijungti"
   },
@@ -55,9 +57,11 @@
     "deliveryCountryNotChosen": "Perkėlimo būsena nėra pasirinkta.",
     "recipientNotChosen": "Išpakavimas siuntą.",
     "noName": "Vardas laukas yra tuščias.",
+    "invalidName": "Vardas neteisingas.",
     "doesNotExist": "Duomenų gavėjo duomenų nėra.",
     "invalidNumber": "Mobiliojo telefono numeris neteisingas.",
-    "invalidEmail": "El. Paštas neteisingas."
+    "invalidEmail": "El. Paštas neteisingas.",
+    "invalidLogin": "Neteisingas vartotojo vardas arba slaptažodis."
   },
   "filter": {
     "title": "FILTRAS",
@@ -67,6 +71,24 @@
       "street": "GATVĖ",
       "city": "MIESTAS",
       "country": "ŠALIS"
+    }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Ar tikrai norite pašalinti šį klientą?",
+      "edit": "Ar tikrai norite redaguoti šį klientą?",
+      "new": "Ar tikrai norite sukurti naują klientą?",
+      "close": "Ar tikrai norite uždaryti?"
+    },
+    "message": {
+      "remove": "Klientas bus pašalintas.",
+      "edit": "Kliento duomenys bus pakeisti.",
+      "new": "Bus sukurtas naujas klientas.",
+      "close": "Visi pakeitimai bus grąžinami."
+    },
+    "option": {
+      "accept": "Taip",
+      "decline": "Ne"
     }
   }
 }

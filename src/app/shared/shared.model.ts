@@ -29,3 +29,14 @@ export class Language {
     this.jsonLetters = jsonLetters;
   }
 }
+
+export class FormInfo {
+  name: any;
+  mobile: any;
+  email: any;
+  constructor(name, email, mobile) {
+    this.name = name;
+    this.email = email;
+    this.mobile = mobile;
+  }
+}

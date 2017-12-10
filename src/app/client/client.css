@@ -15,3 +15,27 @@
 .auto-margin {
   margin: auto;
 }
+
+.empty-filters {
+  margin: auto;
+  font-size: 2em;
+  color: #FF6319;
+  cursor: pointer;
+}
+
+.no-clients-found {
+  text-align: center;
+  margin-top: 70px;
+  color: #FF6319;
+}
+
+.center-text {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.confirm-button {
+  width: 70px;
+  margin-right: 15px;
+}

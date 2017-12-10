@@ -65,14 +65,14 @@ export class ClientService {
   }
 
   public getClients() {
-    return this.http.get('/businessClient')
+    return this.http.get('/businessClient', this.sharedService.headerOptions())
       .map(response => {
         return response.json();
       });
   }
 
   public getClient(id: number) {
-    return this.http.get('/businessClient/' + id)
+    return this.http.get('/businessClient/' + id, this.sharedService.headerOptions())
       .map(response => {
         return response.json();
       });
@@ -92,7 +92,7 @@ export class ClientService {
   }
 
   private filterBackEnd(params: any[]) {
-    return this.http.get('/businessClient/where?' + $.param(params)).subscribe((res) => {
+    return this.http.get('/businessClient/where?' + $.param(params), this.sharedService.headerOptions()).subscribe((res) => {
         this.filteredClients = res.json();
     });
   }

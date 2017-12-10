@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateService} from '@ngx-translate/core';
 import {SharedService} from '../../shared/shared.service';
@@ -14,7 +14,9 @@ export class LoginComponent {
   constructor(translate: TranslateService,
               public activeModal: NgbActiveModal,
               public sharedService: SharedService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private alertService: AlertService,
+              private translateService: TranslateService) {
   }
 
   close() {
@@ -28,6 +30,16 @@ export class LoginComponent {
         this.sharedService.title = 'header.adminTitle';
         this.close();
       }
+    },
+      (error) => {
+        this.alertService.error(this.translateService.instant('error.invalidLogin'), this.translateService.instant('error.failed'));
     });
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyboardInput(event: KeyboardEvent) {
+    if (event.keyCode === 27) {
+      this.close();
+    }
   }
 }

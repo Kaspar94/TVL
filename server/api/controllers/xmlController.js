@@ -3,11 +3,18 @@ var request = require('request');
 var fs = require('fs');
 var helper = require('../helpers/fileHelper');
 var encoding = 'utf8';
-var clientsFilePath = './api/data/clients.json';
-var returnsFilePath = './api/data/returnAddresses.json';
-var pwFilePath = './api/data/password.json';
+var clientsFilePath = './api/data/clients.json'; // Initial value, change it in config file.
+var returnsFilePath = './api/data/returnAddresses.json'; // Initial value, change it in config file.
+var pwFilePath = './api/data/password.json'; // Initial value, change it in config file.
 var randomstring = require("randomstring");
 var config = require('config');
+
+exports.setDataPath = function (dataPath) {
+	clientsFilePath = './api/' + dataPath + 'clients.json';
+	returnsFilePath = './api/' + dataPath + 'returnAddresses.json';
+	pwFilePath = './api/' + dataPath + 'password.json';
+}
+
 exports.get_returns = function (req, res) {
 	fs.readFile(returnsFilePath, encoding, function(err, data) {
 		data = JSON.parse(data).data
@@ -50,7 +57,7 @@ var trimWhitespace = function (text) {
 var validateEmailOrPhone = function (email, number) {
 	var isMail = true;
 	var isPhone = true;
-	if (!email || !email.match(/\w+@\w+\.\w+/g)) {
+	if (!email || !email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zäöõüA-ZÄÖÕÜ\-0-9]+\.)+[a-zäöõüA-ZÄÖÕÜ]{2,}))$/g)) {
 		isMail = false;
 	}
 	if (!validateNumber(number)) {
@@ -62,6 +69,7 @@ var validateEmailOrPhone = function (email, number) {
 exports.send_xml = function (req, res) {
 	if (!validateEmailOrPhone(req.body.client_email, req.body.client_number)) {
 		res.status(400).json({'status': 'error', 'cause': 'mail or phone wrong or both missing'});
+		return;
 	} else if (!req.body.client_name || req.body.client_name.length < 2) {
 		res.status(400).json({'status': 'error', 'cause': 'name empty or missing'});
 		return;
@@ -76,13 +84,13 @@ exports.send_xml = function (req, res) {
 
 				fs.readFile(returnsFilePath, encoding, function(err, data) {
 					if(err) {
-						res.status(404).json({'status': 'error', 'cause': 'could not load storage countries file returnAddresses.json'});
+						res.status(500).json({'status': 'error', 'cause': 'could not load storage countries file returnAddresses.json'});
 						return;
 					}
 					var ret = null;
 					ret = helper.findOneByCountry(JSON.parse(data).data, client.deliveryCountry);
 					if(ret == null) {
-						res.status(404).json({'status': 'error', 'cause': 'deliveryCountry ' + client.deliveryCountry + ' not found'});
+						res.status(500).json({'status': 'error', 'cause': 'deliveryCountry ' + client.deliveryCountry + ' not found'});
 						return;
 					}
 					// create XML object
@@ -90,10 +98,10 @@ exports.send_xml = function (req, res) {
 					   "soapenv:Envelope": {
 					      "soapenv:Body": {
 						 "xsd:businessToClientMsgRequest": {
-						    "partner": "24510",
+						    "partner": client.axapta,
 						    "interchange": {
 						       "header": {
-							  "@sender_cd": "24510",
+							  "@sender_cd": client.axapta,
 							  "@file_id" : randomstring.generate(14)
 
 						       },
@@ -118,7 +126,7 @@ exports.send_xml = function (req, res) {
 								"mobile": req.body.client_number,
 								"email": req.body.client_email,
 								"address": {
-								   "@postcode": ret.postcode,
+								   "@postcode":  ret.postcode,
 								   "@deliverypoint": ret.deliverypoint,
 								   "@country": ret.country,
 								   "@street": ret.street
@@ -148,7 +156,7 @@ exports.send_xml = function (req, res) {
 					// send xml to ominva API
 					fs.readFile(pwFilePath, encoding, function(err, data) {
 						if(err) {
-							res.status(404).json({'status': 'error', 'cause': 'could not find API password file'});
+							res.status(500).json({'status': 'error', 'cause': 'could not find API password file'});
 							return;
 						}
 						var pw = JSON.parse(data);
@@ -176,12 +184,12 @@ exports.send_xml = function (req, res) {
 								res.send(xml.toString());
 							}
 						} else {
-							res.status(404).json({'status': 'error', 'cause': 'password file data not found'});
+							res.status(500).json({'status': 'error', 'cause': 'password file data not found'});
 						}
 					});
 				});
 			} else { // Id not found
-				res.status(404).json({'status': 'error', 'cause': 'id not found'});
+				res.status(500).json({'status': 'error', 'cause': 'id not found'});
 			}
 	});
 };

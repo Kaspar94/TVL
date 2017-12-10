@@ -13,8 +13,15 @@
     <div class="col-2 form-group">
       <input type="text" class="form-control view-input-attr" name="filterCity" id="filterCity" [placeholder]="'filter.placeholder.city' | translate" [(ngModel)]="clientService.filterCity"/>
     </div>
-    <div class="col-2 form-group">
-      <input type="text" class="form-control view-input-attr" name="filterCountry" id="filterCountry" [placeholder]="'filter.placeholder.country' | translate" [(ngModel)]="clientService.filterCountry"/>
+    <div class="col-2 form-group input-group">
+      <input type="text" class="form-control" name="filterCountry" id="filterCountry" [placeholder]="'filter.placeholder.country' | translate" [(ngModel)]="clientService.filterCountry" disabled/>
+      <div class="input-group-btn dropdown-attr">
+        <button type="button" class="selection-button btn btn-secondary dropdown-toggle dropdown-toggle-split dropdown-button-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu dropdown-menu-right scrollable-menu">
+          <a *ngFor="let wareHouseOrigin of sharedService.wareHouses" class="dropdown-item" (click)="changeCountry(wareHouseOrigin)">{{ wareHouseOrigin }}</a>
+        </div>
+      </div>
     </div>
     <div class="col-1 form-group row">
       <button type="submit" class="btn omniva-red-background no-border white"><i class="fa fa-search"></i></button>
@@ -22,7 +29,7 @@
     </div>
   </form>
 </div>
-<div class="col-12">
+<div>
   <table class="table">
     <thead>
     <tr>
@@ -53,4 +60,7 @@
     </tr>
     </tbody>
   </table>
+  <div *ngIf="clientService.filteredClients.length === 0" class="col-12">
+    <h3 class="no-clients-found">{{ 'admin.table.noClientsFound' | translate }}</h3>
+  </div>
 </div>

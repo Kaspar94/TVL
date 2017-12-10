@@ -15,3 +15,7 @@
   max-height: 175px;
   overflow-x: hidden;
 }
+
+.justify-text {
+  text-align: justify;
+}

@@ -16,6 +16,28 @@ exports.findOne = function (array, key, value) {
   return null;
 }
 
+exports.filter = function (collection, filters) {
+  var data = collection.data;
+  var result = [];
+  for (var i in filters) {
+    if (collection.fields.indexOf(i) > -1) {
+      for (var row in data) {
+        if (filters[i].charAt(0) === "*") {
+          var query = filters[i].substring(1).replace(/[^\w\s!?]/g,'').toLowerCase();
+          if (String(data[row][i]).toLowerCase().match(query)) {
+            result.push(data[row]);
+          }
+        } else if (data[row][i] == filters[i]) {
+          result.push(data[row]);
+        }
+      }
+      data = result;
+      result = [];
+    }
+  }
+  return data;
+}
+
 exports.updateOneById = function (array, id, newValues) {
   return exports.updateOne(array, 'id', id, newValues);
 }

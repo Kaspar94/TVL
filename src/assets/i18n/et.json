@@ -29,10 +29,10 @@
     "logIn": "Sisselogimine"
   },
   "admin": {
-    "title": "Äriklientide haldus",
-    "edit": "Äriklientide muutmine",
+    "title": "Ärikliendi andmete haldus",
+    "edit": "Ärikliendi andmete muutmine",
     "addButton": "LISA",
-    "add": "Äriklientide lisamine",
+    "add": "Ärikliendi lisamine",
     "languageChoice": "Keeltevalik",
     "table": {
         "id": "ID",
@@ -45,7 +45,9 @@
         "deliveryCountry": "SAADETISE ÜLEANDMISE RIIK",
         "serviceNumber": "TEENUSE KOOD",
         "edit": "MUUDA",
-        "remove": "EEMALDA"
+        "remove": "EEMALDA",
+        "close": "SULGE",
+        "noClientsFound": "Antud filtritega ei leitud ühtegi äriklienti."
 
     },
     "logout": "Logi välja"
@@ -56,9 +58,11 @@
     "deliveryCountryNotChosen": "Saadetise üleandmise riik valimata.",
     "recipientNotChosen": "Saadetise kättesaaja valimata.",
     "noName": "Nime lahter täitmata.",
+    "invalidName": "Nimi pole õige.",
     "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes.",
     "invalidNumber": "Mobiilinumber ei vasta nõuetele.",
-    "invalidEmail": "E-mail ei vasta nõuetele."
+    "invalidEmail": "E-mail ei vasta nõuetele.",
+    "invalidLogin": "Vale kasutaja või parool."
   },
   "filter": {
     "title": "FILTREERI",
@@ -68,6 +72,24 @@
       "street": "TÄNAV",
       "city": "ASULA",
       "country": "RIIK"
+    }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Kas olete kindel, et soovite ärikliendi eemaldada?",
+      "edit": "Kas olete kindel, et soovite ärikliendi andmeid muuta?",
+      "new": "Kas olete kindel, et soovite uut ärikliendi luua?",
+      "close": "Kas olete kindel, et soovite sulgeda?"
+    },
+    "message": {
+      "remove": "Äriklient eemaldatakse.",
+      "edit": "Ärikliendi andmed muudetakse.",
+      "new": "Uus äriklient lisatakse nimekirja.",
+      "close": "Kõik muudatused lähevad kaotsi."
+    },
+    "option": {
+      "accept": "Jah",
+      "decline": "Ei"
     }
   }
 }

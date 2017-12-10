@@ -19,7 +19,7 @@
     "button": "AGAIN",
     "return": "BACK TO OMNIVA WEBPAGE",
     "title": "Success!",
-    "modifiedData": "Business clients data updated!",
+    "modifiedData": "Business client data updated!",
     "newData": "New business client added."
   },
   "login": {
@@ -45,8 +45,9 @@
       "deliveryCountry": "DELIVERY COUNTRY",
       "serviceNumber": "SERVICE NUMBER",
       "edit": "EDIT",
-      "remove": "REMOVE"
-
+      "remove": "REMOVE",
+      "close": "CLOSE",
+      "noClientsFound": "No clients found with the searched filter."
     },
     "logout": "Log out"
   },
@@ -56,9 +57,11 @@
     "deliveryCountryNotChosen": "Delivery country not chosen.",
     "recipientNotChosen": "Recipient not chosen.",
     "noName": "No name entered.",
+    "invalidName": "Name is invalid.",
     "doesNotExist": "Recipient does not exist.",
     "invalidNumber": "Mobile number is invalid.",
-    "invalidEmail": "E-mail is invalid."
+    "invalidEmail": "E-mail is invalid.",
+    "invalidLogin": "Wrong username or password."
   },
   "filter": {
     "title": "FILTER",
@@ -68,6 +71,24 @@
       "street": "STREET",
       "city": "CITY",
       "country": "COUNTRY"
+    }
+  },
+  "dialog": {
+    "title": {
+      "remove": "Are you sure you want to remove this client?",
+      "edit": "Are you sure you want to edit this client?",
+      "new": "Are you sure you want to create a new client?",
+      "close": "Are you sure you want to close?"
+    },
+    "message": {
+      "remove": "Client will be removed.",
+      "edit": "Client's data will be changed.",
+      "new": "A new client will be created.",
+      "close": "All changes will be reverted."
+    },
+    "option": {
+      "accept": "Yes",
+      "decline": "No"
     }
   }
 }
