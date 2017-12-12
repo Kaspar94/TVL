@@ -62,7 +62,8 @@
     "doesNotExist": "Sūtījuma saņēmējs datiem nepastāv.",
     "invalidNumber": "Mobilā tālruņa numurs ir nederīgs.",
     "invalidEmail": "E-pasts nav derīgs.",
-    "invalidLogin": "Nepareizs lietotājvārds vai parole."
+    "invalidLogin": "Nepareizs lietotājvārds vai parole.",
+    "failedReturn": "Kaut kas noticis, mēģinot atgriezt paketi..."
   },
   "filter": {
     "title": "FILTERS",

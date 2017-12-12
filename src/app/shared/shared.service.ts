@@ -3,10 +3,10 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {BusinessClient, FormInfo, Language} from './shared.model';
 import {Injectable} from '@angular/core';
-import {headersToString} from 'selenium-webdriver/http';
 import {LanguageService} from '@angular/language-service';
 import {TranslateService} from '@ngx-translate/core';
 import {ClientService} from '../client/client.service';
+import {AlertService} from './alert/alert.service';
 
 @Injectable()
 export class SharedService {
@@ -22,7 +22,9 @@ export class SharedService {
   wareHouses: string[];
   formInfo: FormInfo;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private alertService: AlertService,
+              private translateService: TranslateService) {
     this.deliveryCountry = '';
     this.languages = [];
     this.languages.push(new Language('EST', 'et'));
@@ -47,7 +49,7 @@ export class SharedService {
   }
 
   headerOptions() {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', 'Basic '+ btoa(this.username + ':' + this.password));
     return new RequestOptions({headers: headers});
@@ -55,7 +57,11 @@ export class SharedService {
 
   sendReturnInformation(body: {business_id: any; client_name: any; client_email: any; client_number: any}) {
     return this.http.put('/return/client', body).subscribe((res) => {
+      if (res['_body'].indexOf('Messages successfully received!') > -1) {
         this.successfullyReturned = !this.successfullyReturned;
+      } else {
+        this.alertService.error(this.translateService.instant('error.failedReturn'));
+      }
     });
   }
 

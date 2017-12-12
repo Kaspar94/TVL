@@ -61,7 +61,8 @@
     "doesNotExist": "Duomenų gavėjo duomenų nėra.",
     "invalidNumber": "Mobiliojo telefono numeris neteisingas.",
     "invalidEmail": "El. Paštas neteisingas.",
-    "invalidLogin": "Neteisingas vartotojo vardas arba slaptažodis."
+    "invalidLogin": "Neteisingas vartotojo vardas arba slaptažodis.",
+    "failedReturn": "Bandant grąžinti paketą įvyko klaida..."
   },
   "filter": {
     "title": "FILTRAS",

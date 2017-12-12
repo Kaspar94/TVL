@@ -144,10 +144,10 @@ exports.send_xml = function (req, res) {
 					   }
 					}
 					if(req.body.client_number != null) {
-						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GN"'] = "";
+						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GK"'] = "";
 					}
 					if(req.body.client_email != null) {
-						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GM"'] = "";
+						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GL"'] = "";
 					}
 
 					var builder = require('xmlbuilder');
@@ -160,7 +160,7 @@ exports.send_xml = function (req, res) {
 							return;
 						}
 						var pw = JSON.parse(data);
-						//console.log(pw);
+
 						if(pw != null) {
 							if(config.util.getEnv('NODE_ENV') !== 'test') {
 								var options = {
@@ -174,7 +174,7 @@ exports.send_xml = function (req, res) {
 								};
 								request(options, function(error, response, body) {
 									if(response.statusCode == 200) {
-										res.send('{"status" : "success"}');
+										res.send('{"status" : "success", "response" : "' + body + '"}');
 									} else {
 										res.send('{"status" : "error", "cause" : "'+error+'"}');
 									}
