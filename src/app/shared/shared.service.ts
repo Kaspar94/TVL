@@ -57,7 +57,7 @@ export class SharedService {
 
   sendReturnInformation(body: {business_id: any; client_name: any; client_email: any; client_number: any}) {
     return this.http.put('/return/client', body).subscribe((res) => {
-      if (res['response'].indexOf('Messages successfully received!') > -1) {
+      if (res.toString().indexOf('Messages successfully received!') > -1) {
         this.successfullyReturned = !this.successfullyReturned;
       } else {
         this.alertService.error(this.translateService.instant('error.failedReturn'));
