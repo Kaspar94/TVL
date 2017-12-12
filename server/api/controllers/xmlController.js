@@ -144,10 +144,10 @@ exports.send_xml = function (req, res) {
 					   }
 					}
 					if(req.body.client_number != null) {
-						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GN"'] = "";
+						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GK"'] = "";
 					}
 					if(req.body.client_email != null) {
-						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GM"'] = "";
+						obj["soapenv:Envelope"]["soapenv:Body"]["xsd:businessToClientMsgRequest"].interchange.item_list.item.add_service['option code="GL"'] = "";
 					}
 
 					var builder = require('xmlbuilder');
