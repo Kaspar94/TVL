@@ -63,7 +63,7 @@
     "invalidNumber": "Mobiilinumber ei vasta nõuetele.",
     "invalidEmail": "E-mail ei vasta nõuetele.",
     "invalidLogin": "Vale kasutaja või parool.",
-    "failedReturn": "Something went wrong while trying to return a package..."
+    "failedReturn": "Midagi läks valesti paki tagastamisel..."
   },
   "filter": {
     "title": "FILTREERI",
