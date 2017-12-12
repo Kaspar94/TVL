@@ -61,7 +61,8 @@
     "doesNotExist": "Recipient does not exist.",
     "invalidNumber": "Mobile number is invalid.",
     "invalidEmail": "E-mail is invalid.",
-    "invalidLogin": "Wrong username or password."
+    "invalidLogin": "Wrong username or password.",
+    "failedReturn": "Something went wrong while trying to return a package..."
   },
   "filter": {
     "title": "FILTER",

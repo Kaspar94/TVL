@@ -62,7 +62,8 @@
     "doesNotExist": "Saadetise kättesaajat ei eksisteeri andmetes.",
     "invalidNumber": "Mobiilinumber ei vasta nõuetele.",
     "invalidEmail": "E-mail ei vasta nõuetele.",
-    "invalidLogin": "Vale kasutaja või parool."
+    "invalidLogin": "Vale kasutaja või parool.",
+    "failedReturn": "Something went wrong while trying to return a package..."
   },
   "filter": {
     "title": "FILTREERI",
