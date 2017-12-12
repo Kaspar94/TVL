@@ -160,7 +160,7 @@ exports.send_xml = function (req, res) {
 							return;
 						}
 						var pw = JSON.parse(data);
-						//console.log(pw);
+
 						if(pw != null) {
 							if(config.util.getEnv('NODE_ENV') !== 'test') {
 								var options = {
@@ -174,7 +174,7 @@ exports.send_xml = function (req, res) {
 								};
 								request(options, function(error, response, body) {
 									if(response.statusCode == 200) {
-										res.send('{"status" : "success"}');
+										res.send('{"status" : "success", "response" : "' + body + '"}');
 									} else {
 										res.send('{"status" : "error", "cause" : "'+error+'"}');
 									}
