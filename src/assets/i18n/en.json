@@ -4,7 +4,7 @@
     "adminTitle": "BUSINESS CLIENT MANAGEMENT"
   },
   "user": {
-    "info": "Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "info": "Welcome to Omniva's package return form. Fill out following fields and click submit to return a package. After filling it successfully you will get an email and/or SMS with new instructions.",
     "recipient": "RECIPIENT",
     "deliveryCountry": "DELIVERY COUNTRY",
     "name": "NAME",
