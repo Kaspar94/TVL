@@ -15,7 +15,7 @@
     }
   },
   "success": {
-    "info": "Toote tagastamine õnnestus. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "info": "Toote tagastamine õnnestus. SUCCESS!. Informatsioon on edastatud Omniva süsteemi. Varsti ilmub teile teade emaili ja/või SMS peale.",
     "button": "TAGASTA UUESTI",
     "return": "TAGASI OMNIVA LEHELE",
     "title": "Õnnestus!",

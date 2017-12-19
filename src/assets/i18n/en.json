@@ -15,7 +15,7 @@
     }
   },
   "success": {
-    "info": "SUCCESS!. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "info": "SUCCESS!. The information has been forwarded to Omniva's system. Be prepared to get a email and/or SMS.",
     "button": "AGAIN",
     "return": "BACK TO OMNIVA WEBPAGE",
     "title": "Success!",

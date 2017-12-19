@@ -1,4 +1,4 @@
-{
+
   "header": {
     "returnTitle": "ВОЗВРАТ ТОВАРА",
     "adminTitle": "УПРАВЛЕНИЕ БИЗНЕС-КЛИЕНТАМИ"
@@ -15,7 +15,7 @@
     }
   },
   "success": {
-    "info": "Возврат продукта возвращен. Lorem ipsum dolor сидит агент, consectetur adispiscing elit. Приостановить euismod mauris при ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Это был год в молли.",
+    "info": "УСПЕХ !. Информация была отправлена ​​в систему Omniva. Будьте готовы получить электронное письмо и / или SMS.",
     "button": "ЗАЧИТАЙТЕ",
     "return": "НАЗАД НА СТРАНИЦУ OMNIВA",
     "title": "Успех!",

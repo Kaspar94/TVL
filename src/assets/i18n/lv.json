@@ -15,7 +15,7 @@
     }
   },
   "success": {
-    "info": "Produkta atmaksa tiek atgriezta. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Suspendisse euismod mauris at ligula volutpat vulputate vitae ut dolor. Vivamus dignissim id purus quis congue. Sed sid amet mollis metus.",
+    "info": "SUCCESS !. Informācija ir nosūtīta uz Omniva sistēmu. Esiet gatavi saņemt e-pastu un / vai SMS.",
     "button": "atgriezieties vēlreiz",
     "return": "atpakaļ uz omniva lapu",
     "title": "panākumi!",
